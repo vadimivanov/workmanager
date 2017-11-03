@@ -1,0 +1,128 @@
+<div class="promo__container">
+  <form class="promo__form">
+    <h2 class="promo__title">Finden Sie Ihren Dienstleister schnell und einfach</h2>
+    <div class="promo__group">
+      <h3 class="promo__subtitle">Welche Dienstleistung suchen Sie?</h3>
+      <div class="control-group-search">
+        <div class="control-group">
+          <input class="control-group__input input-alt" placeholder="Gesuchte Dienstleistung eingeben" type="text"
+                 value="" autocomplete="off" [(ngModel)]="searchValue" (ngModelChange)="changeSearch($event)" [ngModelOptions]="{standalone: true}" #searchField>
+          <button class="control-group__btn btn" type="submit" (click)="search()" md-raised-button>
+            <md-icon class="control-group__ico">search</md-icon>
+          </button>
+        </div>
+        <div class="search-drop-down" *ngIf="!isChoosedSearch
+                                             && (searchValue.length && searchValue.length > 2)
+                                             && (filteredServices.length || searchResults.length || metatagsResult.length)">
+          <ul class="search-drop-down__list" *ngIf="filteredServices.length">
+            <li class="search-drop-down__item search-drop-down__title">Kategorien</li>
+            <li class="search-drop-down__item search-drop-down__link" *ngFor="let service of filteredServices"
+                (click)="goToSearchResults(service.parentName ? 'subserviceName' : 'serviceName', service.name)">
+              {{ service.parentName }} > {{ service.name }}
+            </li>
+            <li class="search-drop-down__item search-drop-down__link" *ngIf="filteredServices.length === 3"
+                (click)="allSearch('searchText', searchValue)">
+              Alle anzeigen
+            </li>
+          </ul>
+          <ul class="search-drop-down__list" *ngIf="searchResults.length">
+            <li class="search-drop-down__item search-drop-down__title">Dienstleister</li>
+            <li class="search-drop-down__item search-drop-down__link" *ngFor="let result of searchResults; let i = index"
+                (click)="goToProfilePage(result.user_id)">
+              {{ result.company_name }}
+            </li>
+            <li class="search-drop-down__item search-drop-down__link" *ngIf="searchResults.length === 3"
+                (click)="allSearch('subserviceName', '')">
+              Alle anzeigen
+            </li>
+          </ul>
+          <ul class="search-drop-down__list" *ngIf="searchValue.length > 2 && filteredServices.length && !searchResults.length">
+            <li class="search-drop-down__item search-drop-down__title">Dienstleister</li>
+            <li class="search-drop-down__item search-drop-down__link">
+              There are no providers matching your query
+            </li>
+          </ul>
+          <ul class="search-drop-down__list" *ngIf="metatagsResult.length">
+            <li class="search-drop-down__item search-drop-down__title">Suchen sie etwa</li>
+            <li class="search-drop-down__item search-drop-down__link" *ngFor="let service of metatagsResult | slice:0:3"
+                (click)="goToSearchResults(service.parentName ? 'subserviceName' : 'serviceName', service.name)">
+              {{ service.parentName }} > {{ service.name }}
+            </li>
+            <li class="search-drop-down__item search-drop-down__link" *ngIf="metatagsResult.length === 3"
+                (click)="allSearch('subserviceName', '')">
+              Alle anzeigen
+            </li>
+          </ul>
+        </div>
+        <div class="search-drop-down" *ngIf="(searchValue.length > 2 && !isChoosedSearch)
+                                              && !(filteredServices.length || searchResults.length || metatagsResult.length)">
+          <ul>
+            <li class="search-drop-down__message">No search results</li>
+          </ul>
+        </div>
+        <div class="search-drop-down"
+             *ngIf="(searchValue.length && searchValue.length < 3)">
+          <ul>
+            <li class="search-drop-down__message">You should type more than 2 symbols</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+    <div class="promo__group">
+      <h3 class="promo__subtitle">In der Nähe von?</h3>
+      <!--<input class="input-alt" placeholder="Gesamte Schweiz">-->
+      <div *ngIf="!isChoosedSearch">
+        <md-input-container class="input-alt" floatPlaceholder="never">
+          <input mdInput placeholder="Gesamte Schweiz" disabled>
+        </md-input-container>
+
+        <div class="text-right">
+          <button class="btn btn--link" disabled>
+            <md-icon class="btn__ico">place</md-icon>
+            Mein Standort
+          </button>
+        </div>
+      </div>
+
+      <div *ngIf="isChoosedSearch">
+        <md-input-container class="input-alt" floatPlaceholder="never">
+          <input mdInput placeholder="Gesamte Schweiz" [mdAutocomplete]="autoCity" [formControl]="cityCtrl" (blur)="onKeyup($event)" #geoSearchField>
+          <md-spinner class="spinner" *ngIf="isSearchingLocation"
+                      style="position: absolute; top: 0; right: 0; bottom: 0; margin: auto; width: 30px; height: 30px"></md-spinner>
+        </md-input-container>
+        <md-autocomplete #autoCity="mdAutocomplete">
+          <md-option *ngFor="let city of filteredCities | async" [value]="city" (click)="getLocation(city)">
+            {{ city }}
+          </md-option>
+        </md-autocomplete>
+        <div class="text-right">
+          <a class="btn btn--link" (click)="locateUser()">
+            <md-icon class="btn__ico">place</md-icon>
+            Mein Standort
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="promo__group">
+      <div class="slider-group">
+        <strong class="slider-group__label">Umkreis: {{distance/1000 || '10'}}km</strong>
+        <md-slider class="slider" thumb-label="true" min="10" max="110" step="10" tick-interval="1"
+                   (change)="selectedDistance($event)" [value]="distanceModel" [disabled]="disabledSlider"></md-slider>
+        <ul class="slider-group__steps">
+          <li class="slider-group__step"><span>10</span></li>
+          <li class="slider-group__step"><span>20</span></li>
+          <li class="slider-group__step"><span>30</span></li>
+          <li class="slider-group__step"><span>40</span></li>
+          <li class="slider-group__step"><span>50</span></li>
+          <li class="slider-group__step"><span>60</span></li>
+          <li class="slider-group__step"><span>70</span></li>
+          <li class="slider-group__step"><span>80</span></li>
+          <li class="slider-group__step"><span>90</span></li>
+          <li class="slider-group__step"><span>100</span></li>
+          <li class="slider-group__step"><span>100+</span></li>
+        </ul>
+      </div>
+    </div>
+  </form>
+</div>

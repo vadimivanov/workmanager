@@ -1,0 +1,54 @@
+[
+  {
+    "id": 1,
+    "name": "Architektur",
+    "description": "about first category",
+    "is_show_on_home_page": false
+  },
+  {
+    "id": 2,
+    "name": "Bad",
+    "description": "about second category",
+    "is_show_on_home_page": false
+  },
+  {
+    "id": 3,
+    "name": "Heimatorganisation",
+    "is_show_on_home_page": false
+  },
+  {
+    "id": 4,
+    "name": "Garten",
+    "is_show_on_home_page": false
+  },
+  {
+    "id": 5,
+    "name": "Innenarchitektur",
+    "is_show_on_home_page": false
+  },
+  {
+    "id": 6,
+    "name": "Küche",
+    "is_show_on_home_page": true
+  },
+  {
+    "id": 7,
+    "name": "Landschaftsgestaltung",
+    "is_show_on_home_page": false
+  },
+  {
+    "id": 8,
+    "name": "Wellnessbereich",
+    "is_show_on_home_page": false
+  },
+  {
+    "id": 9,
+    "name": "Putzdienste",
+    "is_show_on_home_page": true
+  },
+  {
+    "id": 10,
+    "name": "Spenglerarbeiten",
+    "is_show_on_home_page": true
+  }
+]

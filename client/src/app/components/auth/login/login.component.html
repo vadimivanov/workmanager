@@ -1,0 +1,35 @@
+<app-header></app-header>
+<div class="container container--tiny">
+  <form class="block" [formGroup]="loginForm"
+        (ngSubmit)="onSubmit(loginForm.value)" #form="ngForm">
+    <header class="block__header auth-form__header">
+      <h1>Willkommen zurück auf OKorNOK</h1>
+      <h2 class="h3">Anmelden</h2>
+    </header>
+    <md-input-container class="input">
+      <input mdInput placeholder="E-mail" type="text" id="userEmail" formControlName="userEmail"
+             [(ngModel)]="user.email">
+      <md-error>{{ formErrors.userEmail }}</md-error>
+    </md-input-container>
+    <md-input-container class="input">
+      <input mdInput placeholder="Passwort" type="password" id="userPassword" #userPassEl formControlName="userPassword"
+             [(ngModel)]="user.password">
+      <button class="input__control" type="button" (click)="changePasswordType()">
+        <md-icon *ngIf="show; else visibilityConfOff">visibility_off</md-icon>
+        <ng-template #visibilityConfOff>
+          <md-icon>remove_red_eye</md-icon>
+        </ng-template>
+      </button>
+      <md-error>{{ formErrors.userPassword }}</md-error>
+    </md-input-container>
+    <div class="auth-form__group auth-form__group--alt">
+      <a class="btn" routerLink="/forgot-password">Passwort vergessen?</a>
+      <md-checkbox class="checkbox" formControlName="isRemember" [(ngModel)]="user.isRemembered">Eingeloggt bleiben</md-checkbox>
+    </div>
+    <button md-raised-button class="btn auth-form__submit" [disabled]="!loginForm.valid">Einloggen</button>
+    <div class="text-center">
+      <span class="auth-form__info">Sie haben noch kein Benutzerkonto? &nbsp;</span>
+      <a class="btn" routerLink="/register">REGISTRIEREN</a>
+    </div>
+  </form>
+</div>

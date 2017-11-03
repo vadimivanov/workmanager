@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "job_title": "Repairing bath",
+    "message": "Please, leave a feedback about my work",
+    "photo_urls": ["https://okornok-uploads.s3.eu-central-1.amazonaws.com/test-image-1.jpg", "https://okornok-uploads.s3.eu-central-1.amazonaws.com/test-image-2.jpg"],
+    "rater_id": 1,
+    "provider_id": 1,
+    "service_id": 1
+  }
+]

@@ -1,0 +1,47 @@
+@import "../../../styles/base/index";
+
+:host {
+  display: block;
+  overflow: hidden;
+}
+
+.schedule__item {
+  display: flex;
+}
+
+.schedule__sub {
+  &:first-child {
+    flex: 0 0 rem-calc(115);
+    margin-right: rem-calc(20);
+  }
+  &:last-child {
+    flex: 1 1 auto;
+  }
+}
+
+.schedule__time {
+  display: inline-block;
+  min-width: rem-calc(40);
+  margin-right: rem-calc(15);
+}
+
+.schedule__label {
+  display: block;
+  font-size: rem-calc(12);
+  color: map-get($grays, dark-disabled);
+}
+
+.schedule__value {
+  position: relative;
+  font-size: rem-calc(14);
+  color: map-get($grays, dark-primary);
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: map-get($grays, dark-primary);
+  }
+}

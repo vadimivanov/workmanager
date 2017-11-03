@@ -1,0 +1,44 @@
+<form class="sign-up-provider block" [formGroup]="fillInfoForm"
+      (ngSubmit)="onSubmit(fillInfoForm.value)" #form="ngForm">
+  <div class="sign-up-provider__body">
+    <span (click)="dialogRef.close()">X</span>
+    <header class="block__header">
+      <h1>Profil beantragen</h1>
+      <h2 class="h3">Bitte geben Sie lhre Kontaktdaten</h2>
+    </header>
+    <div class="grid">
+      <md-select id="gender" name="gender" class="select sign-up-provider__select" placeholder="Anrede"
+                 formControlName="gender" required>
+        <md-option *ngFor="let gender of genders" [value]="gender.name">
+          {{ gender.title }}
+        </md-option>
+      </md-select>
+      <md-input-container class="input">
+        <input mdInput placeholder="Vorname" id="firstName" formControlName="firstName"
+               required [(ngModel)]="provider.firstName">
+        <md-error>{{ formErrors.firstName }}</md-error>
+      </md-input-container>
+      <md-input-container class="input">
+        <input mdInput placeholder="Nachname" value="" id="lastName" formControlName="lastName" required
+               [(ngModel)]="provider.lastName">
+        <md-error>{{ formErrors.lastName }}</md-error>
+      </md-input-container>
+      <md-input-container class="input">
+        <input mdInput type="text" placeholder="Telefonnummer" id="telNo" formControlName="telNo" required
+               [(ngModel)]="provider.telNo">
+        <md-error>{{ formErrors.telNo }}</md-error>
+      </md-input-container>
+      <md-input-container class="input">
+        <input mdInput type="email" placeholder="E-mail" id="email" formControlName="email" required
+               [(ngModel)]="provider.email">
+        <md-error>{{ formErrors.email }}</md-error>
+      </md-input-container>
+    </div>
+  </div>
+  <footer class="sign-up-provider__footer">
+    <button type="button" class="sign-up-provider__next btn" md-raised-button (click)="next()"
+            [disabled]="!fillInfoForm.valid">
+      Antrag Senden
+    </button>
+  </footer>
+</form>

@@ -1,0 +1,123 @@
+<app-header></app-header>
+<app-home-search></app-home-search>
+<div class="headline">
+  <h2 class="h1">Warum OKorNOK</h2>
+</div>
+<div class="bg-light-primary">
+  <div class="container container--no-gutter">
+    <div class="grid-noGutter">
+      <div class="col-6_sm-12">
+        <app-article [articleImg]="'assets/scss/images/img02.jpg'" [articleLink]="'/register/provider/step-one'">
+          <span article-title>Werden Sie Dienstleister</span>
+          <p article-text>
+            <app-text-truncate [countSymbols]="250" text="OKorNOK bietet Ihnen die Möglichkeit Ihre Firma optimal zu präsentieren und ihre Dienstleistungen einem breiten Zielpublikm zugänglich zu machen. Erhalten Sie Bewertungen, zeigen Sie Besuchern Bilder der Arbeiten auf die Sie stolz sind und steigern Sie damit die Attraktivität Ihres Unternehmens. Erstellen Sie noch heute Ihr Profil und steigen Sie ein in die Welte der digitalen Mund-zu-Mund-Propaganda."></app-text-truncate>
+          </p>
+          <span article-link>Als Dienstleister registrieren </span>
+        </app-article>
+      </div>
+      <div class="col-6_sm-12">
+        <app-article [articleImg]="'assets/scss/images/img03.jpg'" [articleLink]="'/register/rater'">
+          <span article-title>Werden Sie Bewerter</span>
+          <p article-text>
+            <app-text-truncate [countSymbols]="250" text="Bewerten Sie Ihren Handwerker des Vertrauens oder machen Sie Vorschläge wie ein Dienstleister sich noch weiter verbessern kann. Gute Bewertungen oder konstruktive Kritiken helfen Dienstleistern sich in Ihrer Leistung ständig zu verbessern. Andere OKorNOK-Benutzer profitieren von Ihrem Feedback und können so zu einem zuverlässigen Partner für ihr Vorhaben finden. Legen Sie los und helfen Sie mit gute Unternehmen noch besser zu machen."></app-text-truncate>
+            <!--<a href="#" class="text-uppercase">mehr erfahren</a>-->
+          </p>
+          <span article-link>Als Bewerter registrieren</span>
+        </app-article>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="headline headline--no-top">
+  <h2 class="h1">Top-Kategorien</h2>
+</div>
+<div class="bg-light-primary">
+  <div class="container">
+    <div class="category">
+      <div class="grid-3_sm-2_xs-2">
+        <div class="col">
+          <a (click)="goToSearchResults('Sanitärarbeiten')" class="category-block">
+            <span class="category-block__img" [style.background-image]="'url(assets/scss/images/img04.jpg)'"></span>
+            <span class="category-block__name" data-icon-left="icon-bathroom">Sanitärarbeiten, Bäder, Küchen</span>
+          </a>
+        </div>
+        <div class="col">
+          <a (click)="goToSearchResults('Elektroinstallation')" class="category-block">
+            <span class="category-block__img" [style.background-image]="'url(assets/scss/images/img05.jpg)'"></span>
+            <span class="category-block__name" data-icon-left="icon-electrical">Elektriker, Elektroinstallation</span>
+          </a>
+        </div>
+        <div class="col">
+          <a (click)="goToSearchResults('Baumeisterarbeiten')" class="category-block">
+            <span class="category-block__img" [style.background-image]="'url(assets/scss/images/img06.jpg)'"></span>
+            <span class="category-block__name" data-icon-left="icon-architect">Architects &amp; Engineers</span>
+          </a>
+        </div>
+        <div class="col">
+          <a (click)="goToSearchResults('Entsorgung & Entrümpelung')" class="category-block">
+            <span class="category-block__img" [style.background-image]="'url(assets/scss/images/img07.jpg)'"></span>
+            <span class="category-block__name" data-icon-left="icon-cleaning">Putzdienste</span>
+          </a>
+        </div>
+        <div class="col">
+          <a (click)="goToSearchResults('Spenglerarbeiten')" class="category-block">
+            <span class="category-block__img" [style.background-image]="'url(assets/scss/images/img08.jpg)'"></span>
+            <span class="category-block__name" data-icon-left="icon-plumbing">Sanitärarbeiten</span>
+          </a>
+        </div>
+        <div class="col">
+          <a (click)="goToSearchResults('Dachdecker & Bedachungen')" class="category-block">
+            <span class="category-block__img" [style.background-image]="'url(assets/scss/images/img09.jpg)'"></span>
+            <span class="category-block__name" data-icon-left="icon-roof">Dachdecker, Bedachungen</span>
+          </a>
+        </div>
+        <div class="col">
+          <a (click)="goToSearchResults('Schwimmbad & Sauna')" class="category-block">
+            <span class="category-block__img" [style.background-image]="'url(assets/scss/images/img10.jpg)'"></span>
+            <span class="category-block__name" data-icon-left="icon-swimming-pool">Schwimmbad, Wellness, Sauna</span>
+          </a>
+        </div>
+        <div class="col">
+          <a (click)="goToSearchResults('Fenster & Türen')" class="category-block">
+            <span class="category-block__img" [style.background-image]="'url(assets/scss/images/img11.jpg)'"></span>
+            <span class="category-block__name" data-icon-left="icon-window">Fenster &amp; Türen</span>
+          </a>
+        </div>
+        <div class="col" (click)="goToCategories()">
+          <a class="category-block category-block--empty">
+            <span class="category-block__img" [style.background-image]="'url(assets/scss/images/img12.jpg)'"></span>
+            <span class="category-block__name">Alle anzeigen</span>
+          </a>
+        </div>
+      </div>
+      <div class="text-center is-hidden-from-sm">
+        <button class="btn btn--full-width-mobile" (click)="goToCategories()" md-raised-button>Alle anzeigen</button>
+      </div>
+    </div>
+  </div>
+</div>
+<app-ideas-for-inspiration-gallery class="bg-white bottom-indent--big" [displayComponent]="true" [standalonePage]="false"></app-ideas-for-inspiration-gallery>
+<div class="bg-gray-base bottom-indent">
+  <div class="container">
+    <div class="grid flex-align-start">
+      <div class="col-6_xs-12">
+        <app-latest-providers></app-latest-providers>
+      </div>
+      <div class="col-6_xs-12">
+        <app-latest-feedbacks></app-latest-feedbacks>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="headline">
+  <h2 class="h1">Feedbacks von OKorNOKlern</h2>
+</div>
+<div class="bg-light-primary big-inner-bottom-indent">
+  <div class="container">
+    <app-shifter class="shifter--alt"
+        [items]="displayingQuotesList"
+        [displayComponent]="true">
+    </app-shifter>
+  </div>
+</div>
+<app-footer class="footer-holder--no-top"></app-footer>

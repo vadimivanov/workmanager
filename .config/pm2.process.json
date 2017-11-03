@@ -1,0 +1,12 @@
+{
+  "apps": [
+    {
+      "name": "okornok",
+      "script": "./server/bin/www",
+      "autorestart": true,
+      "instances": 1,
+      "exec_mode": "fork",
+      "merge_logs": true
+    }
+  ]
+}

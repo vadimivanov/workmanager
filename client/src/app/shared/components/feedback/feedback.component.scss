@@ -1,0 +1,87 @@
+@import "../../../styles/base/index";
+
+:host(.feedback) {
+  display: block;
+  margin-top: rem-calc(14);
+  padding-top: rem-calc(12);
+  padding-bottom: rem-calc(3);
+  box-shadow: none;
+  > *:last-child {
+    margin-bottom: 0;
+  }
+  &:first-of-type {
+    margin-top: 0;
+    border-top: 0;
+  }
+  @include respond-from(sm) {
+    margin-top: 0;
+    padding-bottom: 0;
+    border-top: 1px solid #d3d3d3;
+  }
+}
+
+.feedback__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: rem-calc(8);
+  @include respond-from(sm) {
+    margin-bottom: 0;
+  }
+}
+
+.feedback__info {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  @include respond-from(sm) {
+    flex-direction: row;
+  }
+}
+
+.feedback__name {
+  display: block;
+  margin-top: rem-calc(-9);
+  @include respond-from(sm) {
+    margin-top: rem-calc(-2);
+  }
+}
+
+.feedback__date {
+  font-size: rem-calc(12);
+  color: #828d9f;
+  @include respond-from(sm) {
+    font-size: rem-calc(14);
+  }
+}
+
+.feedback__rating {
+  display: block;
+  @include respond-from(sm) {
+    display: inline-block;
+    margin-right: rem-calc(5);
+  }
+}
+
+.feedback__body {
+  font-size: rem-calc(14);
+  line-height: rem-calc(18.2);
+  color: map-get($grays, dark-secondary);
+  /deep/ p {
+    margin-bottom: rem-calc(12);
+  }
+  @include respond-from(sm) {
+    color: #2f3437;
+    line-height: rem-calc(24);
+    /deep/ p {
+      margin-bottom: rem-calc(8);
+    }
+  }
+}
+
+.feedback__rating {
+  display: inline-block;
+  transform: scale(0.7);
+  transform-origin: left top;
+  margin-right: rem-calc(-33);
+}

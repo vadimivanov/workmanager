@@ -1,0 +1,20 @@
+EnvironmentConfigurationMetadata:
+  Description: Configuration created from the EB CLI using "eb config save".
+  DateCreated: '1501704999000'
+  DateModified: '1501704999000'
+Platform:
+  PlatformArn: arn:aws:elasticbeanstalk:us-west-2::platform/Docker running on 64bit Amazon Linux/2.7.1
+OptionSettings:
+  aws:elasticbeanstalk:environment:
+    EnvironmentType: SingleInstance
+    ServiceRole: aws-elasticbeanstalk-service-role
+  aws:elasticbeanstalk:healthreporting:system:
+    SystemType: enhanced
+  aws:autoscaling:launchconfiguration:
+    IamInstanceProfile: aws-elasticbeanstalk-ec2-role
+  aws:cloudformation:template:parameter:
+    EnvironmentVariables: ''
+EnvironmentTier:
+  Type: Standard
+  Name: WebServer
+AWSConfigurationTemplateVersion: 1.1.0.0

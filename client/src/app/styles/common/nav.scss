@@ -1,0 +1,110 @@
+@import "../../../app/styles/base/index";
+
+.nav__info {
+  background: map-get($colors, primary);
+  padding: rem-calc(28) rem-calc(15) rem-calc(15);
+  min-height: 160px;
+
+  @include respond-from(md) {
+    display: none;
+  }
+}
+
+.nav__list {
+  @include respond-from(md) {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+}
+
+.nav__item {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-left: rem-calc(24);
+}
+
+.nav__header {
+  display: block;
+  @include respond-from(md) {
+    display: none;
+  }
+}
+
+.nav__avatar {
+  position: relative;
+  width: rem-calc(64);
+  height: rem-calc(64);
+  border-radius: 50%;
+  overflow: hidden;
+  &--logo {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: rem-calc(35);
+    border-radius: 0;
+    width: rem-calc(175);
+    height: rem-calc(50);
+  }
+}
+
+.nav__img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: auto;
+  height: 100%;
+  max-width: none;
+  transform: translate(-50%, -50%);
+}
+
+.nav__data {
+  font-size: rem-calc(14);
+  font-weight: 500;
+  color: map-get($grays, light-primary);
+  @include ellipsis;
+}
+
+.nav__item-ico {
+  &.mat-icon {
+    display: none;
+  }
+}
+
+.nav__link.mat-button {
+  text-transform: none;
+  &:hover {
+    color: map-get($colors, primary);
+    .mat-button-focus-overlay {
+      background-color: transparent;
+    }
+  }
+  @include respond-from(md) {
+    text-transform: uppercase;
+  }
+}
+
+.nav__link.mat-raised-button {
+  @include respond-to(md) {
+    background-color: transparent;
+    font-size: rem-calc(14);
+    color: inherit;
+    box-shadow: none;
+    text-transform: none;
+  }
+}
+
+.nav__opener {
+  margin-left: rem-calc(4);
+  color: map-get($grays, light-primary);
+  .mat-icon {
+    font-size: rem-calc(37);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @include respond-from(md) {
+    display: none;
+  }
+}

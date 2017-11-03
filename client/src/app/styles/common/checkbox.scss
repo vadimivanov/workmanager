@@ -1,0 +1,40 @@
+.checkbox {
+  &,
+  &.mat-checkbox {
+    cursor: default;
+  }
+  &.mat-checkbox-checked.mat-accent .mat-checkbox-background,
+  &.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: map-get($colors, primary);
+  }
+
+  &.mat-checkbox:not(.mat-checkbox-disabled).mat-accent .mat-checkbox-ripple .mat-ripple-element {
+    background-color: rgba(map-get($colors, primary), .26);
+  }
+
+  .mat-checkbox-inner-container {
+    width: rem-calc(18);
+    height: rem-calc(18);
+    margin-right: rem-calc(20);
+  }
+
+  .mat-checkbox-layout {
+    cursor: pointer;
+  }
+
+  .mat-checkbox-label {
+    font-size: rem-calc(15);
+  }
+
+  &--bottom-indented {
+    display: inline-block;
+    margin-bottom: rem-calc(9);
+  }
+  &--big-bottom-indented {
+    display: block;
+    margin-bottom: rem-calc(15);
+  }
+  &--full-width {
+    width: 100%;
+  }
+}

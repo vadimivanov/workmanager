@@ -1,0 +1,8 @@
+<div class="headline headline--alt">
+  <h2 class="h1">Neu registrierte Dienstleister bei OKorNOK</h2>
+</div>
+<div class="grid">
+  <div class="col-6_lg-12" *ngFor="let company of companyList" (click)="goToProfile(company.user_id)">
+    <app-cutaway [img]="company.photo_url" [title]="company.company_name" [items]="company.subServices"></app-cutaway>
+  </div>
+</div>

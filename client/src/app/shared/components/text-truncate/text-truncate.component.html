@@ -1,0 +1,9 @@
+<span *ngIf="!isTruncate">
+  {{text}}
+</span>
+
+<span *ngIf="isTruncate">
+  {{isShowTextTruncate ? textTruncate : text}}
+  <a (click)="toggleTextTruncate()" class="text-uppercase">{{isShowTextTruncate ? 'Mehr Anzeigen' : 'Weniger Anzeigen'}}</a>
+</span>
+

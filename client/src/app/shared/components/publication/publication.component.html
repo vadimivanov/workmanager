@@ -1,0 +1,110 @@
+<div class="publication__status"
+     *ngIf="isDisplayStatus"
+     [ngClass]="{'publication__status--blocked': (isApproved === false) || (isApproved === true && !isDisplaying),
+                 'publication__status--in-progress': isApproved === null}">
+  <span *ngIf="isApproved === null">Bewertung in Bearbeitung</span>
+  <span *ngIf="isApproved === false">Abgelehnt Bewertung</span>
+  <span *ngIf="isApproved === true && !isDisplaying">Gesperrt Bewertung</span>
+</div>
+<figure class="publication__figure">
+  <div class="publication__figimg" [ngClass]="{'publication__figimg--pointered': creatorId}" [style.background-image]="avatarUrl ? 'url(' + avatarUrl + ')' : 'url(assets/images/content/img-avatar.png)'" (click)="goToCreator()" [attr.role]="image" [attr.aria-labelledby]="avatarUrl"></div>
+  <figcaption class="publication__figcaption" id="{{avatarUrl}}">
+    <span>{{avatarCaption || 'Gelöschte Benutzer'}}</span>
+    <span class="sr-only" *ngIf="!avatarCaption">{{avatarUrl ? avatarUrl : 'default image'}}</span>
+    <div class="publication__meta-data" *ngIf="ratersFeedbacks">
+      <md-icon>star_rate</md-icon>
+      {{ratersFeedbacks}} Bewertungen
+    </div>
+  </figcaption>
+</figure>
+<div class="publication__body">
+  <header class="publication__header">
+    <h3 class="publication__title" *ngIf="!isEditFeed">{{title}}</h3>
+    <md-input-container class="input" *ngIf="isEditFeed">
+      <input mdInput placeholder="Titel" type="text" [(ngModel)]="title"/>
+    </md-input-container>
+    <div class="publication__header-data">
+      <span class="publication__label" *ngIf="serviceName">{{serviceName}}</span>
+      <div class="publication__edit" *ngIf="conditionEdit && !isEditFeed">
+        <md-icon class="comment__control" (click)="editFeed()">edit</md-icon>
+        <md-icon class="comment__control" (click)="removeFeed()">delete</md-icon>
+      </div>
+      <div class="publication__edit" *ngIf="isEditFeed">
+        <button class="btn" md-raised-button (click)="cancel()">abbrechen</button>
+        <button class="btn" md-raised-button (click)="saveEditFeed()">speichern</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="publication__subheader" *ngIf="subtitle">
+    <h3 class="publication__subtitle">{{subtitle}}</h3>
+    <div class="publication__date">{{date}}</div>
+  </div>
+
+  <div class="publication__data">
+    <app-rating
+      [id]="id"
+      [value]="ownerRating"
+      [isDigitalValueShow]="[true, false]"
+      [isPresentation]="true"
+      ></app-rating>
+    <div class="publication__date" *ngIf="!subtitle">{{date}}</div>
+  </div>
+  <div class="publication__quote">
+    <p *ngIf="!isEditFeed">
+      <app-text-truncate [text]="body"></app-text-truncate>
+    </p>
+    <md-input-container class="input" *ngIf="isEditFeed">
+      <input mdInput placeholder="feedback" type="text" [(ngModel)]="body"/>
+    </md-input-container>
+  </div>
+  <div class="publication__social" *ngIf="isApproved && isDisplaying && !isReadOnly">
+    <app-social class="publication__share" [socialLinks]="socialData"></app-social>
+    <!--<button type="button" class="publication__likes likes">-->
+      <!--<md-icon class="likes__icon">thumb_up</md-icon>-->
+      <!--{{likes}}-->
+    <!--</button>-->
+  </div>
+  <app-carousel class="publication__carousel" [items]="items && items.length ? items : []"></app-carousel>
+  <div class="publication__cta-block" *ngIf="!isReadOnly && (!comments.length || isCanComplain !== false)">
+    <button class="publication__cta btn btn--full-width-mobile" *ngIf="conditionComment" (click)="openFields()" md-raised-button>Stellungnahme abgeben</button>
+    <a class="publication__cta btn text-color-primary" *ngIf="isCanComplain !== false" (click)="reportFeed($event)" md-button>Ein Problem melden</a>
+  </div>
+  <section class="publication__comments">
+    <h3 class="h2 text-dark-secondary">Stellungnahme ({{comments.length}})</h3>
+    <div *ngIf="comments.length">
+      <article class="publication__comment" *ngFor="let comment of comments, let i = index">
+        <app-editable-info #editable_comment [toEdit]="comment" (saveEvent)="editComment($event, i, id)">
+          <ng-template [ngIf]="!editable_comment.editMode">
+            <app-comment
+              [date]="editable_comment.toEdit.date | date: 'dd-MMM-yyyy'"
+              [text]="editable_comment.toEdit.message">
+              <div class="comment__controls" *ngIf="conditionComment">
+                <md-icon class="comment__control" (click)="editable_comment.edit()">edit</md-icon>
+                 <md-icon class="comment__control" (click)="editable_comment.remove($event, i)">delete</md-icon>
+              </div>
+            </app-comment>
+          </ng-template>
+          <ng-template [ngIf]="editable_comment.editMode">
+            <md-input-container class="input">
+              <textarea mdInput placeholder="Comment" [(ngModel)]="editable_comment.toEdit.message" rows="1" name="text">{{editable_comment.toEdit.message}}</textarea>
+            </md-input-container>
+            <div class="text-right bottom-outer-indent--medium">
+              <button class="btn text-color-primary btn--cancel-comment" md-button (click)="editable_comment.cancel()">abbrechen</button>
+              <button class="btn" md-raised-button [disabled]="!editable_comment.toEdit.message.length" (click)="editable_comment.save()">absenden</button>
+            </div>
+          </ng-template>
+        </app-editable-info>
+      </article>
+    </div>
+    <ng-template [ngIf]="isNewComment">
+      <md-input-container class="input">
+        <textarea mdInput placeholder="Comment" [(ngModel)]="newComment.message" rows="1" name="text">{{newComment.message}}</textarea>
+      </md-input-container>
+      <div class="text-right bottom-outer-indent--medium">
+        <button class="btn text-color-primary btn--cancel-comment" md-button (click)="isNewComment = false">abbrechen</button>
+        <button class="btn" md-raised-button [disabled]="!newComment.message.length" (click)="save()">absenden</button>
+      </div>
+    </ng-template>
+  </section>
+</div>

@@ -1,0 +1,25 @@
+<app-header></app-header>
+<div class="container container--full-width-mobile">
+  <div class="grid-noGutter">
+    <div class="col-3_sm-12">
+      <div class="block">
+        <header class="block__header block__header--alt">
+          <h2>Supporterzentrale</h2>
+        </header>
+        <ul class="list list--top-indented list--vertical block__sticky-right bg-light-primary">
+          <li class="list__item"><button [ngClass]="{'text-color-primary': currentScreen === 0}" type="button" (click)="changeTab(0)">Dienstleister Übersicht</button></li>
+          <li class="list__item"><button [ngClass]="{'text-color-primary': currentScreen === 1}" type="button" (click)="changeTab(1)">Bewerter Übersicht</button></li>
+          <li class="list__item"><button [ngClass]="{'text-color-primary': currentScreen === 2}" type="button" (click)="changeTab(2)">Benachrichtigungen</button></li>
+          <li class="list__item"><button [ngClass]="{'text-color-primary': currentScreen === 3}" type="button" (click)="changeTab(3)">Passwort</button></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-9_sm-12">
+      <app-provider-list *ngIf="currentScreen === 0"></app-provider-list>
+      <app-rater-list *ngIf="currentScreen === 1" [raters]="raters"></app-rater-list>
+      <app-events-list *ngIf="currentScreen === 2"></app-events-list>
+      <app-supporter-password *ngIf="currentScreen === 3"></app-supporter-password>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

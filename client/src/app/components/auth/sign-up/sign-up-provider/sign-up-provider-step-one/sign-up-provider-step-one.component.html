@@ -1,0 +1,87 @@
+<div class="container container--small container--full-width-mobile">
+  <form class="sign-up-provider block" [formGroup]="stepOneForm"
+        (ngSubmit)="onSubmit(stepOneForm.value)" #form="ngForm">
+    <app-register-steps [activeStep]="1"></app-register-steps>
+    <div class="sign-up-provider__body">
+      <div class="grid-noGutter">
+        <div class="col-7_xs-12">
+          <div class="grid">
+            <div class="col-12">
+              <header class="block__header">
+                <h1>Angaben zur Firma</h1>
+                <h2 class="h3">Diese Informationen werden auf Ihrer Profilseite angezeigt</h2>
+              </header>
+              <md-input-container class="input">
+                <input mdInput type="text" placeholder="Name der Firma" id="companyName" formControlName="companyName"
+                       required
+                       [(ngModel)]="provider.companyName" (blur)="checkProviderName()">
+                <md-error>{{ formErrors.companyName }}</md-error>
+              </md-input-container>
+              <span class="" *ngIf="existingProviderCompany" (click)="goToProfile()">Diese firma ist bereits registriert. Profil aufrufen?</span>
+            </div>
+            <div class="col-8_xs-12">
+              <md-input-container class="input">
+                <input mdInput placeholder="Strasse" type="text" id="companyAddress" formControlName="companyAddress"
+                       required [(ngModel)]="provider.companyAddress">
+              </md-input-container>
+            </div>
+            <div class="col-4_xs-12">
+              <md-input-container class="input">
+                <input mdInput placeholder="Hausnummer" type="text" id="companyAddress2"
+                       formControlName="companyAddress2"
+                       [(ngModel)]="provider.companyAddress2">
+                <md-error>{{ formErrors.companyAddress }}</md-error>
+              </md-input-container>
+            </div>
+            <div class="col-4_xs-12">
+              <md-input-container class="input">
+                <input mdInput placeholder="PLZ" type="text" id="companyPlz"
+                       formControlName="companyPlz" required
+                       [(ngModel)]="provider.companyPlz" #searchField>
+                <md-error>{{ formErrors.companyPlz }}</md-error>
+              </md-input-container>
+              <div class="search-drop-down" *ngIf="postalCodes.length">
+                <ul class="search-drop-down__list">
+                  <li class="search-drop-down__item search-drop-down__link" *ngFor="let postalData of postalCodes"
+                      (click)="setZip(postalData)">
+                    {{ postalData.zip }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-8_xs-12">
+              <md-input-container class="input">
+                <input mdInput placeholder="Ort" type="text" id="companyOrt"
+                       formControlName="companyOrt" required
+                       [(ngModel)]="provider.companyOrt" #searchCity>
+                <md-error>{{ formErrors.companyOrt }}</md-error>
+              </md-input-container>
+              <div class="search-drop-down" *ngIf="postalCodes.length">
+                <ul class="search-drop-down__list">
+                  <li class="search-drop-down__item search-drop-down__link" *ngFor="let postalData of postalCodes"
+                      (click)="setCity(postalData)">
+                    {{ postalData.city }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-5_xs-12">
+          <app-image-input class="image-input--vertical" [imageUrl]="provider.photoUrl" (select)="onSelectAvatar($event)"></app-image-input>
+        </div>
+      </div>
+    </div>
+    <footer class="sign-up-provider__footer">
+      <button type="button" class="sign-up-provider__prev btn" (click)="back()" md-raised-button>
+        <md-icon>chevron_left</md-icon>
+        Zurück
+      </button>
+      <button type="button" class="sign-up-provider__next btn" (click)="next()" [disabled]="!stepOneForm.valid"
+              md-raised-button>
+        Weiter
+        <md-icon>chevron_right</md-icon>
+      </button>
+    </footer>
+  </form>
+</div>

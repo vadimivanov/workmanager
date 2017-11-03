@@ -1,0 +1,15 @@
+@import "../base/index";
+
+.share {
+  display: flex;
+  align-items: center;
+  font-size: rem-calc(14);
+  font-weight: 500;
+  text-transform: uppercase;
+  color: map-get($colors, primary);
+  cursor: pointer;
+}
+
+.share__icon {
+  margin-right: rem-calc(8);
+}

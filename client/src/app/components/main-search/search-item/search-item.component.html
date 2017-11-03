@@ -1,0 +1,29 @@
+<figure class="search-item__figure">
+  <div class="search-item__figimg" [attr.role]="'img'" [attr.aria-labelledby]="img"
+       [style.background-image]="'url(' + (isHideImg ? 'assets/images/content/img-logo-placeholder.png' : img) + ')'"></div>
+  <figcaption class="search-item__figcaption" id="{{img}}">
+    <button class="search-item__cta btn" md-raised-button (click)="goToProfile(id)">PROFIL ANZEIGEN</button>
+  </figcaption>
+</figure>
+<div class="search-item__body">
+  <header class="search-item__header">
+    <h3 class="search-item__title">{{title}}</h3>
+  </header>
+  <div class="search-item__label" *ngIf="plan === 'Gold'">
+    <md-icon class="search-item__label-ico">stars</md-icon>
+    <span class="search-item__label-text">Bestbewertet</span>
+  </div>
+  <app-rating class="search-item__rating"
+              [value]="rating"
+              [isDigitalValueShow]="[true, false]"
+              [isPresentation]="true"
+  ></app-rating>
+  <span class="search-item__data">
+    <md-icon class="search-item__data-ico">check</md-icon>
+    100 Cleaning Bewertungen
+  </span>
+  <div class="search-item__description">
+    <p>{{description}}</p>
+  </div>
+  <button class="search-item__cta btn" md-raised-button (click)="goToProfile(id)">PROFIL ANZEIGEN</button>
+</div>

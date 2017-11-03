@@ -1,0 +1,14 @@
+<div class="info__container">
+  <div class="info__sub">
+    <h3 class="info__title">
+      <ng-content select="[info-title]"></ng-content>
+    </h3>
+    <div class="info__text">
+      <ng-content select="[info-text]"></ng-content>
+    </div>
+  </div>
+  <div class="info__sub">
+    <img class="info__img" [src]="infoImgUrl" width="192" height="145"
+         alt="image description" appIsOnScreen>
+  </div>
+</div>

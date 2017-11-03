@@ -1,0 +1,43 @@
+<div class="container container--small container--full-width-mobile">
+  <div class="sign-up-provider block sign-up-provider--full-width">
+    <app-register-steps [activeStep]="2"></app-register-steps>
+    <div class="sign-up-provider__body">
+      <header class="sign-up__hgroup block__header">
+        <h1>Dienstleistungskategorien auswählen</h1>
+        <h2 class="h3">Wählen Sie welche Dienstleistungen Ihr Unternehmen anbietet</h2>
+      </header>
+      <ul class="accordion" data-accordion #accordion>
+        <li class="accordion__item" [class.accordion__item--active]="highlightStatus[i]" data-accordion-item
+            *ngFor="let service of providerServices, let i = index">
+          <div type="button" class="accordion__title" (click)="toggleList($event, i)" appClickStopPropagation>
+            <md-checkbox class="checkbox" value="{{service.id}}" [checked]="providerServicesMap[service.id + 'service'].checked"
+                         (change)="updateCheckedOptions(service.id + 'service', $event, i)" appClickStopPropagation>{{service.name}}
+            </md-checkbox>
+            <md-icon class="accordion__title-ico">keyboard_arrow_down</md-icon>
+          </div>
+          <div class="accordion__content" data-tab-content>
+            <div class="grid-noGutter">
+              <div class="col-6 col-6_sm-12" *ngFor="let subservice of service['Subservices']">
+                <md-checkbox class="checkbox checkbox--full-width checkbox--bottom-indented"
+                             [checked]="providerServicesMap[subservice.id + 'subService'].checked"
+                             value="{{subservice.id}}" (change)="updateCheckedOptions(subservice.id + 'subService', $event)">
+                  {{subservice.name}}
+                </md-checkbox>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <footer class="sign-up-provider__footer">
+      <button type="button" class="sign-up-provider__prev btn" (click)="back()" md-raised-button>
+        <md-icon>chevron_left</md-icon>
+        Zurück
+      </button>
+      <button type="button" class="sign-up-provider__next btn" md-raised-button [disabled]="!providerServicesChecked.length" (click)="next()">
+        Weiter
+        <md-icon>chevron_right</md-icon>
+      </button>
+    </footer>
+  </div>
+</div>

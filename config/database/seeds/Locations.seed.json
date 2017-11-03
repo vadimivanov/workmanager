@@ -1,0 +1,67 @@
+[
+  {
+    "id": 1,
+    "name": "Main office",
+    "city": "St. Galler",
+    "street": "Small Street",
+    "house_number": "45",
+    "zip_code": 9000,
+    "location_coordinates": {
+      "lat" : 47.420111,
+      "lng" : 9.385171
+    },
+    "provider_id": 1
+  },
+  {
+    "id": 2,
+    "name": "Subsidiary 1",
+    "city": "Baden",
+    "street": "Badstrasse",
+    "house_number": "15",
+    "zip_code": 5400,
+    "location_coordinates": {
+      "lat" : 47.474894,
+      "lng" : 8.307982
+    },
+    "provider_id": 1
+  },
+  {
+    "id": 3,
+    "name": "Subsidiary 2",
+    "city": "Habsburg",
+    "street": "Rebengässli",
+    "house_number": "5",
+    "zip_code": 5245,
+    "location_coordinates": {
+      "lat" : 47.462167,
+      "lng" : 8.185916
+    },
+    "provider_id": 1
+  },
+  {
+    "id": 4,
+    "name": "Main office",
+    "city": "Winterthur",
+    "street": "Small Street",
+    "house_number": "40",
+    "zip_code": 8400,
+    "location_coordinates": {
+      "lat" : 47.493883,
+      "lng" : 8.733956
+    },
+    "provider_id": 2
+  },
+  {
+    "id": 5,
+    "name": "Main office",
+    "city": "Zürich",
+    "street": "Big Street",
+    "house_number": "18",
+    "zip_code": 8000,
+    "location_coordinates": {
+      "lat" : 47.370549,
+      "lng" : 8.516170
+    },
+    "provider_id": 3
+  }
+]

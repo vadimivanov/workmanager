@@ -1,0 +1,6 @@
+{
+  "jwt-secret": "MyS3cr3tK3Y",
+  "jwt-session": {
+    "session": false
+  }
+}

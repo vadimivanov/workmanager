@@ -1,0 +1,36 @@
+<app-header></app-header>
+<app-visual [bgImageUrl]="'assets/images/backgrounds/bg-visual-1.jpg'" [isLink]="false">
+  <span visual-title>How it Works</span>
+  <p visual-text>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+  </p>
+</app-visual>
+<div class="headline headline--no-inner-bottom">
+  <h1>How Okornok Works</h1>
+</div>
+<app-info [infoImgUrl]="'assets/images/content/img-info-4.png'">
+  <span info-title>Fill your profile</span>
+  <p info-text>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+    nulla</p>
+</app-info>
+<app-info class="info--inverted" [infoImgUrl]="'assets/images/content/img-info-5.png'">
+  <span info-title>Get hired</span>
+  <p info-text>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+    nulla</p>
+</app-info>
+<app-info [infoImgUrl]="'assets/images/content/img-info-6.png'">
+  <span info-title>Get rating</span>
+  <p info-text>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+    nulla</p>
+</app-info>
+<app-cta [bgImageUrl]="'assets/images/backgrounds/bg-cta-1.png'" [ctaIco]="'search'" [ctaPlaceholder]="'Gesuchte Dienstleistung eingeben'" [isControlGroup]="false" [title]="'Werden Sie Dienstleister'">
+  <a class="cta__ctrl btn" routerLink="/register/provider" info-ctrl md-raised-button>Als Dienstleister registrieren</a>
+</app-cta>
+<app-footer class="footer-holder--alt"></app-footer>

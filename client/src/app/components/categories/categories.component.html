@@ -1,0 +1,21 @@
+<app-header></app-header>
+<div class="container">
+  <header class="block__header">
+    <h1>Alle Kategorien</h1>
+    <h2 class="h3">Alle Kategorien</h2>
+  </header>
+  <masonry class="categories" [options]="layoutOption">
+    <masonry-brick class="categories__item" *ngFor="let category of categoriesList">
+      <h3 class="categories__title">
+        <span class="categories__title-link" (click)="goToSearchResults('serviceName', category.name)" appClickStopPropagation>{{category.name}}</span>
+      </h3>
+      <ul class="categories__list">
+        <li class="categories__list-item" *ngFor="let subcategory of category.Subservices | slice:0:5">
+          <a class="categories__link" (click)="goToSearchResults('subserviceName', subcategory.name)" appClickStopPropagation>{{subcategory.name}}</a>
+        </li>
+      </ul>
+      <a class="categories__read-more" (click)="openModal(category)" *ngIf="category.Subservices.length >= 5">Mehr anzeigen</a>
+    </masonry-brick>
+  </masonry>
+</div>
+<app-footer></app-footer>

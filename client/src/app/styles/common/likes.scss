@@ -1,0 +1,21 @@
+@import "../../../app/styles/base/index";
+
+.likes {
+  display: flex;
+  align-items: flex-end;
+  font-size: rem-calc(14);
+  font-weight: 500;
+  color: map-get($grays, dark-primary);
+  cursor: pointer;
+  &--active {
+    .likes__icon {
+      color: map-get($colors, primary);
+    }
+  }
+}
+
+.likes__icon {
+  margin-right: rem-calc(10);
+  margin-bottom: 1px;
+  color: #9e9e9e;
+}

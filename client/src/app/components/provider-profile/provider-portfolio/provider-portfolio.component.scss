@@ -1,0 +1,27 @@
+@import "../../../styles/base/index";
+
+:host {
+  display: block;
+  &::after {
+    content: '';
+    display: inline-block;
+  }
+}
+
+.provider-portfolio__subtitle {
+  line-height: rem-calc(22);
+}
+
+.provider-portfolio__info {
+  height: rem-calc(130);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: rem-calc(16);
+  font-weight: 400;
+  color: map-get($grays, dark-disabled);
+  @include respond-from(sm) {
+    height: rem-calc(380);
+  }
+}

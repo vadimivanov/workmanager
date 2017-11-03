@@ -1,0 +1,17 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Authentication": {
+    "Bucket": "okornok.docker.io",
+    "Key": ".dockercfg"
+  },
+  "Image": {
+    "Name": "okornok/okornok-node-dev",
+    "Update": "true"
+  },
+  "Ports": [
+    {
+      "ContainerPort": "3000"
+    }
+  ],
+  "Logging": "/var/log"
+}

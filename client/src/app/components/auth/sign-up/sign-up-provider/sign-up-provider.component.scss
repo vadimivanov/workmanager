@@ -1,0 +1,102 @@
+@import "../../../../styles/base/index";
+
+/deep/ {
+  .sign-up-provider {
+    padding: 0;
+    overflow: hidden;
+    p {
+      font-size: rem-calc(12);
+      color: rgba(map-get($grays, dark-primary), .54);
+      line-height: 1.5;
+    }
+    > *:last-child {
+      display: flex;
+      margin-bottom: 0;
+    }
+  }
+
+  .sign-up-provider--full-width .sign-up-provider__body {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .sign-up-provider__steps-info {
+    flex-shrink: 0;
+    margin-right: rem-calc(10);
+  }
+
+  .sign-up-provider__current-step {
+    line-height: rem-calc(17);
+  }
+
+  .sign-up-provider__body {
+    padding: 0 rem-calc(15) rem-calc(15);
+    @include respond-from(sm) {
+      padding: 0 rem-calc(26);
+    }
+  }
+
+  .sign-up__hgroup {
+    padding-left: rem-calc(15);
+    padding-right: rem-calc(15);
+    @include respond-from(sm) {
+      padding-left: rem-calc(23);
+      padding-right: rem-calc(23);
+    }
+  }
+
+  .sign-up-provider__approvement {
+    margin-top: rem-calc(30);
+    p {
+      margin-bottom: rem-calc(30)
+    }
+  }
+
+  .sign-up-provider__select {
+    margin-top: rem-calc(15);
+    margin-bottom: rem-calc(22);
+    font-size: rem-calc(16);
+    color: rgba(map-get($grays, dark-primary), .38);
+    .mat-select-underline {
+      background-color: map-get($grays, light);
+    }
+  }
+
+  .sign-up-provider__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: rem-calc(41);
+    padding: 0 rem-calc(7);
+    background-color: map-get($grays, base);
+    box-shadow: 0 -1px 2px 0 rgba(0, 0, 0, .34);
+    @include respond-from(sm) {
+      height: rem-calc(65);
+      padding: 0 rem-calc(23);
+      background-color: map-get($grays, light-primary);
+      box-shadow: none;
+    }
+  }
+
+  .sign-up-provider__prev,
+  .sign-up-provider__next {
+    text-transform: uppercase;
+    @include respond-to(sm) {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      color: rgba(map-get($grays, dark-primary), .54) !important;
+      background-color: transparent !important;
+      box-shadow: none !important;
+    }
+    .material-icons {
+      vertical-align: -30%;
+      @include respond-from(sm) {
+        display: none;
+      }
+    }
+  }
+
+  .sign-up-provider__steps {
+    width: 100%;
+  }
+}

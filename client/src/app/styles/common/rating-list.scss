@@ -1,0 +1,19 @@
+@import "../../../app/styles/base/index";
+
+.rating-list__title {
+  font-size: rem-calc(15);
+  margin: 0 0 rem-calc(5);
+  font-weight: 400;
+  color: map-get($grays, dark-primary);
+
+  &--error {
+    color: #f44336;
+  }
+}
+
+.rating-list__item {
+  margin-bottom: rem-calc(24);
+  @include respond-from(xs) {
+    margin-bottom: rem-calc(27);
+  }
+}

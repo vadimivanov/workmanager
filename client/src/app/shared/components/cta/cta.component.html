@@ -1,0 +1,7 @@
+<div class="cta__container">
+  <h3 class="cta__title">{{title}}</h3>
+  <app-control-group class="cta__ctrl" *ngIf="isControlGroup; else customCtaCtrl" [ico]="ctaIco" [inputPlaceholder]="ctaPlaceholder"></app-control-group>
+  <ng-template #customCtaCtrl>
+    <ng-content select=".cta__ctrl"></ng-content>
+  </ng-template>
+</div>

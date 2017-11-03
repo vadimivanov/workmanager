@@ -1,0 +1,48 @@
+<app-header></app-header>
+<app-profile-promo
+  [avatarUrl]="providerData.photo_url"
+  [title]="providerData.company_name"
+  [status]="providerData.last_online"
+  [rating]="providerData.rating"
+  [feedCount]="providerData.feedCount"
+  [house]="providerData.house_number"
+  [street]="providerData.street"
+  [city]="providerData.city"
+  [bg]="'assets/images/backgrounds/bg-profile-promo-1.jpg'"
+  [isSelfRegistered]="isSelfRegistered"
+  [isCanManageMembers]="limits.isCanManageMembers"
+  [isOwnerUser]="isOwner"
+  [isMembersTab]="isMembersTab"
+  (initPopup)="openPopup()"
+></app-profile-promo>
+<md-tab-group
+    class="tabs"
+    (selectChange)="onSelectChange($event)">
+  <md-tab class="tabs__toggle" label="Info & Bewertungen">
+    <app-provider-info (setProviderData)="getProviderData($event)"
+                       [displayComponent]="isActiveTab"
+                       [house]="providerData.house_number"
+                       [feedCount]="providerData.feedCount"
+                       [isOwner]="isOwner">
+
+    </app-provider-info>
+  </md-tab>
+  <md-tab class="tabs__toggle" label="Referenzbilder" >
+    <app-provider-portfolio
+        *ngIf="user"
+        [user]="user"
+        [isOwner]="isOwner"
+        [displayComponent]="isPortfolioTab"
+      ></app-provider-portfolio>
+  </md-tab>
+  <md-tab class="tabs__toggle" label="Dienstleistungen" >
+    <app-provider-services></app-provider-services>
+  </md-tab>
+  <md-tab class="tabs__toggle" label="Mitarbeiter" >
+    <app-provider-staff *ngIf="user"
+                        [user]="user"
+                        [isCanManage]="limits.isCanManageMembers"
+                        [isOwner]="isOwner"></app-provider-staff>
+  </md-tab>
+</md-tab-group>
+<app-footer></app-footer>

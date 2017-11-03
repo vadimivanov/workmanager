@@ -1,0 +1,95 @@
+@import "../../styles/base/index";
+
+.billing {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  @include respond-from(sm) {
+    align-items: stretch;
+    flex-wrap: nowrap;
+  }
+}
+
+.billing__block {
+  display: flex;
+  position: relative;
+  height: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  @include respond-to(sm) {
+    width: 100%;
+  }
+  &--small {
+    flex: 0 0 100%;
+    > *:not(.billing__title) {
+      flex: 0 1 100%;
+    }
+    @include respond-from(sm) {
+      flex-basis: 21%;
+    }
+  }
+  &--big {
+    @include respond-from(sm) {
+      flex: 0 1 100%;
+    }
+  }
+}
+
+.billing__separator {
+  width: 100%;
+  height: rem-calc(20);
+  @include respond-from(xs) {
+    position: relative;
+    height: rem-calc(16);
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 1px;
+      width: 100%;
+      background-color: #e6e6e6;
+    }
+  }
+  @include respond-from(sm) {
+    width: rem-calc(43);
+    height: auto;
+    margin-bottom: rem-calc(-10);
+    &::before {
+      width: 1px;
+      height: 100%;
+      margin: auto;
+    }
+  }
+  @include respond-from(md) {
+    width: rem-calc(142);
+  }
+}
+
+.billing__title {
+  display: block;
+  width: 100%;
+  margin-bottom: rem-calc(13);
+  text-align: center;
+  @include respond-from(xs) {
+    margin-bottom: rem-calc(18);
+  }
+}
+
+.billing__card-group {
+  width: 100%;
+  max-width: 100%;
+  @include respond-from(sm) {
+    display: flex;
+    justify-content: space-between;
+  }
+  .card {
+    @include respond-from(sm) {
+      flex: 0 1 calc(33.333% - #{rem-calc(5)});
+      max-width: calc(33.333% - #{rem-calc(5)});
+    }
+  }
+}

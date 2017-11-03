@@ -1,0 +1,48 @@
+@import "../../../styles/base/index";
+
+:host(.article) {
+  margin-bottom: 33px;
+  text-align: center;
+  font-size: 14px;
+  color: #2f3437;
+  @include respond-from(sm) {
+    margin-bottom: 0;
+  }
+}
+
+.article__title {
+  margin-bottom: 19px;
+  font-size: 20px;
+  font-weight: 500;
+  color: inherit;
+}
+
+.article__figure {
+  margin: 0;
+  padding: 0;
+}
+
+.article__img {
+  margin-bottom: 22px;
+}
+
+.article__caption {
+  max-width: 80%;
+  margin: 0 auto 22px;
+  line-height: 1.5;
+  @include respond-from(sm) {
+    max-width: 80%;
+    line-height: 1.7;
+  }
+}
+
+.article__btn {
+  display: block;
+  width: 100%;
+  max-width: rem-calc(290);
+  margin: 0 auto rem-calc(70);
+  @include respond-from(sm) {
+    display: inline-block;
+    margin: 0 0 rem-calc(70);
+  }
+}

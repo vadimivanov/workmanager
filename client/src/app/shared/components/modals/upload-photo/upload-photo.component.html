@@ -1,0 +1,198 @@
+<div class="upload-photo-select__modal" *ngIf="!dialogTemplate">
+  <div class="modal__inner">
+    <div class="modal__content">
+      <md-icon class="modal__close" (click)="dialogRef.close(true)">clear</md-icon>
+      <div class="modal__header">
+        <h3 class="modal__title"><strong>Welches Foto möchten Sie hochladen?</strong></h3>
+      </div>
+
+      <ul class="upload-photo-select__list">
+        <li class="upload-photo-select__item">
+          <div class="upload-photo-select__name">Ich will ein Foto hochladen</div>
+          <md-error *ngIf="!(photosSimpleAvailable > 0)">Die Möglichkeit, Fotos hochzuladen, ist erschöpft.</md-error>
+          <button type="button" class="btn btn-link upload-photo-select__btn"
+                  (click)="toUploadPhoto($event, 'single')"
+                  *ngIf="photosSimpleAvailable > 0"
+          >HOCHLADEN</button>
+        </li>
+        <li class="upload-photo-select__item">
+          <div class="upload-photo-select__name">Ich will ein "bevor/nach" Foto hochladen</div>
+          <md-error *ngIf="!(photosBeforeAfterAvailable > 0)">Die Möglichkeit, Fotos hochzuladen, ist erschöpft.</md-error>
+          <button type="button" class="btn btn-link upload-photo-select__btn"
+                  (click)="toUploadPhoto($event, 'before-after')"
+                  *ngIf="photosBeforeAfterAvailable > 0"
+          >HOCHLADEN</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="upload-photo-single__modal" *ngIf="dialogTemplate === 'single'">
+  <div class="modal__inner">
+    <div class="modal__header">
+      <div class="modal__title"><strong>Foto zum Portfolio hinzufügen</strong></div>
+      <div class="modal__subtitle" *ngIf="isAddNewPhoto">Sie können noch {{photosSimpleAvailable}} von {{photosSimple}} einfache Fotos mit Ihrer aktuellen Mitgliedschaft  hochladen</div>
+      <md-icon class="modal__close" (click)="dialogRef.close(true)">clear</md-icon>
+    </div>
+
+    <form class="" [formGroup]="formUploadPhotos" (ngSubmit)="onSubmit(formUploadPhotos.value)">
+      <md-input-container class="input upload-photo__input block__input">
+        <input mdInput placeholder="Titelbild" type="text" id="photoTitle" [(ngModel)]="imageModel.description"
+               formControlName="description" required>
+      </md-input-container>
+      <md-select id="category" name="category" class="upload-photo__input select select--input" placeholder="Kategorie"
+                 [(ngModel)]="imageModel.service_id" formControlName="service_id" required>
+        <md-option *ngFor="let category of categoriesList" [value]="category.id">
+          {{category.name}}
+        </md-option>
+      </md-select>
+
+      <md-checkbox class="checkbox checkbox--full-width checkbox--big-bottom-indented"
+                   [(ngModel)]="imageModel.is_visible"
+                   formControlName="isVisible"
+                   *ngIf="!isAddNewPhoto"
+                   [disabled]="!imageModel.is_visible && photosSimpleVisibleAvailable < 1"
+                   >
+        Sichtbar für Bewerter
+      </md-checkbox>
+
+      <div class="uploader__wrapper">
+        <div class="uploader">
+          <label class="uploader__input-label" *ngIf="isAddNewPhoto">
+            <span class="uploader__input-text">Bilder hinzufügen (JPG, PNG, GIF)</span>
+            <span class="uploader__input-text">oder</span>
+            <span class="uploader__input-btn">Bilder auswählen</span>
+            <input class="uploader__input" type='file' (change)="readUrl($event, 'photo_simple_url')" >
+            <input type="hidden" name="photo_simple_url"
+                   formControlName="photo_simple_url"
+                   [(ngModel)]="imageModel.photo_simple_url" required />
+          </label>
+          <ul class="uploader__list" *ngIf="imageModel.photo_simple_url">
+            <li class="uploader__item">
+              <button type="button" class="uploader__delete" *ngIf="isAddNewPhoto" (click)="deletePhoto('photo_simple_url')">
+                <md-icon class="uploader__delete-ico">close</md-icon>
+              </button>
+              <div class="uploader__figure">
+                <img class="uploader__img" [src]="imageModel.photo_simple_url" alt="image description">
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="upload-photo__control">
+        <button type="submit" class="btn btn-link upload-photo-select__btn-confirm" [disabled]="!formUploadPhotos.valid">
+          Änderungen Speichern
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<div class="upload-photo-before-after__modal" *ngIf="dialogTemplate === 'before-after'">
+  <div class="modal__inner">
+    <div class="modal__header">
+      <div class="modal__title"><strong>Foto zum Portfolio hinzufügen</strong></div>
+      <div class="modal__subtitle" *ngIf="isAddNewPhoto">Sie können noch {{photosBeforeAfterAvailable}} von {{photosBeforeAfter}} bevor/nach Fotos mit Ihrer aktuellen Mitgliedschaft  hochladen</div>
+      <md-icon class="modal__close" (click)="dialogRef.close(true)">clear</md-icon>
+    </div>
+
+    <form class="" [formGroup]="formUploadPhotos" (ngSubmit)="onSubmit(formUploadPhotos.value)">
+      <div class="upload-photo__row">
+        <div class="upload-photo__col">
+          <md-input-container class="input upload-photo__input block__input">
+            <input mdInput placeholder="Titelbild" type="text" id="photoTitle1" [(ngModel)]="imageModel.description"
+                   formControlName="description" required>
+          </md-input-container>
+        </div>
+        <div class="upload-photo__col">
+          <md-select id="category1" name="category1" class="upload-photo__input select select--input" placeholder="Kategorie"
+                     [(ngModel)]="imageModel.service_id"
+                     formControlName="service_id" required>
+            <md-option *ngFor="let category of content.categoriesList" [value]="category.id">
+              {{category.name}}
+            </md-option>
+          </md-select>
+        </div>
+      </div>
+
+      <div class="upload-photo__row">
+        <div class="upload-photo__col upload-photo__col--full">
+          <md-checkbox class="checkbox checkbox--full-width checkbox--big-bottom-indented"
+                       [(ngModel)]="imageModel.is_visible"
+                       formControlName="isVisible"
+                       *ngIf="!isAddNewPhoto"
+                       [disabled]="!imageModel.is_visible && photosBeforeAfterVisibleAvailable < 1">
+            Sichtbar für Bewerter
+          </md-checkbox>
+        </div>
+      </div>
+
+      <div class="upload-photo__row">
+        <div class="upload-photo__col">
+          <div class="upload-photo__title">Ein "bevor" Foto hochladen</div>
+          <div class="uploader__wrapper">
+            <div class="uploader">
+              <label class="uploader__input-label" *ngIf="isAddNewPhoto">
+                <span class="uploader__input-text">Bilder hinzufügen (JPG, PNG, GIF)</span>
+                <span class="uploader__input-text">oder</span>
+                <span class="uploader__input-btn">Bilder auswählen</span>
+                <input class="uploader__input" type='file' (change)="readUrl($event, 'photo_before_url')">
+                <input type="hidden" name="photo_before_url"
+                       formControlName="photo_before_url"
+                       [(ngModel)]="imageModel.photo_before_url" required />
+              </label>
+              <ul class="uploader__list" *ngIf="imageModel.photo_before_url">
+                <li class="uploader__item">
+                  <button type="button" class="uploader__delete" *ngIf="isAddNewPhoto" (click)="deletePhoto('photo_before_url')">
+                    <md-icon class="uploader__delete-ico">close</md-icon>
+                  </button>
+                  <div class="uploader__figure">
+                    <img class="uploader__img" [src]="imageModel.photo_before_url" alt="image description">
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="upload-photo__col">
+          <div class="upload-photo__title">Ein "nach" Foto hochladen</div>
+          <div class="uploader__wrapper">
+            <div class="uploader">
+              <label class="uploader__input-label" *ngIf="isAddNewPhoto">
+                <span class="uploader__input-text">Bilder hinzufügen (JPG, PNG, GIF)</span>
+                <span class="uploader__input-text">oder</span>
+                <span class="uploader__input-btn">Bilder auswählen</span>
+                <input class="uploader__input" type='file' (change)="readUrl($event, 'photo_after_url')">
+                <input type="hidden" name="photo_after_url"
+                       formControlName="photo_after_url"
+                       [(ngModel)]="imageModel.photo_after_url" required />
+              </label>
+              <ul class="uploader__list" *ngIf="imageModel.photo_after_url">
+                <li class="uploader__item">
+                  <button type="button" class="uploader__delete" *ngIf="isAddNewPhoto" (click)="deletePhoto('photo_after_url')">
+                    <md-icon class="uploader__delete-ico">close</md-icon>
+                  </button>
+                  <div class="uploader__figure">
+                    <img class="uploader__img" [src]="imageModel.photo_after_url" alt="image description">
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="upload-photo__control">
+        <button type="submit" class="btn btn-link" [disabled]="!formUploadPhotos.valid">
+          Änderungen Speichern
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+

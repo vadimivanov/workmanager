@@ -1,0 +1,12 @@
+.main-menu {
+  position: relative;
+}
+.sub-menu{
+  position: absolute;
+  left: 220px;
+  top: 0;
+  display: none;
+}
+.main-menu:hover .sub-menu{
+  display: block;
+}

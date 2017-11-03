@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    p Dear client,
+    p We have a provider #{company_name}, who requested a feedback for performed works:
+    p Title: "#{job_title}"
+    p Message: "#{message}"
+    p If you want to rate this provider please follow the link for registration:
+    a(href="#{registrationURL}") #{registrationURL}
+    p Here is the link to provider's profile for leaving him a feedback:
+    a(href="#{providerProfileURL}") #{providerProfileURL}
+    p Best regards
+    p Okornok support

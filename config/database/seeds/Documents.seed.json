@@ -1,0 +1,9 @@
+[
+  {
+    "id": 1,
+    "name": "firstDocument",
+    "description": "Some description",
+    "file_url": "https://okornok-uploads.s3.eu-central-1.amazonaws.com/test-document-1.jpg",
+    "provider_id": 1
+  }
+]

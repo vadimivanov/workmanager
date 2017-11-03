@@ -1,0 +1,5 @@
+<ul>
+  <li class="categories__list-item" *ngFor="let subcategory of subcategories">
+    <a class="categories__link" (click)="clickCategory('subserviceName', subcategory.name)">{{subcategory.name}}</a>
+  </li>
+</ul>

@@ -1,0 +1,55 @@
+[
+  {
+    "id": 1,
+    "photo_simple_url": "https://okornok-uploads.s3.eu-central-1.amazonaws.com/test-image-1.jpg",
+    "description": "Some description",
+    "provider_id": 3,
+    "is_idea_for_inspiration": true,
+    "service_id": 1,
+    "inspiration_category_id": 2
+  },
+  {
+    "id": 2,
+    "photo_simple_url": "https://okornok-uploads.s3.eu-central-1.amazonaws.com/test-image-1.jpg",
+    "description": "Some description",
+    "provider_id": 2,
+    "is_idea_for_inspiration": true,
+    "service_id": 2,
+    "inspiration_category_id": 1
+  },
+  {
+    "id": 3,
+    "photo_simple_url": "https://okornok-uploads.s3.eu-central-1.amazonaws.com/test-image-1.jpg",
+    "description": "Some description",
+    "provider_id": 3,
+    "is_idea_for_inspiration": false,
+    "service_id": 3
+  },
+  {
+    "id": 4,
+    "photo_simple_url": "https://okornok-uploads.s3.eu-central-1.amazonaws.com/11467.jpg",
+    "description": "Some description",
+    "provider_id": 2,
+    "is_idea_for_inspiration": true,
+    "service_id": 2,
+    "inspiration_category_id": 1
+  },
+  {
+    "id": 5,
+    "photo_before_url": "https://okornok-uploads.s3.eu-central-1.amazonaws.com/1422158853_mebel-v-lerua-merlen-3.jpg",
+    "photo_after_url": "https://okornok-uploads.s3.eu-central-1.amazonaws.com/11467.jpg",
+    "description": "Some description",
+    "provider_id": 3,
+    "is_idea_for_inspiration": true,
+    "service_id": 7,
+    "inspiration_category_id": 2
+  },
+  {
+    "id": 6,
+    "photo_simple_url": "https://okornok-uploads.s3.eu-central-1.amazonaws.com/552-845x321.jpg",
+    "description": "Some description",
+    "provider_id": 3,
+    "is_idea_for_inspiration": false,
+    "service_id": 3
+  }
+]

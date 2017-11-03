@@ -1,0 +1,138 @@
+html {
+  font-size: $rem-base;
+  -webkit-text-size-adjust: none;
+}
+
+body {
+  font: map-get($texts, body);
+  color: map-get($grays, dark-primary);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  line-height: 1.1;
+}
+
+h1,
+.h1 {
+  margin-bottom: rem-calc(23);
+  font: map-get($headings, h1);
+  letter-spacing: .004em;
+}
+
+h2,
+.h2 {
+  margin-bottom: rem-calc(21);
+  font: map-get($headings, h2);
+}
+
+h3,
+.h3 {
+  margin-bottom: rem-calc(11);
+  font: map-get($headings, h3);
+}
+
+/* h groups */
+h1 + h3,
+h1 + .h3,
+.h1 + .h3 {
+  margin-top: rem-calc(-19);
+  margin-bottom: rem-calc(26);
+  color: map-get($grays, dark-secondary);
+}
+
+p {
+  margin: 0 0 rem-calc(24);
+  letter-spacing: .002em;
+  @include respond-from(sm) {
+    margin-bottom: rem-calc(28);
+  }
+}
+
+a {
+  color: map-get($colors, primary);
+  text-decoration: none;
+  transition: color .35s;
+  cursor: pointer;
+
+  .is-desktop &:hover {
+    text-decoration: underline;
+    transition: color .35s;
+  }
+}
+
+q {
+  quotes: none;
+}
+
+q::before,
+q::after {
+  content: "";
+}
+
+small {
+  font: map-get($texts, caption);
+}
+
+sub,
+sup {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -.1rem;
+}
+
+sub {
+  bottom: -.1rem;
+}
+
+.text-dark-secondary {
+  color: map-get($grays, dark-secondary);
+}
+
+.text-color-primary,
+.text-color-primary.mat-button,
+.text-color-primary.mat-raised-button {
+  color: map-get($colors, primary);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.sr-only {
+  @include sr-only;
+}
+
+.text-truncate {
+  @include ellipsis;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-no-transform {
+  text-transform: initial;
+}
+
+.text-nowrap {
+  white-space: nowrap;
+}
+
+.text-error {
+  color: #f44336;
+}

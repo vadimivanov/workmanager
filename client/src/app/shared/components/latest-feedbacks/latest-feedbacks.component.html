@@ -1,0 +1,9 @@
+<div class="headline headline--alt">
+  <h2 class="h1">Neue Bewertungen</h2>
+</div>
+<div class="block">
+  <app-feedback-item class="latest-feedback" [object]="feedback" [date]="feedback.created_at | date:'dd MMM yyyy'"
+                     *ngFor="let feedback of feedbacksList" (providerId)="loadProviderProfile($event)">
+    <p>{{feedback.job_description}}</p>
+  </app-feedback-item>
+</div>

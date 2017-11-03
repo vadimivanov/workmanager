@@ -1,0 +1,33 @@
+@import "../../../styles/base/index";
+
+:host(.comment) {
+  display: block;
+  position: relative;
+}
+
+/deep/ {
+  .comment__controls {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: map-get($grays, dark-disabled);
+  }
+  .comment__control {
+    margin-left: rem-calc(12);
+    cursor: pointer;
+  }
+}
+
+.comment__title {
+  font-size: rem-calc(16);
+  font-weight: 500;
+  margin-bottom: rem-calc(24);
+}
+
+.comment__date {
+  display: block;
+  margin-bottom: rem-calc(5);
+  font-size: rem-calc(14);
+  font-weight: 500;
+  color: map-get($grays, dark-disabled);
+}

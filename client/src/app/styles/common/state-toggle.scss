@@ -1,0 +1,24 @@
+@import "../base/index";
+
+@include respond-to(sm) {
+  .state-toggle {
+    width: 200%;
+    max-width: none;
+    overflow: visible;
+    transition: transform .3s;
+    transform: translate3d(-50%, 0, 0);
+    &--active {
+      transform: translate3d(0, 0, 0);
+      transition: transform .3s;
+    }
+  }
+
+  .state-toggle__item {
+    padding: 0;
+  }
+
+  .state-toggle__item--side-indented,
+  [class*="grid-"][class*="-noGutter"] > [class*="col-"].state-toggle__item--side-indented {
+    padding: 0 rem-calc(15);
+  }
+}

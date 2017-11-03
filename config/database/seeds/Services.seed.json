@@ -1,0 +1,223 @@
+[
+  {
+    "id": 1,
+    "name": "Bauaustrocknung",
+    "description": "Some description",
+    "rating": 1,
+    "is_approved": true
+  },
+  {
+    "id": 2,
+    "name": "Baumeisterarbeiten, Erdarbeiten, Aushub",
+    "description": "Some description",
+    "metatags": [
+      "abspitzen",
+      "entkernen"
+    ],
+    "rating": 1,
+    "is_approved": true
+  },
+  {
+    "id": 3,
+    "name": "Bodenbeläge",
+    "description": "Some description",
+    "rating": 1,
+    "is_approved": true
+  },
+  {
+    "id": 4,
+    "name": "Dachdecker, Bedachungen",
+    "description": "Some description",
+    "rating": 1,
+    "is_approved": true
+  },
+  {
+    "id": 5,
+    "name": "Decken- und Wandbekleidungen",
+    "description": "Some description",
+    "rating": 1,
+    "is_approved": true
+  },
+  {
+    "id": 6,
+    "name": "Druckerzeugnisse, Beschriftungen",
+    "description": "Some description",
+    "rating": 1,
+    "is_approved": true
+  },
+  {
+    "id": 7,
+    "name": "Elektriker, Elektroinstallation",
+    "description": "Some description",
+    "rating": 1,
+    "is_approved": true
+  },
+  {
+    "id": 8,
+    "name": "Entsorgung und Entrümpelung",
+    "description": "Some description",
+    "rating": 1,
+    "is_approved": true
+  },
+  {
+    "id": 9,
+    "name": "Fenster & Türen",
+    "description": "Some description",
+    "rating": 1,
+    "is_approved": true
+  },
+  {
+    "id": 10,
+    "name": "Garten-und Landschaftsbau",
+    "description": "Some description",
+    "rating": 1,
+    "is_approved": true
+  },
+  {
+    "id": 11,
+    "name": "Geräteverleih",
+    "description": "Some description",
+    "rating": 1,
+    "is_approved": true
+  },
+  {
+    "id": 12,
+    "name": "Gerüstbau, Gerüste",
+    "description": "Some description",
+    "rating": 1,
+    "is_approved": true
+  },
+  {
+    "id": 13,
+    "name": "Gipsarbeiten",
+    "description": "Some description",
+    "rating": 1,
+    "is_approved": true
+  },
+  {
+    "id": 14,
+    "name": "Glaser, Verglasungen",
+    "description": "Some description",
+    "rating": 1,
+    "is_approved": true
+  },
+  {
+    "id": 15,
+    "name": "Heizung",
+    "description": "Some description",
+    "rating": 1,
+    "is_approved": true
+  },
+  {
+    "id": 16,
+    "name": "Isolation, Dichtung, Dämmung",
+    "description": "Some description",
+    "rating": 1,
+    "is_approved": true
+  },
+  {
+    "id": 17,
+    "name": "Kamin, Cheminée",
+    "description": "Some description",
+    "rating": 1,
+    "is_approved": true
+  },
+  {
+    "id": 18,
+    "name": "Lüftungs-, Klima-, Solar-und Kälteanlagen",
+    "description": "Some description",
+    "rating": 1,
+    "is_approved": true
+  },
+  {
+    "id": 19,
+    "name": "Malerarbeiten",
+    "description": "Some description",
+    "rating": 1,
+    "is_approved": true
+  },
+  {
+    "id": 20,
+    "name": "Metall-und Stahlbauarbeiten, Schlosserei",
+    "description": "Some description",
+    "rating": 1,
+    "is_approved": true
+  },
+  {
+    "id": 21,
+    "name": "Pflasterarbeiten, Wege, Strassen",
+    "description": "Some description",
+    "rating": 1,
+    "is_approved": true
+  },
+  {
+    "id": 22,
+    "name": "Rohrleitungen / Kanalisationen",
+    "description": "Some description",
+    "rating": 1,
+    "is_approved": true
+  },
+  {
+    "id": 23,
+    "name": "Sanitärarbeiten, Bäder, Küchen",
+    "description": "Some description",
+    "rating": 1,
+    "is_approved": true
+  },
+  {
+    "id": 24,
+    "name": "Schreinerarbeiten",
+    "description": "Some description",
+    "rating": 1,
+    "is_approved": true
+  },
+  {
+    "id": 25,
+    "name": "Schwimmbad, Wellness, Sauna",
+    "description": "Some description",
+    "rating": 1,
+    "is_approved": true
+  },
+  {
+    "id": 26,
+    "name": "Sicherheit, Zutritt, Überwachung",
+    "description": "Some description",
+    "rating": 1,
+    "is_approved": true
+  },
+  {
+    "id": 27,
+    "name": "Spenglerarbeiten",
+    "description": "Some description",
+    "rating": 1,
+    "is_approved": true
+  },
+  {
+    "id": 28,
+    "name": "Storen, Rolladen, Markisen",
+    "description": "Some description",
+    "rating": 1,
+    "is_approved": true
+  },
+  {
+    "id": 29,
+    "name": "Tore, Garage, Zäune",
+    "description": "Some description",
+    "rating": 1,
+    "is_approved": true
+  },
+  {
+    "id": 30,
+    "name": "Umzug und Transport",
+    "description": "Some description",
+    "rating": 1,
+    "is_approved": true
+  },
+  {
+    "id": 31,
+    "name": "Zimmerarbeiten, Holzbau",
+    "description": "Some description",
+    "rating": 1,
+    "is_approved": true
+  }
+]

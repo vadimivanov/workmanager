@@ -1,0 +1,39 @@
+/** media queries according to gridlex settings */
+$gl-xs: "screen and (max-width: 35.5em)"; // up to 568px
+$gl-sm: "screen and (max-width: 48em)"; // max 768px
+$gl-md: "screen and (max-width: 64em)"; // max 1024px
+$gl-lg: "screen and (max-width: 80em)"; // max 1280px
+
+$bp: (
+  xs: $gl-xs,
+  sm: $gl-sm,
+  md: $gl-md,
+  lg: $gl-lg
+);
+
+$bpFrom: (
+  xs: "screen and (min-width: 35.5625em)", // up to 569px
+  sm: "screen and (min-width: 48.0625em)", // max 769px
+  md: "screen and (min-width: 64.0625em)", // max 1025px
+  lg: "screen and (min-width: 80.0625em)"  // max 1281px
+);
+
+@mixin respond-to($breakpoint) {
+  @if map-has-key($bp, $breakpoint) {
+    @media #{map-get($bp, $breakpoint)} {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. Please make sure it is defined in `$breakpoints` map.";
+  }
+}
+
+@mixin respond-from($breakpoint) {
+  @if map-has-key($bpFrom, $breakpoint) {
+    @media #{"screen and (min" + str-slice(map-get($bpFrom, $breakpoint), 16)} {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. Please make sure it is defined in `$breakpoints` map.";
+  }
+}

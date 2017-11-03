@@ -1,0 +1,181 @@
+.input,
+.input.mat-input-container {
+  position: relative;
+  display: block;
+  margin-bottom: rem-calc(4);
+  font-size: rem-calc(16);
+  line-height: rem-calc(24);
+  .mat-input-underline {
+    margin-top: rem-calc(7);
+  }
+  .mat-input-subscript-wrapper {
+    margin-top: rem-calc(15);
+    position: static;
+  }
+  .mat-input-wrapper {
+    padding-bottom: 0;
+    margin: 0;
+  }
+  .mat-input-infix {
+    padding: .4375em 0;
+    border-top: .84375em solid transparent;
+  }
+  .mat-input-placeholder-wrapper {
+    top: -.84375em;
+    padding-top: .84375em;
+  }
+  /* states */
+  /* base */
+  .mat-input-underline {
+    bottom: auto;
+    margin-top: 0;
+  }
+  .mat-input-underline .mat-input-ripple {
+    background-color: map-get($colors, success);
+  }
+  &.mat-input-invalid {
+    .mat-input-underline .mat-input-ripple {
+      background-color: #f44336;
+    }
+  }
+  /* focus */
+  &.mat-focused {
+    .mat-input-underline .mat-input-ripple,
+    .mat-input-underline {
+      background-color: map-get($colors, success);
+      border-color: map-get($colors, success);
+    }
+    .mat-input-placeholder {
+      color: map-get($colors, success);
+    }
+  }
+  /* dirty invalid */
+  &.ng-dirty.ng-invalid,
+  &.ng-touched.ng-invalid {
+    .mat-input-underline .mat-input-ripple,
+    .mat-input-underline {
+      background-color: map-get($colors, danger);
+      border-color: map-get($colors, danger);
+    }
+    .mat-input-placeholder {
+      color: map-get($colors, danger);
+    }
+  }
+
+  /* hints */
+  .mat-hint {
+    text-transform: uppercase;
+    color: map-get($grays, dark-disabled);
+  }
+
+  /* input */
+  .mat-input-element {
+    padding-right: rem-calc(30);
+  }
+}
+
+.textarea-no-resize {
+  resize: none;
+  height: rem-calc(100);
+}
+
+.input__control {
+  position: absolute;
+  right: 0;
+  top: -2px;
+  bottom: 0;
+  font-size: rem-calc(23);
+  color: map-get($grays, dark-disabled);
+}
+
+.mat-input-error {
+  font-size: rem-calc(12);
+}
+
+/* input alt */
+.input-alt {
+  position: relative;
+  width: 100%;
+  height: rem-calc(44);
+  margin: 0;
+  padding: 0 rem-calc(12);
+  border: 0;
+  font-size: rem-calc(16);
+  color: map-get($grays, dark-primary);
+  background-color: map-get($grays, light-primary);
+  border-radius: 3px;
+  overflow: hidden;
+  @include respond-from(sm) {
+    padding: 0 rem-calc(22);
+  }
+  .mat-input-wrapper {
+    display: flex;
+  }
+  .mat-input-infix {
+    display: flex;
+    border-top: 0;
+  }
+  /* focus */
+  &.mat-focused {
+    .mat-input-underline .mat-input-ripple,
+    .mat-input-underline {
+      background-color: map-get($grays, dark-disabled);
+      border-color: map-get($grays, dark-disabled);
+    }
+    .mat-input-placeholder {
+      color: map-get($grays, dark-disabled);
+    }
+  }
+}
+
+.input-alt::-webkit-input-placeholder {
+  color: map-get($grays, dark-disabled);
+}
+
+.input-alt::-moz-placeholder {
+  color: map-get($grays, dark-disabled);
+}
+
+.input-alt:-ms-input-placeholder {
+  color: map-get($grays, dark-disabled);
+}
+
+.input-alt:-moz-placeholder {
+  color: map-get($grays, dark-disabled);
+}
+
+md-input-container.input-alt {
+  .mat-input-wrapper {
+    margin: 0;
+    padding: 0;
+  }
+  .mat-input-underline {
+    display: none;
+  }
+  .mat-input-subscript-wrapper {
+    display: none;
+  }
+  .mat-input-wrapper,
+  .mat-input-table,
+  .mat-input-infix,
+  .mat-input-element,
+  .mat-input-placeholder-wrapper,
+  .mat-input-placeholder {
+    top: 0;
+    height: 100%;
+    padding: 0;
+    line-height: rem-calc(44);
+  }
+}
+
+/* drop-down */
+.mat-autocomplete-panel.mat-autocomplete-panel.mat-autocomplete-panel-below {
+  top: 0;
+  left: rem-calc(-12);
+  width: calc(100% + 24px);
+  border-top: 1px solid #e0e0e0;
+  @include respond-from(sm) {
+    left: rem-calc(-22);
+    width: calc(100% + 44px);
+  }
+}

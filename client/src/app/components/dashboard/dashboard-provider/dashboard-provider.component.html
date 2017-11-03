@@ -1,0 +1,29 @@
+<app-header></app-header>
+<div class="container">
+  <div class="grid">
+    <div class="col-3_md-12">
+      <div class="block">
+        <header class="block__header block__header--alt">
+          <h2>Benutzerzentrum</h2>
+        </header>
+        <ul class="list list--top-indented list--vertical block__sticky-right bg-light-primary">
+          <li class="list__item"><button type="button" [ngClass]="{'text-color-primary': currentScreen === 0}" (click)="changeTab(0)">Benutzerzentrum</button></li>
+          <li class="list__item"><button type="button" [ngClass]="{'text-color-primary': currentScreen === 1}" (click)="changeTab(1)">Kreditkarteninformationen</button></li>
+          <li class="list__item" *ngIf="checkPlanName!=='Basic'"><button type="button" [ngClass]="{'text-color-primary': currentScreen === 2}" (click)="changeTab(2)">Statistik</button></li>
+          <li class="list__item"><button type="button" [ngClass]="{'text-color-primary': currentScreen === 3}" (click)="changeTab(3)">Benachrichtigungseinstellung</button></li>
+          <li class="list__item"><button type="button" [ngClass]="{'text-color-primary': currentScreen === 4}" (click)="changeTab(4)">Passwort</button></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-9_md-12">
+      <div class="block">
+        <app-provider-general-info *ngIf="currentScreen === 0"></app-provider-general-info>
+        <app-provider-subscription *ngIf="currentScreen === 1"></app-provider-subscription>
+        <app-provider-statistics *ngIf="currentScreen === 2" [visits]="visits"></app-provider-statistics>
+        <app-provider-notification *ngIf="currentScreen === 3"></app-provider-notification>
+        <app-provider-password *ngIf="currentScreen === 4"></app-provider-password>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

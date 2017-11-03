@@ -1,0 +1,12 @@
+<h3 class="article__title">
+  <ng-content select="[article-title]"></ng-content>
+</h3>
+<figure class="article__figure">
+  <img [src]="articleImg" width="580" height="300" alt="image description" class="article__img">
+  <figcaption class="article__caption">
+    <ng-content select="[article-text]"></ng-content>
+  </figcaption>
+  <a class="article__btn btn" [routerLink]="articleLink" md-raised-button>
+    <ng-content select="[article-link]"></ng-content>
+  </a>
+</figure>

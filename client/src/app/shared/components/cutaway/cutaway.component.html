@@ -1,0 +1,8 @@
+<img class="cutaway__img" *ngIf="img" [src]="img" alt="image description">
+<img class="cutaway__img" *ngIf="!img" [src]="'assets/images/content/img-avatar.png'" alt="image description">
+<h3 class="cutaway__title">{{title}}</h3>
+<ul class="cutaway__list">
+  <li class="cutaway__list-item" *ngFor="let item of items">
+    <span class="badge" [title]="item.name">{{item.name}}</span>
+  </li>
+</ul>

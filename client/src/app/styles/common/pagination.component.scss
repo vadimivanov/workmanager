@@ -1,0 +1,45 @@
+@import "../base/index";
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  padding: rem-calc(25) 0;
+  border-top: 1px solid rgba(map-get($grays, dark-primary), .12);
+  color: rgba(map-get($grays, dark-primary), .87);
+  list-style: none;
+}
+
+.pagination__item {
+  width: rem-calc(30);
+  height: rem-calc(30);
+  margin: 0 rem-calc(2);
+  &--active {
+    background-color: map-get($colors, primary);
+    color: map-get($grays, light-primary);
+  }
+  &--disabled {
+    color: #9e9e9e;
+    cursor: default;
+    * {
+      cursor: default;
+    }
+  }
+}
+
+.pagination__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: inherit;
+  &:hover {
+    text-decoration: none;
+    .pagination__item--disabled & {
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+}

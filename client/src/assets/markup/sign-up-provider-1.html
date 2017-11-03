@@ -1,0 +1,77 @@
+<app-header></app-header>
+<div class="container container--small container--full-width-mobile">
+  <form class="sign-up-provider block" action="#">
+    <header class="sign-up-provider__header">
+      <span class="sign-up-provider__header--mobile">Schritt 1 von 3: Angaben zur Firma</span>
+      <div class="sign-up-provider__header--desktop">
+        <ul class="step-list sign-up-provider__steps">
+          <li class="step-list__item step-list__item--active">
+            <span class="step-list__number">1</span>
+            <span class="step-list__name">Angaben zur Firma</span>
+          </li>
+          <li class="step-list__item">
+            <span class="step-list__number">2</span>
+            <span class="step-list__name">Dienstleistungskategorien auswählen</span>
+          </li>
+          <li class="step-list__item">
+            <span class="step-list__number">3</span>
+            <span class="step-list__name">Als Dienstleister registrieren</span>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <div class="sign-up-provider__body">
+      <div class="grid-noGutter">
+        <div class="col-7_xs-12">
+          <div class="grid">
+            <div class="col-12">
+              <h2 class="sign-up-provider__title">Angaben zur Firma</h2>
+              <h3 class="sign-up-provider__subtitle">Diese Informationen werden auf Ihrer
+                Profilseite angezeigt</h3>
+              <md-input-container class="sign-up-provider__input">
+                <input mdInput placeholder="Name der Firma" value="" required>
+              </md-input-container>
+            </div>
+            <div class="col-8_xs-12">
+              <md-input-container class="sign-up-provider__input">
+                <input mdInput placeholder="Strasse / Hausnummer" value="" required>
+              </md-input-container>
+            </div>
+            <div class="col-4_xs-12">
+              <md-input-container class="sign-up-provider__input">
+                <input mdInput placeholder="Hausnr" value="">
+              </md-input-container>
+            </div>
+            <div class="col-4_xs-12">
+              <md-input-container class="sign-up-provider__input">
+                <input mdInput placeholder="PLZ / Ort" value="" required>
+              </md-input-container>
+            </div>
+            <div class="col-8_xs-12">
+              <md-input-container class="sign-up-provider__input">
+                <input mdInput placeholder="Ort" value="">
+              </md-input-container>
+            </div>
+          </div>
+        </div>
+        <div class="col-5_xs-12">
+          <div class="sign-up-provider__logo">
+            <div class="sign-up-provider__figure">
+              <img class="sign-up-provider__logo-img" src="assets/images/content/img-logo-placeholder.png" alt="image description" width="140" height="140">
+            </div>
+            <button type="button" class="sign-up-provider__logo-upload" md-button>Logo hochladen</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="sign-up-provider__footer">
+      <a class="sign-up-provider__prev" md-raised-button routerLink=".">
+        <md-icon>chevron_left</md-icon>
+        Zurück</a>
+      <a class="sign-up-provider__next" md-raised-button routerLink=".">
+        Weiter
+        <md-icon>chevron_right</md-icon>
+      </a>
+    </footer>
+  </form>
+</div>

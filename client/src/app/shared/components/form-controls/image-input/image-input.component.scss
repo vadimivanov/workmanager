@@ -1,0 +1,159 @@
+@import "../../../../styles/base/index";
+
+:host(.image-input) {
+  display: flex;
+  margin-bottom: rem-calc(20);
+  &--small {
+    position: relative;
+    display: inline-block;
+  }
+  &--alt {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding-bottom: 63.5%;
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(255, 255, 255, .7);
+      border: 1px dashed map-get($grays, dark-disabled);
+      z-index: 1;
+      content: '';
+    }
+    .image-input__img,
+    .image-input__upload {
+      position: absolute;
+    }
+    .image-input__upload {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 3;
+    }
+    .image-input__img {
+      border-radius: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .uploader {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      background-color: #f0f0f0;
+      border: 1px dashed map-get($grays, dark-disabled);
+      z-index: 2;
+    }
+    .uploader__input-label {
+      margin-bottom: 0;
+      border: 0;
+    }
+  }
+  &--vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin: 0 auto rem-calc(12);
+    text-align: center;
+  }
+  &--top {
+    flex-wrap: wrap;
+    .image-input__upload {
+      width: 100%;
+    }
+  }
+}
+
+.image-input__img {
+  position: relative;
+  width: rem-calc(110);
+  height: rem-calc(110);
+  margin: 0 auto rem-calc(12);
+  border-radius: 50%;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  &::before {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    color: map-get($grays, dark-disabled);
+    font-size: rem-calc(16);
+    font-weight: 500;
+    background-color: #e6e6e6;
+    content: 'LOGO';
+  }
+  &[style]::before {
+    z-index: -1;
+  }
+  @include respond-from(sm) {
+    width: rem-calc(140);
+    height: rem-calc(140);
+  }
+  :host(.image-input--small) & {
+    width: rem-calc(74);
+    height: rem-calc(74);
+    margin: 0;
+  }
+  :host(.image-input--vertical) & {
+    border: 1px solid #dadada;
+  }
+}
+
+.image-input__upload {
+  font-size: rem-calc(14);
+  color: map-get($colors, primary);
+  text-transform: uppercase;
+  :host(.image-input--small) & {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    min-width: 0;
+    width: 100%;
+    color: transparent;
+    border-radius: 50%;
+    z-index: 2;
+    &::before {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, .2);
+      border-radius: 50%;
+      content: '';
+      opacity: 0;
+    }
+    &::after {
+      opacity: 0;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      content: '+';
+    }
+    &:hover {
+      &::before,
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+}

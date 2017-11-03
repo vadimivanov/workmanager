@@ -1,0 +1,75 @@
+@import '~swiper/dist/css/swiper.min.css';
+@import "../../../styles/base/index";
+
+
+.swiper-slide {
+  padding: 0 rem-calc(20);
+  @include respond-from(sm) {
+    padding: 0 rem-calc(68);
+  }
+}
+.shifter__prev, .shifter__next {
+  position: absolute;
+  top: 50%;
+  display: block;
+  margin-top: rem-calc(-12);
+  background-color: transparent;
+  box-shadow: none;
+  cursor: pointer;
+  z-index: 10;
+  @include respond-from(sm) {
+    width: rem-calc(68);
+    height: rem-calc(68);
+    margin-top: rem-calc(-34);
+    background: #ccc;
+    border-radius: 50%;
+  }
+  :host(.shifter--alt) & {
+    top: rem-calc(55);
+    margin-top: 0;
+    transform: translate(0, -50%);
+    @include respond-from(sm) {
+      top: rem-calc(77);
+      background-color: transparent;
+    }
+  }
+}
+
+.shifter__next {
+  right: 0;
+}
+
+.shifter__prev {
+  left: 0;
+}
+
+.shifter__ico {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: rem-calc(25);
+  height: auto;
+  margin-left: -2px;
+  transform: translate(-50%, -50%);
+  fill: transparent;
+  stroke: rgba(0, 0, 0, .2);
+  stroke-width: 1em;
+  .shifter__next & {
+    transform: translate(-50%, -50%) rotate(180deg);
+    margin-left: 2px;
+    @include respond-from(sm) {
+      pointer-events: none;
+    }
+  }
+  @include respond-from(sm) {
+    stroke: none;
+    fill: #fff;
+  }
+  :host(.shifter--alt) & {
+    @include respond-from(sm) {
+      stroke: rgba(0, 0, 0, .2);
+      stroke-width: 1em;
+      width: rem-calc(35);
+    }
+  }
+}

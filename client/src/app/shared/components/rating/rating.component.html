@@ -1,0 +1,13 @@
+<div class="rating__line">
+  <div class="rating__rule"></div>
+  <div class="rating__rule rating__rule--filled" [style.width.%]="(value / starAmount.length)*100"></div>
+  <label class="rating__item" *ngFor="let star of starAmount" [ngClass]="{'rating__item--disabled': isPresentation}">
+    <span class="rating__item-name">{{star}}</span>
+    <input *ngIf="!isPresentation" class="rating__toggle" type="radio" name="rating{{id}}"
+           (change)="cb(obj, id, star, starAmount, value)" required>
+  </label>
+</div>
+<span class="rating__digital" *ngIf="isDigitalValueShow[0]">{{value}}
+  <ng-template [ngIf]="isDigitalValueShow[1]">Bewertung</ng-template>
+</span>
+<span class="rating__mark-amount" *ngIf="isVisible">{{feedCount}} Bewertungen</span>

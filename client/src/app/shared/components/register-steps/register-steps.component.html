@@ -1,0 +1,14 @@
+<span class="sign-up-provider__header--mobile">Schritt {{activeStep}} von {{steps.length}}: Angaben zur Firma</span>
+<div class="sign-up-provider__header--desktop">
+  <div class="step-list__wrapper">
+    <ul class="step-list sign-up-provider__steps">
+      <li class="step-list__item" *ngFor="let step of steps" [ngClass]="{'step-list__item--active': step.stepNo === activeStep, 'step-list__item--completed': step.stepNo < activeStep}">
+        <span class="step-list__number">
+          <span class="step-list__digital" *ngIf="step.stepNo >= activeStep">{{step.stepNo}}</span>
+          <md-icon *ngIf="step.stepNo < activeStep" class="step-list__icon">mode_edit</md-icon>
+        </span>
+        <span class="step-list__name">{{step.title}}</span>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+branch-defaults:
+  default:
+    environment: OkornokDev-env-1
+  develop:
+    environment: OkornokDev-env-1
+environment-defaults:
+  OkornokDev-env-1:
+    branch: null
+    repository: null
+global:
+  application_name: okornok-dev
+  default_ec2_keyname: null
+  default_platform: arn:aws:elasticbeanstalk:us-west-2::platform/Docker running on
+    64bit Amazon Linux/2.7.1
+  default_region: us-west-2
+  include_git_submodules: true
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: eb-cli
+  sc: null
+  workspace_type: Application

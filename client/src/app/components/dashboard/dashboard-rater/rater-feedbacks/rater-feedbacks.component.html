@@ -1,0 +1,62 @@
+<!--<div class="block">-->
+<header class="block__header">
+  <h2 class="h1">Bewertungen</h2>
+</header>
+<div class="flex-between" *ngIf="feedbacksList">
+  <div>
+    <md-select class="sorter" placeholder="Kategorien" floatPlaceholder="never" (change)="selectingFeedbacks($event, 'service')">
+      <md-option value="0">Kategorien: Alle</md-option>
+      <md-option *ngFor="let state of services" value="{{state.id}}">Kategorien: {{ state.name }}</md-option>
+    </md-select>
+    <md-select class="sorter" placeholder="Status" floatPlaceholder="never" (change)="selectingFeedbacks($event, 'status')">
+      <md-option *ngFor="let status of feedbacksStatuses" value="{{status.name}}">Status: {{ status.title }}</md-option>
+    </md-select>
+  </div>
+</div>
+<div *ngIf="feedbacksList">
+<app-publication class="publication--inner-indented block__full-width" *ngFor="let feedback of pagedItems"
+  [ngClass]="{'publication--inactive': !feedback.is_approved || !feedback.is_displaying}"
+  [id]="feedback.id"
+  [isDisplayStatus]="isRater"
+  [isApproved]="feedback.is_approved"
+  [isDisplaying]="feedback.is_displaying"
+  [avatarUrl]="feedback.provider_photo_url"
+  [avatarCaption]="feedback.provider_company_name"
+  [ratersFeedbacks]="feedback.raters_feedbacks"
+  [serviceName]="feedback.service_name"
+  [title]="feedback.job_title"
+  [ownerRating]="feedback.rating"
+  [date]="feedback.created_at | date:'dd-MMM-yyyy'"
+  [body]="feedback.job_description"
+  [items]="feedback.photo_urls === null ? [] : feedback.photo_urls"
+  [socialData]="socialData"
+  [likes]="feedback.likes ? feedback.likes.length : 0"
+  [comments]="feedback.replies === null ? [] : feedback.replies"
+  [conditionEdit]="true"
+  [creatorId]="feedback.provider_id"
+  [creatorRole]="feedback.provider_role"
+  (editEvent)="editFeed($event)"
+></app-publication>
+<ul class="pagination">
+  <li class="pagination__item" [ngClass]="{'pagination__item--disabled': pager.currentPage === 1}">
+    <a class="pagination__link" (click)="setPage(pager.currentPage - 1)">
+      <md-icon>keyboard_arrow_left</md-icon>
+      <span class="sr-only">Previous</span>
+    </a>
+  </li>
+  <li class="pagination__item" *ngFor="let page of pager.pages"
+      [ngClass]="{'pagination__item--active': pager.currentPage === page}">
+    <a class="pagination__link" (click)="setPage(page)">{{page}}</a>
+  </li>
+  <li class="pagination__item"
+      [ngClass]="{'pagination__item--disabled': pager.currentPage === pager.totalPages}">
+    <a class="pagination__link" (click)="setPage(pager.currentPage + 1)">
+      <md-icon>keyboard_arrow_right</md-icon>
+      <span class="sr-only">Next</span>
+    </a>
+  </li>
+</ul>
+</div>
+<div class="nothing-block" *ngIf="!feedbacksList">
+  <h3 class="text-center title">Es gibt keine Bewertungen jetzt</h3>
+</div>

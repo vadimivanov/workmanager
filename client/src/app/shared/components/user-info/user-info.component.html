@@ -1,0 +1,9 @@
+<figure class="user-info__figure">
+  <img class="user-info__avatar" src="{{photo_url ? photo_url : 'assets/images/content/img-avatar.png'}}" width="54" height="48"
+       alt="image description">
+  <figcaption class="user-info__figcaption">
+    <span class="user-info__caption">{{occupation}}</span>
+    <span class="user-info__caption">{{first_name}} {{last_name}}</span>
+    <span class="user-info__caption" *ngFor="let contact of contacts">{{contact}}</span>
+  </figcaption>
+</figure>

@@ -1,0 +1,45 @@
+<div class="container container--full-width-mobile">
+  <div class="block">
+    <header class="block__header block__header--indent-ideas">
+      <h1>Referenzbilder</h1>
+      <h2 class="h3 provider-portfolio__subtitle">
+        <span *ngIf="!isInspiration && !(limits.photosSimple || limits.photosBeforeAfter)">Sie können keine Fotos mit Ihrer aktuellen Mitgliedschaft hochladen.</span>
+        <span *ngIf="!isInspiration && (limits.photosSimple || limits.photosBeforeAfter)">Sie können {{limits.photosSimple}} einfache Fotos und {{limits.photosBeforeAfter}} Vorher-Nachher Fotos mit Ihrer aktuellen Mitgliedschaft hochladen</span>
+        <span *ngIf="isInspiration && limits.inspiration">Sie können {{limits.inspirationAvailable}} von {{limits.inspiration}} Fotos für Inspirationen für Eigenheim mit Ihrer aktuellen Mitgliedschaft hochladen</span>
+        <div class="text-error" *ngIf="!isInspiration && isLoadedCategories && !categoriesList.length">
+          Sie können keine Fotos hinzufügen oder bearbeiten, weil Sie keine Kategorien ausgewählt haben
+        </div>
+      </h2>
+    </header>
+    <ul class="tab-list block__full-width">
+      <li class="tab-list__item" [ngClass]="{'tab-list__item--active': (portfolioCategory == 'all') && !isInspiration}">
+        <a class="tab-list__link" (click)="loadCategoryPhotos('all')">ALLE</a>
+      </li>
+      <li class="tab-list__item" [ngClass]="{'tab-list__item--active': (category.id === portfolioCategory) && !isInspiration}"
+          *ngFor="let category of categories">
+        <a class="tab-list__link" (click)="loadCategoryPhotos(category.id)">{{category.name}}</a>
+      </li>
+      <li class="tab-list__item" [ngClass]="{'tab-list__item--active': isInspiration }">
+        <a class="tab-list__link" (click)="goToInspirationTab()">Inspirationen für Eigenheim</a>
+      </li>
+    </ul>
+    <app-portfolio-gallery class="block__full-width-mobile"
+                           *ngIf="userId && !isInspiration"
+                           [userData]="{id: userId, role: userRole, isOwner: isUserOwner}"
+                           [photos]="photos"
+                           [limits]="limitsSend"
+                           [categoriesList]="categoriesList"
+                           [currentCategory]="portfolioCategory"
+                           [displayComponent]="displayComponent"
+                           (changePhotosList)="getPortfolio()"
+    ></app-portfolio-gallery>
+    <app-ideas-for-inspiration-portfolio
+                           *ngIf="userId && isInspiration"
+                           [userData]="{id: userId, role: userRole, isOwner: isUserOwner}"
+                           [limit]="limits.inspiration"
+                           [limitAvailable]="limits.inspirationAvailable"
+                           (onChangeLimitAvailable)="getLimitInspiration($event)"
+    ></app-ideas-for-inspiration-portfolio>
+
+  </div>
+</div>

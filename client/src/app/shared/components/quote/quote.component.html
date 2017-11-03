@@ -1,0 +1,24 @@
+<div class="quote__data">
+  <div class="quote__avatar" [style.background-image]="'url(' + avatarUrl + ')'"></div>
+  <div class="quote__author-info" *ngIf="author || company">
+    <span class="quote__author" *ngIf="author">{{author}}</span>
+    <span class="quote__company" *ngIf="company">{{company}}</span>
+  </div>
+</div>
+<div class="quote__body">
+  <svg class="quote__decoration" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+	 width="512.5px" height="512.5px" viewBox="0 0 512.5 512.5" xml:space="preserve">
+      <path d="M112.5,208.25c61.856,0,112,50.145,112,112s-50.144,112-112,112s-112-50.145-112-112l-0.5-16
+        c0-123.712,100.288-224,224-224v64c-42.737,0-82.917,16.643-113.137,46.863c-5.817,5.818-11.126,12.008-15.915,18.51
+        C100.667,208.723,106.528,208.25,112.5,208.25z M400.5,208.25c61.855,0,112,50.145,112,112s-50.145,112-112,112
+        s-112-50.145-112-112l-0.5-16c0-123.712,100.287-224,224-224v64c-42.736,0-82.918,16.643-113.137,46.863
+        c-5.818,5.818-11.127,12.008-15.916,18.51C388.666,208.723,394.527,208.25,400.5,208.25z"/>
+    </svg>
+  <div class="quote__text">
+    <p>{{text}}</p>
+  </div>
+  <div class="quote__author-info" *ngIf="author || company">
+    <span class="quote__author" *ngIf="author">{{author}}</span>
+    <span class="quote__company" *ngIf="company">{{company}}</span>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="filter" [ngClass]="{'filter--open': isOpen, 'filter--wider': isWider, 'filter--widest': isWidest}">
+  <div class="filter__btn-toggle" (click)="open()">
+    <span class="filter__title">{{title}}: {{selectedName ? selectedName : 'Alle'}}</span>
+    <span class="mat-select-arrow"></span>
+  </div>
+  <div class="filter-menu">
+    <div class="filter-menu__header" (click)="close()">
+      <div class="filter__btn-toggle">
+        <span class="filter__title">{{title}}</span>
+        <span class="mat-select-arrow"></span>
+      </div>
+    </div>
+    <div class="filter-menu__body">
+      <div class="filter-menu__item"
+           *ngIf="isAllItem"
+           [ngClass]="{'filter-menu__item--active': isActiveItem('all')}"
+           (click)="selectItem('all', 'Alle')"
+            >Alle</div>
+      <div class="filter-menu__item"
+           *ngFor="let item of list; let i = index"
+           [ngClass]="{'filter-menu__item--active': isActiveItem(item.value)}"
+           (click)="selectItem(item.value, item.name)"
+      >{{item.name}}</div>
+    </div>
+  </div>
+  <div class="filter-overlay-backdrop" (click)="close()"></div>
+</div>

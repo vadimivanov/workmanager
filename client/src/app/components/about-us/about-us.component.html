@@ -1,0 +1,51 @@
+<app-header></app-header>
+<app-visual [bgImageUrl]="'assets/images/backgrounds/bg-visual-2.jpg'">
+  <span visual-title>About Us</span>
+  <p visual-text>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+    nulla
+  </p>
+  <span visual-link>Als Dienstleister registrieren</span>
+</app-visual>
+<app-info class="info--alt" [infoImgUrl]="'assets/images/content/img-info-7.png'">
+  <span info-title>Who we are?</span>
+  <p info-text>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+    nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+    id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+    laudantium, totam rem aperiam, eaque</p>
+</app-info>
+<div class="articles">
+  <div class="container container--no-gutter">
+    <div class="grid-noGutter">
+      <div class="col-6_sm-12">
+        <app-article [articleImg]="'assets/images/content/img-article-1.jpg'" [articleLink]="'/how-it-works-provider'">
+          <span article-title>You could be a Provider</span>
+          <p article-text>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+            labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+            fugiat</p>
+          <span article-link>How it works for a Provider</span>
+        </app-article>
+      </div>
+      <div class="col-6_sm-12">
+        <app-article [articleImg]="'assets/images/content/img-article-2.jpg'" [articleLink]="'/how-it-works-rater'">
+          <span article-title>How it works for a Rater</span>
+          <p article-text>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+            labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+            fugiat</p>
+          <span article-link>How it works for a Rater</span>
+        </app-article>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="kontakt">
+  <app-contact-form></app-contact-form>
+</div>
+<app-footer class="footer-holder--alt"></app-footer>

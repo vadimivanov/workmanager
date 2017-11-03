@@ -1,0 +1,13 @@
+.tag {
+  display: inline-block;
+  padding: rem-calc(6) rem-calc(12);
+  line-height: rem-calc(20);
+  border-radius: rem-calc(16);
+  background: rgba(#000, .12);
+  &--clicked { cursor: pointer; }
+
+  &--info { background: rgba(map-get($colors, info), .2);}
+  &--success { background: rgba(map-get($colors, success), .2);}
+  &--warning { background: rgba(map-get($colors, auxiliary), .2);}
+  &--danger { background: rgba(map-get($colors, danger), .2);}
+}

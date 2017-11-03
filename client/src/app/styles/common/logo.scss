@@ -1,0 +1,42 @@
+@import "../../../app/styles/base/index";
+
+.logo {
+  margin: 0 auto;
+  width: rem-calc(117);
+  height: rem-calc(33);
+  display: block;
+
+  @include respond-from(md) {
+    width: rem-calc(179);
+    height: rem-calc(50);
+  }
+}
+
+.logo__link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  text-indent: -9999px;
+
+  &:before {
+    text-indent: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: map-get($grays, light-primary);
+    font-size: rem-calc(33);
+    line-height: rem-calc(33);
+    margin: 0;
+  }
+
+  @include respond-from(md) {
+    background: url("/assets/images/svg/logo.svg") no-repeat;
+
+    &:before {
+      display: none;
+    }
+  }
+}

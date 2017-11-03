@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "company_name": "Basic provider Company",
+    "telephone_number": "+333-444-333-666",
+    "contact_person_info": "{\"photo_url\": \"https://okornok-uploads.s3.eu-central-1.amazonaws.com/test-user-1.jpg\", \"gender\": \"Male\", \"first_name\": \"John\", \"last_name\": \"Smith\", \"personalPhone\": \"+665-444-333-666\", \"workPhone\": \"+775-444-333-666\", \"contactEmail\": \"somemail5@mail.com\"}",
+    "contact_information": "{\"personalPhone\": \"+666-444-333-666\", \"workPhone\": \"+777-444-333-666\", \"contactEmail\": \"somemail@mail.com\"}",
+    "general_news": "Some news.",
+    "about": "I'm a great provider",
+    "number_of_employees": 3,
+    "hours_of_operation": "[{\"name\": \"Mon\",\"title\": \"Montag\",\"timeFrom\": \"7-00\",\"timeTo\": \"18-00\",\"is_show\": true},{\"name\": \"Tue\",\"title\": \"Dienstag\",\"timeFrom\": \"7-00\",\"timeTo\": \"18-00\",\"is_show\": false},{\"name\": \"Wed\",\"title\": \"Mittwotch\",\"timeFrom\": \"7-00\",\"timeTo\": \"18-00\",\"is_show\": false},{\"name\": \"Thu\",\"title\": \"Donnerstag\",\"timeFrom\": \"7-00\",\"timeTo\": \"18-00\",\"is_show\": false},{\"name\": \"Fri\",\"title\": \"Freitag\",\"timeFrom\": \"7-00\",\"timeTo\": \"18-00\",\"is_show\": false},{\"name\": \"Su\", \"title\": \"Samstag\",\"timeFrom\": \"7-00\",\"timeTo\": \"18-00\",\"is_show\": false},{\"name\": \"Sun\",\"title\": \"Sonntag\",\"timeFrom\": \"7-00\",\"timeTo\": \"18-00\",\"is_show\": false}]",
+    "rating": 4.9,
+    "photo_url": "https://okornok-uploads.s3.eu-central-1.amazonaws.com/test-user-1.jpg",
+    "user_id": 2
+  },
+  {
+    "id": 2,
+    "company_name": "Silver provider Company",
+    "telephone_number": "+111-444-777-555",
+    "contact_person_info": "{\"photo_url\": \"https://okornok-uploads.s3.eu-central-1.amazonaws.com/test-user-1.jpg\", \"gender\": \"Female\", \"first_name\": \"Irene\", \"last_name\": \"Adler\", \"personalPhone\": \"+665-444-333-666\", \"workPhone\": \"+775-444-333-666\", \"contactEmail\": \"somemail6@mail.com\"}",
+    "contact_information": "{\"personalPhone\": \"+222-444-333-666\", \"workPhone\": \"+333-444-333-666\", \"contactEmail\": \"somemail@mail.com\"}",
+    "general_news": "Some news.",
+    "about": "I'm a great provider",
+    "number_of_employees": 9,
+    "hours_of_operation": "[{\"name\": \"Mon\",\"title\": \"Montag\",\"timeFrom\": \"7-00\",\"timeTo\": \"18-00\",\"is_show\": true},{\"name\": \"Tue\",\"title\": \"Dienstag\",\"timeFrom\": \"7-00\",\"timeTo\": \"18-00\",\"is_show\": false},{\"name\": \"Wed\",\"title\": \"Mittwotch\",\"timeFrom\": \"7-00\",\"timeTo\": \"18-00\",\"is_show\": false},{\"name\": \"Thu\",\"title\": \"Donnerstag\",\"timeFrom\": \"7-00\",\"timeTo\": \"18-00\",\"is_show\": false},{\"name\": \"Fri\",\"title\": \"Freitag\",\"timeFrom\": \"7-00\",\"timeTo\": \"18-00\",\"is_show\": false},{\"name\": \"Su\", \"title\": \"Samstag\",\"timeFrom\": \"7-00\",\"timeTo\": \"18-00\",\"is_show\": false},{\"name\": \"Sun\",\"title\": \"Sonntag\",\"timeFrom\": \"7-00\",\"timeTo\": \"18-00\",\"is_show\": false}]",
+    "rating": 4.8,
+    "photo_url": "https://okornok-uploads.s3.eu-central-1.amazonaws.com/test-user-1.jpg",
+    "user_id": 3
+  },
+  {
+    "id": 3,
+    "company_name": "Gold provider Company",
+    "telephone_number": "+222-777-555-666",
+    "contact_person_info": "{\"photo_url\": \"https://okornok-uploads.s3.eu-central-1.amazonaws.com/test-user-1.jpg\", \"gender\": \"Male\", \"first_name\": \"Dean\", \"last_name\": \"Scott\", \"personalPhone\": \"+667-444-333-666\", \"workPhone\": \"+778-444-333-666\", \"contactEmail\": \"somemail1@mail.com\"}",
+    "contact_information": "{\"personalPhone\": \"+123-444-333-666\", \"workPhone\": \"+456-444-333-666\", \"contactEmail\": \"somemail@mail.com\"}",
+    "general_news": "Some news.",
+    "about": "I'm a great provider",
+    "number_of_employees": 15,
+    "hours_of_operation": "[{\"name\": \"Mon\",\"title\": \"Montag\",\"timeFrom\": \"7-00\",\"timeTo\": \"18-00\",\"is_show\": true},{\"name\": \"Tue\",\"title\": \"Dienstag\",\"timeFrom\": \"7-00\",\"timeTo\": \"18-00\",\"is_show\": false},{\"name\": \"Wed\",\"title\": \"Mittwotch\",\"timeFrom\": \"7-00\",\"timeTo\": \"18-00\",\"is_show\": false},{\"name\": \"Thu\",\"title\": \"Donnerstag\",\"timeFrom\": \"7-00\",\"timeTo\": \"18-00\",\"is_show\": false},{\"name\": \"Fri\",\"title\": \"Freitag\",\"timeFrom\": \"7-00\",\"timeTo\": \"18-00\",\"is_show\": false},{\"name\": \"Su\", \"title\": \"Samstag\",\"timeFrom\": \"7-00\",\"timeTo\": \"18-00\",\"is_show\": false},{\"name\": \"Sun\",\"title\": \"Sonntag\",\"timeFrom\": \"7-00\",\"timeTo\": \"18-00\",\"is_show\": false}]",
+    "rating": 4.4,
+    "photo_url": "https://okornok-uploads.s3.eu-central-1.amazonaws.com/test-user-1.jpg",
+    "user_id": 4
+  }
+]

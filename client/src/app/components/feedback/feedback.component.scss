@@ -1,0 +1,67 @@
+@import "../../styles/base/index";
+
+.rating-list {
+  padding-top: rem-calc(20);
+}
+.rating {
+  display: flex;
+  align-items: center;
+  &.rating--vertical {
+    flex-direction: column;
+  }
+}
+
+.rating__line {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  :host(.rating--vertical) & {
+    margin-bottom: rem-calc(14);
+  }
+}
+
+.rating__rule {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: url('../../../assets/images/backgrounds/bg-star.png') repeat-x;
+  background-size: auto 81%;
+  &--filled {
+    width: 0;
+    background-image: url('../../../assets/images/backgrounds/bg-star-filled.png');
+  }
+  /* todo: change to svg */
+  //background: url('/assets/images/svg/star.svg') repeat-x;
+  //&--filled {
+  //  background-image: url('/assets/images/svg/star-filled.svg');
+  //}
+}
+
+.rating__item {
+  position: relative;
+  width: rem-calc(28);
+  height: rem-calc(28);
+  cursor: pointer;
+  &--disabled {
+    cursor: default;
+  }
+}
+
+.rating__item-name,
+.rating__toggle {
+  @include sr-only;
+}
+
+.rating__digital {
+  margin-left: rem-calc(17);
+  :host(.rating--vertical) & {
+    order: -1;
+    margin-left: 0;
+    margin-bottom: rem-calc(10);
+    font-size: rem-calc(20);
+    font-weight: 500;
+  }
+}

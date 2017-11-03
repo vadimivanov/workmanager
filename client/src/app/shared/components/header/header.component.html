@@ -1,0 +1,202 @@
+<div class="container">
+  <header class="header__container">
+    <button class="nav__opener" (click)="toggleMenu()">
+      <md-icon>menu</md-icon>
+    </button>
+    <h1 class="header__logo logo">
+      <a class="logo__link" data-icon-left="icon-logo-mobile" routerLink="/home">Okornok</a>
+    </h1>
+    <nav class="header__nav nav" [ngClass]="{'nav--active': isMenuOpen, 'header__hidden-item': animateState === 'active'}">
+      <header class="nav__header">
+        <div class="nav__avatar" [ngClass]="{'nav__avatar--logo': !currentUserImg}">
+          <a routerLink="/home" *ngIf="!currentUserImg">
+            <img class="nav__img" src="assets/images/svg/logo-white.svg" width="72" height="64" alt="image description">
+          </a>
+          <img class="nav__img" *ngIf="currentUserImg" src="{{currentUserImg}}" width="128" height="128" alt="image description">
+        </div>
+        <span class="nav__data">{{currentUserName}}</span>
+      </header>
+      <!-- unreg -->
+      <ul *ngIf="!userData.length" class="nav__list">
+        <li class="nav__item">
+          <md-icon class="nav__item-ico">person</md-icon>
+          <a routerLink="/register" md-button class="btn nav__link">Registrieren</a>
+        </li>
+        <li class="nav__item">
+          <md-icon class="nav__item-ico">lock</md-icon>
+          <a routerLink="/login" md-button class="btn nav__link">Einloggen</a>
+        </li>
+        <li class="nav__item">
+          <md-icon class="nav__item-ico">create</md-icon>
+          <a routerLink="/register" md-button class="btn nav__link">Bewertung abgeben</a>
+        </li>
+        <li class="nav__item">
+          <md-icon class="nav__item-ico">group</md-icon>
+          <button (click)="goTo()" md-raised-button class="btn nav__link" >Als Dienstleister registrieren</button>
+        </li>
+      </ul>
+      <!-- rater -->
+      <ul *ngIf="userData.length && isRater" class="nav__list">
+        <li class="nav__item">
+          <md-icon class="nav__item-ico">create</md-icon>
+          <a (click)="goTo()" md-button class="btn nav__link">Bewertung abgeben</a>
+        </li>
+        <li class="nav__item">
+          <md-icon class="nav__item-ico">search</md-icon>
+          <a routerLink="/search" md-button class="btn nav__link">Dienstleister suchen</a>
+        </li>
+        <li class="nav__item">
+          <div class="header__user">
+            <a class="header__user-drop-down" (click)="goToProfile()">
+              <span class="header__user-label">User</span>
+              <img class="header__user-avatar" src="{{currentUserImg}}" width="54" height="48" alt="image description">
+            </a>
+            <div class="header__user-content">
+              <h3 class="header__user-title">{{currentUserName}}</h3>
+              <ul class="header__user-list">
+                <li class="header__user-list-item">
+                  <md-icon class="nav__item-ico">person</md-icon>
+                  <button type="button" class="header__user-link" (click)="goToProfile()" md-button>Mein Profil</button>
+                </li>
+                <li class="header__user-list-item">
+                  <md-icon class="nav__item-ico">storage</md-icon>
+                  <button type="button" class="header__user-link" (click)="goToDashboard()" md-button>Benutzerzentrum</button>
+                </li>
+                <li class="header__user-list-item">
+                  <md-icon class="nav__item-ico">lock_open</md-icon>
+                  <button type="button" class="header__user-link" (click)="logout()" md-button>Ausloggen</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <!-- provider -->
+      <ul *ngIf="userData.length && isProvider" class="nav__list">
+        <li class="nav__item">
+          <md-icon class="nav__item-ico">credit_card</md-icon>
+          <a routerLink="/feedback-request" md-button class="btn nav__link" >Bewertung anfragen</a>
+        </li>
+        <li class="nav__item">
+          <md-icon class="nav__item-ico">create</md-icon>
+          <a routerLink="/billing" md-button class="btn nav__link">Mitgliedschaft ändern</a>
+        </li>
+        <li class="nav__item">
+          <div class="header__user">
+            <a class="header__user-drop-down" (click)="goToProfile()">
+              <span class="header__user-label">User</span>
+              <img class="header__user-avatar" src="{{currentUserImg}}" width="54" height="48" alt="image description">
+            </a>
+            <div class="header__user-content">
+              <h3 class="header__user-title">{{currentUserName}}</h3>
+              <ul class="header__user-list">
+                <li class="header__user-list-item">
+                  <md-icon class="nav__item-ico">person</md-icon>
+                  <button type="button" class="header__user-link" (click)="goToProfile()" md-button>Mein Profil</button>
+                </li>
+                <li class="header__user-list-item">
+                  <md-icon class="nav__item-ico">storage</md-icon>
+                  <button type="button" class="header__user-link" (click)="goToDashboard()" md-button>Benutzerzentrum</button>
+                </li>
+                <li class="header__user-list-item">
+                  <md-icon class="nav__item-ico">lock_open</md-icon>
+                  <button type="button" class="header__user-link" (click)="logout()" md-button>Ausloggen</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <!-- supporter -->
+      <ul *ngIf="userData.length && isSupporter" class="nav__list">
+        <li class="nav__item">
+          <div class="header__user">
+            <a class="header__user-drop-down" (click)="goToProfile()">
+              <span class="header__user-label">User</span>
+              <img class="header__user-avatar" src="{{currentUserImg}}" width="54" height="48" alt="image description">
+            </a>
+            <div class="header__user-content">
+              <h3 class="header__user-title">Admin</h3>
+              <ul class="header__user-list">
+                <li class="header__user-list-item">
+                  <md-icon class="nav__item-ico">storage</md-icon>
+                  <button type="button" class="header__user-link" (click)="goToDashboard()" md-button>Benutzerzentrum</button>
+                </li>
+                <!--<li class="header__user-list-item">-->
+                <!--<md-icon class="nav__item-ico">person</md-icon>-->
+                <!--<button type="button" class="header__user-link" (click)="goToProfile()" md-button>Mein Profil</button>-->
+                <!--</li>-->
+                <li class="header__user-list-item">
+                  <md-icon class="nav__item-ico">lock_open</md-icon>
+                  <button type="button" class="header__user-link" (click)="logout()" md-button>Ausloggen</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="nav__underlay" (click)="toggleMenu()"></div>
+    </nav>
+    <form class="promo__form" (ngSubmit)="search()">
+      <button class="header__search" [ngClass]="{'header__hidden-item': animateState === 'active'}" (click)="toggleAnimateState()" md-button type="button">
+        <md-icon class="header__search-ico">search</md-icon>
+      </button>
+      <div class="header__search-block" [ngClass]="{'header__search-block--active': animateState === 'active'}" (@searchState.start)="animationStarted($event)" (@searchState.done)="animationDone($event)" [@searchState]="animateState">
+        <md-icon class="header__search-block-ico">search</md-icon>
+        <input class="header__search-block-input" placeholder="Geben Sie Ihre Such" autocomplete="off"
+               [(ngModel)]="searchValue" [ngModelOptions]="{standalone: true}" #headerSearch>
+        <button class="control-group__btn btn" type="submit"  md-raised-button [hidden]="true">
+          <md-icon class="control-group__ico">search</md-icon>
+        </button>
+        <span class="header__search-block-btn" [attr.role]="button" (click)="toggleAnimateState()">
+      <md-icon class="header__search-block-btn-ico">close</md-icon>
+    </span>
+        <div class="search-drop-down" *ngIf="((searchValue.length > 2) && !filteredServices.length && !isChoosedSearch && !metatagsResult.length) || (filteredServices.length && (searchValue.length > 2) && !searchResults.length && !isChoosedSearch)">
+          <ul>
+            <li class="search-drop-down__message">No search results</li>
+          </ul>
+        </div>
+        <div class="search-drop-down"
+             *ngIf="(searchValue.length && searchValue.length < 3)">
+          <ul>
+            <li class="search-drop-down__message">You should type more than 2 symbols</li>
+          </ul>
+        </div>
+        <div class="search-drop-down" *ngIf="filteredServices.length || searchResults.length">
+          <ul *ngIf="filteredServices.length" style="background-color: #fff;">
+            <li class="custom search-drop-down__title search-drop-down__item">Kategorien</li>
+            <li class="search-drop-down__item search-drop-down__link" *ngFor="let service of filteredServices" (click)="goToSearchResults(service.parentName ? 'subserviceName' : 'serviceName', service.name)">
+              {{ service.parentName }} > {{ service.name }}
+            </li>
+            <li class="search-drop-down__item search-drop-down__link" *ngIf="filteredServices.length === 3"
+                (click)="allSearch('subserviceName', '')">
+              Alle anzeigen
+            </li>
+          </ul>
+          <ul *ngIf="searchResults.length" style="background-color: #fff;">
+            <li class="custom search-drop-down__title search-drop-down__item">Dienstleister</li>
+            <li class="search-drop-down__item search-drop-down__link" *ngFor="let result of searchResults; let i = index" (click)="goToProfilePage(result.user_id)">
+              {{ result.company_name }}
+            </li>
+            <li class="search-drop-down__item search-drop-down__link" *ngIf="searchResults.length === 3"
+                (click)="allSearch('searchText', '')">
+              Alle anzeigen
+            </li>
+          </ul>
+          <ul class="search-drop-down__list" *ngIf="metatagsResult.length">
+            <li class="search-drop-down__item search-drop-down__title">Suchen sie etwa</li>
+            <li class="search-drop-down__item search-drop-down__link" *ngFor="let service of metatagsResult"
+                (click)="goToSearchResults(service.parentName ? 'subserviceName' : 'serviceName', service.name)">
+              {{ service.parentName }} > {{ service.name }}
+            </li>
+            <li class="search-drop-down__item search-drop-down__link" *ngIf="metatagsResult.length === 5"
+                (click)="allSearch('subserviceName', '')">
+              Alle anzeigen
+            </li>
+          </ul>
+        </div>
+      </div>
+    </form>
+  </header>
+</div>
+

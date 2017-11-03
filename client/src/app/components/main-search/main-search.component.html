@@ -1,0 +1,85 @@
+<app-header></app-header>
+<div class="container container--full-width-mobile state-toggle" [ngClass]="{'state-toggle--active': stateToggleValue}">
+  <div class="grid-noGutter">
+    <div class="col-3_sm-6 state-toggle__item">
+      <div class="block">
+        <header class="block__header block__header--alt">
+          <h2>Kategorien</h2>
+          <button type="button" class="is-hidden-from-sm btn-simple" (click)="stateToggle()">
+            <md-icon>arrow_back</md-icon>
+          </button>
+        </header>
+        <ul class="list list--deep list--top-indented list--vertical block__sticky-right bg-light-primary">
+          <li class="list__item" *ngFor="let service of providerServices"
+              (click)="chooseCategory(service.name, 'serviceName')">
+            {{service.name}}
+            <ul class="list__sub-list">
+              <li class="list__sub-item" *ngFor="let subservice of service.Subservices"
+                  (click)="chooseCategory(subservice.name, 'subserviceName')" appClickStopPropagation>
+                {{subservice.name}}
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-9_sm-6">
+      <div class="section">
+        <header class="section__header section__header--end">
+        </header>
+        <div class="section__body">
+          <ul class="section__breadcrumbs breadcrumbs">
+            <li class="breadcrumbs__item">
+              <a routerLink="/home" class="breadcrumbs__link">Startseite</a>
+            </li>
+            <li class="breadcrumbs__item">Kategorien</li>
+          </ul>
+          <button class="btn btn--full-width btn--bottom-outer-indented btn--top-outer-indented is-hidden-from-sm" type="button" (click)="stateToggle()"
+                  md-raised-button>
+            KATEGORIEN
+          </button>
+          <div class="block section__body-full-width">
+            <div *ngIf="!searchResults.length">
+              <header class="block__header">
+                <h2 class="h1">Top-Dienstleister</h2>
+              </header>
+              <div class="grid">
+                <div class="col-4_xs-12" *ngFor="let provider of providerPreviewList">
+                  <app-subject [img]="provider.photo_url"
+                               [title]="provider.company_name"
+                               [text]="'static text'"
+                               routerLink="/provider-profile/{{provider.user_id}}"
+                  ></app-subject>
+                </div>
+              </div>
+              <header class="block__header">
+                <h2 class="h1">Top-Kategorien</h2>
+              </header>
+              <div class="grid">
+                <div class="col-4_xs-12" *ngFor="let service of servicesPreviewList" (click)="searchTopCategory(service.name, 'serviceName')">
+                  <app-subject [img]="'http://via.placeholder.com/350x150'"
+                               [title]="service.name"
+                               [text]="'static text'"
+                  ></app-subject>
+                </div>
+              </div>
+              <header class="block__header">
+                <h2 class="h1">Top-Ideenfabrik</h2>
+              </header>
+              <div class="grid">
+                <div class="col-4_xs-12" *ngFor="let photo of photoPreviewList">
+                  <app-subject [img]="photo.photo_simple_url || photo.photo_before_url"
+                               [title]="'static text'"
+                               [text]="photo.description"
+                               routerLink="/provider-profile/{{photo.Provider.user_id}}"
+                  ></app-subject>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

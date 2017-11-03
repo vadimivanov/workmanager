@@ -1,0 +1,8 @@
+{
+  "Bucket": {
+    "name": "okornok-uploads",
+    "imagesAlbum": "images"
+  },
+  "apiVersion": "2006-03-01",
+  "imagesACL": "public-read"
+}

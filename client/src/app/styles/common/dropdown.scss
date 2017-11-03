@@ -1,0 +1,49 @@
+@import "../../styles/base/index";
+
+.context-menu__wrapper {
+  position: fixed;
+  top: 200px;
+  left: -200px;
+  z-index: 1000;
+}
+
+.dropdown {
+  position: absolute;
+  background: map_get($grays, light-primary);
+  box-shadow: 3px 3px 5px rgba(#000, .24);
+}
+
+.angular2-contextmenu .dropdown-menu {
+  border: solid 1px rgba(#000, .1);
+  padding: 0 0 rem-calc(9);
+  background: map_get($grays, light-primary);
+  box-shadow: 3px 3px 5px rgba(#000, .24);
+}
+
+.angular2-contextmenu {
+  li {
+    display: block;
+    &:first-child {
+      margin-bottom: rem-calc(9);
+      border-bottom: 1px solid rgba(#000, .1);
+      a {
+        font-weight: 500;
+        padding-top: rem-calc(14);
+        padding-bottom: rem-calc(14);
+        cursor: default;
+      }
+    }
+    a {
+      display: block;
+      padding: rem-calc(7) rem-calc(24);
+      line-height: rem-calc(20);
+      color: map_get($grays, dark-primary);
+      text-decoration: none;
+      &:hover {
+        color: map_get($grays, dark-primary);
+        text-decoration: none;
+      }
+    }
+    &:not(:first-child) a:hover {color: map_get($colors, primary);}
+  }
+}

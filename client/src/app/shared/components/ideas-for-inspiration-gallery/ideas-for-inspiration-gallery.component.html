@@ -1,0 +1,146 @@
+<ng-template [ngTemplateOutlet]="getTemplate()"></ng-template>
+
+<ng-template #galleryTmpl>
+  <div class="headline">
+    <h2 class="h1">Inspirationen und Ideen für Ihr zu Hause</h2>
+  </div>
+  <md-tab-group class="tabs tabs--alt" (selectChange)="loadCategoryPhotos($event)">
+    <md-tab class="tabs__toggle" [label]="'ALLE'">
+      <div class="container" *ngIf="!photos.length">
+        <div class="nothing-block">
+          Es gibt noch keine Fotos in dieser Kategorie
+        </div>
+      </div>
+      <div class="gallery" *ngIf="photos.length">
+        <div class="gallery__frame home-inspiration-gallery swiper-container">
+          <div class="gallery__list swiper-wrapper">
+            <div class="gallery__element swiper-slide" *ngFor="let photo of photos">
+              <a class="gallery__item"
+                 (click)="loadProviderProfile(photo.provider_id)"
+                 [title]="(photo.Provider && photo.Provider.company_name) ? photo.Provider.company_name : ''">
+
+                <span class="gallery__img" *ngIf="photo.photo_simple_url"
+                      [style.background-image]="'url(' + photo.photo_simple_url + ')'"></span>
+                <span class="gallery__img" *ngIf="photo.photo_before_url && photo.photo_after_url">
+                  <app-image-slider class="gallery__img-slider"
+                                    [before]="photo.photo_before_url"
+                                    [after]="photo.photo_after_url"
+                  ></app-image-slider>
+                </span>
+
+                <span class="gallery__name">
+                  <span class="gallery__name-text">{{(photo.Provider && photo.Provider.company_name) ? photo.Provider.company_name : ''}}</span>
+                </span>
+              </a>
+            </div>
+          </div>
+          <button class="gallery__prev shifter__prev js-shifter__prev" md-fab>
+            <md-icon>keyboard_arrow_left</md-icon>
+          </button>
+          <button class="gallery__next shifter__next js-shifter__next" md-fab>
+            <md-icon>keyboard_arrow_right</md-icon>
+          </button>
+        </div>
+      </div>
+    </md-tab>
+    <md-tab class="tabs__toggle" *ngFor="let category of categoriesFiltering" [label]="category.name">
+      <div class="container" *ngIf="!photos.length">
+        <div class="nothing-block">
+          Es gibt noch keine Fotos in dieser Kategorie
+        </div>
+      </div>
+      <div class="gallery" *ngIf="photos.length">
+        <div class="gallery__frame home-inspiration-gallery">
+          <div class="gallery__list swiper-wrapper">
+            <div class="gallery__element swiper-slide" *ngFor="let photo of photos">
+              <a class="gallery__item"
+                 (click)="loadProviderProfile(photo.provider_id)"
+                 [title]="(photo.Provider && photo.Provider.company_name) ? photo.Provider.company_name : ''">
+
+                <span class="gallery__img" *ngIf="photo.photo_simple_url"
+                      [style.background-image]="'url(' + photo.photo_simple_url + ')'"></span>
+                <span class="gallery__img" *ngIf="photo.photo_before_url && photo.photo_after_url">
+                  <app-image-slider class="gallery__img-slider"
+                                    [before]="photo.photo_before_url"
+                                    [after]="photo.photo_after_url"
+                  ></app-image-slider>
+                </span>
+
+                <span class="gallery__name">
+                  <span class="gallery__name-text">{{(photo.Provider && photo.Provider.company_name) ? photo.Provider.company_name : ''}}</span>
+                </span>
+              </a>
+            </div>
+          </div>
+          <button class="gallery__prev shifter__prev js-shifter__prev" md-fab>
+            <md-icon>keyboard_arrow_left</md-icon>
+          </button>
+          <button class="gallery__next shifter__next js-shifter__next" md-fab>
+            <md-icon>keyboard_arrow_right</md-icon>
+          </button>
+        </div>
+      </div>
+    </md-tab>
+  </md-tab-group>
+  <div class="text-center">
+    <a class="btn" md-raised-button routerLink="/ideas-for-inspiration">Alle Ideen anzeigen</a>
+  </div>
+</ng-template>
+
+<ng-template #standalonePageTmpl>
+  <app-header></app-header>
+  <div class="container container--full-width-mobile">
+    <div class="grid-noGutter">
+      <div class="col-3_sm-12">
+        <div class="block">
+          <header class="block__header block__header--alt">
+            <h2>Kategorien</h2>
+          </header>
+          <ul class="list list--top-indented list--vertical">
+            <li class="list__item">
+              <button [ngClass]="{'text-color-primary': currentCategory === null}"
+                      (click)="loadCategoryPhotos(null, null, null, true)" type="button">Alle</button>
+            </li>
+            <li class="list__item" *ngFor="let category of categories">
+              <button [ngClass]="{'text-color-primary': currentCategory === category.id}"
+                      (click)="loadCategoryPhotos(null, category.id, null, true)" type="button"
+              >{{category.name}}</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-9_sm-12">
+        <div class="section">
+          <header class="section__header">
+            <h2>Ideenfabrik</h2>
+          </header>
+          <div class="section__body section__body--full-width-mobile">
+            <div class="block">
+              <div class="block__inner">
+                <div class="nothing-block" *ngIf="!photos.length">
+                  Es gibt noch keine Fotos in dieser Kategorie
+                </div>
+                <div class="grid grid--double-bottom" *ngIf="photos.length">
+                  <div class="col-4_md-6" *ngFor="let photo of photos; let i = index">
+                    <app-subject (openEvent)="openLightbox(lightboxList, i)"
+                                 [img]="photo.photo_simple_url"
+                                 [imgBefore]="photo.photo_before_url"
+                                 [imgAfter]="photo.photo_after_url"
+                                 [title]="photo.Provider.company_name"
+                                 [providerId]="photo.Provider.user_id"
+                                 [text]="photo.description"
+                    ></app-subject>
+                  </div>
+                </div>
+              </div>
+              <footer class="block__footer text-center" *ngIf="isShowBtnMore()">
+                <a class="text-uppercase" (click)="loadMorePhotos($event)">Mehr Anzeigen</a>
+              </footer>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</ng-template>

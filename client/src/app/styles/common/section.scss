@@ -1,0 +1,84 @@
+@import "../../styles/base/index";
+
+.section__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  min-height: rem-calc(65);
+  margin-top: rem-calc(10);
+  padding: rem-calc(10) rem-calc(15) rem-calc(10);
+  background-color: #e0e0e0;
+  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, .24);
+  > * {
+    margin-bottom: rem-calc(15);
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  @include respond-from(sm) {
+    flex-wrap: nowrap;
+    padding-left: rem-calc(20);
+    padding-right: rem-calc(20);
+    > * {
+      margin-bottom: 0;
+    }
+  }
+}
+.section__header-group {
+  display: flex;
+}
+
+.section__header--end {
+  justify-content: flex-end;
+}
+
+.section__header--between {
+  justify-content: space-between;
+}
+
+.section .section__search {
+  &.control-group {
+    width: 100%;
+    height: rem-calc(44);
+    @include respond-from(sm) {
+      width: rem-calc(588);
+      &--small {
+        width: rem-calc(533);
+      }
+    }
+  }
+}
+
+.section .section__sorter {
+  width: 100%;
+  margin-left: 0;
+  margin-right: rem-calc(25);
+  .mat-select-trigger {
+    min-width: rem-calc(150);
+  }
+  @include respond-from(md) {
+    max-width: rem-calc(155);
+    margin-right: rem-calc(50);
+  }
+}
+
+.section__body {
+  padding: rem-calc(13) rem-calc(15);
+  @include respond-from(sm) {
+    padding-left: rem-calc(30);
+    padding-right: 0;
+  }
+  &--full-width-mobile {
+    @include respond-to(sm) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+
+.section__body-full-width-mobile {
+  margin-left: rem-calc(-15);
+  @include respond-from(sm) {
+    margin-left: 0;
+  }
+}

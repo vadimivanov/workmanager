@@ -1,0 +1,10 @@
+<div class="social-dropdown-wrap" [ngClass]="{'social-dropdown--open': isOpen}">
+  <div class="social-dropdown__btn-toggle" (click)="open()">
+    <md-icon class="share__icon">share</md-icon> share
+  </div>
+  <div class="social-dropdown">
+    <div class="social-dropdown__item" (click)="onShare('twitter')">Share with Twitter</div>
+    <div class="social-dropdown__item" (click)="onShare('facebook')">Share with Facebook</div>
+  </div>
+  <div class="social-dropdown__overlay-backdrop" (click)="close()"></div>
+</div>

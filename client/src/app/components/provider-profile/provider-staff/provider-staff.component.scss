@@ -1,0 +1,47 @@
+@import "../../../styles/base/index";
+
+:host {
+  display: block;
+  &::after {
+    content: '';
+    display: inline-block;
+  }
+}
+
+.staff__empty {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 0;
+  padding-bottom: 67%;
+  background-size: cover;
+  font-size: rem-calc(16);
+  color: map-get($grays, dark-disabled);
+  background-color: #eaeaea;
+  text-align: center;
+  @include respond-from(sm) {
+    padding-bottom: 39%;
+  }
+}
+
+.staff__empty-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.staff__members-list {
+  position: relative;
+}
+
+.staff__cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, .7);
+  pointer-events: none;
+  z-index: 2;
+}

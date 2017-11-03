@@ -1,0 +1,45 @@
+<div class="modal-size modal-size--big">
+  <div class="modal__header">
+    <div class="modal__title"><strong>Benachrichtigungen</strong></div>
+    <div class="modal__subtitle">Neue Beispielbilder</div>
+    <md-icon class="modal__close" (click)="dialogRef.close(true)">clear</md-icon>
+  </div>
+  <div class="modal__caption">
+    <span class="tag tag--warning">Neue Beispielbilder</span>
+    <span class="time">{{content.created_at | date: 'dd.MM.yyyy'}}</span>
+  </div>
+
+
+  <div class="publication publication--inner-indented publication--full-separated block__full-width">
+    <figure class="publication__figure">
+      <div class="publication__figimg" [style.background-image]="providerPhoto ? 'url(' + providerPhoto + ')' : 'url(assets/images/content/img-avatar.png)'" [attr.role]="image" [attr.aria-labelledby]="providerPhoto"></div>
+      <figcaption class="publication__figcaption" id="{{providerPhoto}}">
+        <span *ngIf="providerName">{{providerName}}</span>
+      </figcaption>
+    </figure>
+    <div class="publication__body">
+      <header class="publication__header">
+        <h3 class="publication__title">{{content.description}}</h3>
+        <div class="publication__header-data">
+          <span class="publication__label">{{serviceName}}</span>
+        </div>
+      </header>
+
+      <div class="publication-gallery__img" *ngIf="content.photo_simple_url"
+           [style.background-image]="'url(' + content.photo_simple_url + ')'"></div>
+      <div class="publication-gallery__img" *ngIf="content.photo_before_url && content.photo_after_url">
+        <app-image-slider class="publication-gallery__image-slider"
+                          [before]="content.photo_before_url"
+                          [after]="content.photo_after_url"
+                          [isDisplayComponent]="false"
+        ></app-image-slider>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal__control modal__control--right" *ngIf="!content.is_viewed">
+    <button class="btn btn-link" [disabled]="!providerUserId" (click)="confirm($event)">Akzeptieren</button>
+    <button class="btn btn-link" [disabled]="!providerUserId" (click)="cancel($event)">Ablehnen</button>
+  </div>
+</div>
+

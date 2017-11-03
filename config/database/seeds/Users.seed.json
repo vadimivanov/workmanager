@@ -1,0 +1,55 @@
+[
+  {
+    "id": 1,
+    "login": "rater",
+    "password": "strongpass",
+    "email": "okornok_rater@sliceart.com.ua",
+    "is_verified": true,
+    "is_enabled": true,
+    "role": "Rater",
+    "stripe_subscription": "{\"id\": \"sub_AiSUHrMjSYsCJ7\", \"object\": \"subscription\", \"application_fee_percent\": null, \"cancel_at_period_end\": false, \"canceled_at\": null, \"created\": 1495640312, \"current_period_end\": 1498318712, \"current_period_start\": 1495640312, \"customer\": \"cus_AiSUhMcFC4xuZN\", \"discount\": null, \"ended_at\": null, \"items\": {\"object\": \"list\", \"data\": [{\"id\": \"si_1AN1ZEHyBx8Sh2uZn13g6POp\", \"object\": \"subscription_item\", \"created\": 1495640313, \"plan\": {\"id\": \"0-bewerter\", \"object\": \"plan\", \"amount\": 0, \"created\": 1495624482, \"currency\": \"chf\", \"interval\": \"month\", \"interval_count\": 1, \"livemode\": false, \"metadata\": {}, \"name\": \"Bewerter\", \"statement_descriptor\": null, \"trial_period_days\": null}, \"quantity\": 1}], \"has_more\": false, \"total_count\": 1, \"url\": \"/v1/subscription_items?subscription=sub_AiSUHrMjSYsCJ7\"}, \"livemode\": false, \"metadata\": {}, \"plan\": {\"id\": \"0-bewerter\", \"object\": \"plan\", \"amount\": 0, \"created\": 1495624482, \"currency\": \"chf\", \"interval\": \"month\", \"interval_count\": 1, \"livemode\": false, \"metadata\": {}, \"name\": \"Bewerter\", \"statement_descriptor\": null, \"trial_period_days\": null}, \"quantity\": 1, \"start\": 1495640312, \"status\": \"active\", \"tax_percent\": null, \"trial_end\": null, \"trial_start\": null}",
+    "stripe_account_id": "cus_AiSUhMcFC4xuZN"
+  },
+  {
+    "id": 2,
+    "login": "provider_basic",
+    "password": "strongpass",
+    "email": "okornok_provider_basic@sliceart.com.ua",
+    "is_verified": true,
+    "is_enabled": true,
+    "role": "Provider",
+    "stripe_account_id": "cus_BNx5f6N9ib5aMo",
+    "stripe_subscription": "{\"id\": \"sub_BNx64h2TSjYCeF\",\"object\": \"subscription\",\"application_fee_percent\": null,\"billing\": \"charge_automatically\",\"cancel_at_period_end\": false,\"canceled_at\": null,\"created\": 1505210466,\"current_period_end\": 1507802466,\"current_period_start\": 1505210466,\"customer\": \"cus_BNx5f6N9ib5aMo\",\"discount\": null,\"ended_at\": null,\"items\": {\"object\": \"list\",\"data\": [{\"id\": \"si_1B1BCYHyBx8Sh2uZe5GQcCIZ\",\"object\": \"subscription_item\",\"created\": 1505210466,\"metadata\": {},\"plan\": {\"id\": \"1-basic\",\"object\": \"plan\",\"amount\": 0,\"created\": 1495624495,\"currency\": \"chf\",\"interval\": \"month\",\"interval_count\": 1,\"livemode\": false,\"metadata\": {\"Description\": \"Einfache Homepage Stellungname zu Bewertung Limtitierte anzahl Fotos in  Bewertungsanfrage\"},\"name\": \"Basic\",\"statement_descriptor\": null,\"trial_period_days\": null},\"quantity\": 1}],\"has_more\": false,\"total_count\": 1,\"url\": \"/v1/subscription_items?subscription=sub_BNx64h2TSjYCeF\"},\"livemode\": false,\"metadata\": {},\"plan\": {\"id\": \"1-basic\",\"object\": \"plan\",\"amount\": 0,\"created\": 1495624495,\"currency\": \"chf\",\"interval\": \"month\",\"interval_count\": 1,\"livemode\": false,\"metadata\": {\"Description\": \"Einfache Homepage Stellungname zu Bewertung Limtitierte anzahl Fotos in  Bewertungsanfrage\"},\"name\": \"Basic\",\"statement_descriptor\": null,\"trial_period_days\": null},\"quantity\": 1,\"start\": 1505210466,\"status\": \"active\",\"tax_percent\": null,\"trial_end\": null,\"trial_start\": null}"
+  },
+  {
+    "id": 3,
+    "login": "provider_silver",
+    "password": "strongpass",
+    "email": "okornok_provider_silver@sliceart.com.ua",
+    "is_verified": true,
+    "is_enabled": true,
+    "role": "Provider",
+    "stripe_account_id": "cus_AiOHbpKNoImmQ3",
+    "stripe_subscription": "{\"id\": \"sub_AiOwMq6y1IB7iT\", \"object\": \"subscription\", \"application_fee_percent\": null, \"cancel_at_period_end\": false, \"canceled_at\": null, \"created\": 1495627147, \"current_period_end\": 1498305547, \"current_period_start\": 1495627147, \"customer\": \"cus_AiOHbpKNoImmQ3\", \"discount\": null, \"ended_at\": null, \"items\": {\"object\": \"list\", \"data\": [{\"id\": \"si_1AMy8tHyBx8Sh2uZDyDWKoD0\", \"object\": \"subscription_item\", \"created\": 1495627147, \"plan\": {\"id\": \"2-silver\", \"object\": \"plan\", \"amount\": 2900, \"created\": 1495624504, \"currency\": \"chf\", \"interval\": \"month\", \"interval_count\": 1, \"livemode\": false, \"metadata\": {}, \"name\": \"Silver\", \"statement_descriptor\": null, \"trial_period_days\": null}, \"quantity\": 1}], \"has_more\": false, \"total_count\": 1, \"url\": \"/v1/subscription_items?subscription=sub_AiOwMq6y1IB7iT\"}, \"livemode\": false, \"metadata\": {}, \"plan\": {\"id\": \"2-silver\", \"object\": \"plan\", \"amount\": 2900, \"created\": 1495624504, \"currency\": \"chf\", \"interval\": \"month\", \"interval_count\": 1, \"livemode\": false, \"metadata\": {}, \"name\": \"Silver\", \"statement_descriptor\": null, \"trial_period_days\": null}, \"quantity\": 1, \"start\": 1495627147, \"status\": \"active\", \"tax_percent\": null, \"trial_end\": null, \"trial_start\": null}"
+  },
+  {
+    "id": 4,
+    "login": "provider_gold",
+    "password": "strongpass",
+    "email": "okornok_provider_gold@sliceart.com.ua",
+    "is_verified": true,
+    "is_enabled": true,
+    "role": "Provider",
+    "stripe_account_id": "cus_AiOHJ49SvcM9GC",
+    "stripe_subscription": "{\"id\": \"sub_AiOyG9jwbjf59G\", \"object\": \"subscription\", \"application_fee_percent\": null, \"cancel_at_period_end\": false, \"canceled_at\": null, \"created\": 1495627235, \"current_period_end\": 1498305635, \"current_period_start\": 1495627235, \"customer\": \"cus_AiOHJ49SvcM9GC\", \"discount\": null, \"ended_at\": null, \"items\": {\"object\": \"list\", \"data\": [{\"id\": \"si_1AMyAJHyBx8Sh2uZDZdfZm79\", \"object\": \"subscription_item\", \"created\": 1495627236, \"plan\": {\"id\": \"3-gold\", \"object\": \"plan\", \"amount\": 3900, \"created\": 1495624509, \"currency\": \"chf\", \"interval\": \"month\", \"interval_count\": 1, \"livemode\": false, \"metadata\": {}, \"name\": \"Gold\", \"statement_descriptor\": null, \"trial_period_days\": null}, \"quantity\": 1}], \"has_more\": false, \"total_count\": 1, \"url\": \"/v1/subscription_items?subscription=sub_AiOyG9jwbjf59G\"}, \"livemode\": false, \"metadata\": {}, \"plan\": {\"id\": \"3-gold\", \"object\": \"plan\", \"amount\": 3900, \"created\": 1495624509, \"currency\": \"chf\", \"interval\": \"month\", \"interval_count\": 1, \"livemode\": false, \"metadata\": {}, \"name\": \"Gold\", \"statement_descriptor\": null, \"trial_period_days\": null}, \"quantity\": 1, \"start\": 1495627235, \"status\": \"active\", \"tax_percent\": null, \"trial_end\": null, \"trial_start\": null}"
+  },
+  {
+    "id": 5,
+    "login": "user-admin",
+    "password": "strongpass",
+    "email": "okornok_supporter@sliceart.com.ua",
+    "is_verified": true,
+    "is_enabled": true,
+    "role": "Admin"
+  }
+]

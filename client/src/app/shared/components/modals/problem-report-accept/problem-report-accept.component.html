@@ -1,0 +1,17 @@
+<div class="modal-size modal-size--big">
+  <div class="modal__header">
+    <div class="modal__title"><strong>Decline a Problem report</strong></div>
+    <div class="modal__subtitle">Melder uber Ablehnungagrung informieren</div>
+    <md-icon class="modal__close" (click)="dialogRef.close(true)">clear</md-icon>
+  </div>
+
+  <md-input-container class="input">
+    <textarea class="textarea-no-resize" mdInput placeholder="Nachricht" [(ngModel)]="message"></textarea>
+  </md-input-container>
+  <md-error *ngIf="isEmptyMsg">Bitte geben Sie den Text ein</md-error>
+
+  <div class="modal__control modal__control--right modal__control--no-bordered">
+    <a class="btn btn--link" (click)="confirm($event)">Absenden</a>
+  </div>
+</div>
+

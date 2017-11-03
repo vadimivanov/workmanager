@@ -1,0 +1,21 @@
+{
+  "production": {
+    "use_env_variable": "DATABASE_URL"
+  },
+  "development": {
+    "username": "admin",
+    "password": "GJJDFHTIUODLQIGQ",
+    "database": "compose",
+    "host": "aws-us-east-1-portal.5.dblayer.com",
+    "port": 24747,
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "okornok",
+    "password": "mN452ert",
+    "database": "okornok_aws_dev",
+    "host": "okornok-aws-dev.ct8hhgqkekcg.us-west-2.rds.amazonaws.com",
+    "port": 5432,
+    "dialect": "postgres"
+  }
+}

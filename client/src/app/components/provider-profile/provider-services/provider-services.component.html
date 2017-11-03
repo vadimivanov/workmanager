@@ -1,0 +1,60 @@
+<div class="container container--full-width-mobile">
+  <div class="block" *ngIf="isProvider">
+    <header class="block__header">
+      <h1>Dienstleistungskategorien auswählen</h1>
+      <h2 class="h3">Wählen Sie welche Dienstleistungen Ihr Unternehmen anbietet</h2>
+    </header>
+    <ul class="accordion accordion--alt block__full-width" data-accordion #accordion>
+      <li class="accordion__item" [class.accordion__item--active]="highlightStatus[i]" data-accordion-item
+          *ngFor="let service of providerServices, let i = index">
+        <button type="button" class="accordion__title" (click)="toggleList($event, i)">
+          <md-checkbox class="checkbox" value="{{service.id}}"
+                       [ngModel]="providerServicesMap[service.id + 'service'].checked"
+                       (change)="updateCheckedOptions(service.id + 'service', $event, i)" appClickStopPropagation>
+            {{service.name}}
+          </md-checkbox>
+          <md-icon class="accordion__title-ico">keyboard_arrow_down</md-icon>
+        </button>
+        <div class="accordion__content" data-tab-content>
+          <div class="grid-noGutter">
+            <div class="col-6_sm-12" *ngFor="let subservice of service['Subservices']">
+              <md-checkbox class="checkbox checkbox--full-width checkbox--bottom-indented" value="{{subservice.id}}"
+                           [ngModel]="providerServicesMap[subservice.id + 'subService'].checked"
+                           (change)="updateCheckedOptions(subservice.id + 'subService', $event)">
+                {{subservice.name}}
+              </md-checkbox>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <footer class="block__footer text-center">
+      <button class="btn" type="button" md-raised-button (click)="updateServices($event)">
+        Änderungen speichern
+      </button>
+    </footer>
+  </div>
+
+  <div class="block" *ngIf="!isProvider">
+    <header class="block__header">
+      <h1>Dienstleistungskategorien auswählen</h1>
+      <h2 class="h3">Wählen Sie welche Dienstleistungen Ihr Unternehmen anbietet</h2>
+    </header>
+    <ul class="accordion accordion--alt block__full-width" data-accordion #accordion>
+      <li class="accordion__item" [class.accordion__item--active]="highlightStatus[i]" data-accordion-item
+          *ngFor="let service of providerSubServicesArr, let i = index">
+        <button type="button" class="accordion__title" (click)="toggleList($event, i)">
+          {{service.name}}
+          <md-icon class="accordion__title-ico">keyboard_arrow_down</md-icon>
+        </button>
+        <div class="accordion__content" data-tab-content>
+          <div class="grid-noGutter">
+            <div class="col-4_sm-12" *ngFor="let subservice of service.subservices">
+              <span class="accordion__text">{{subservice.name}}</span>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

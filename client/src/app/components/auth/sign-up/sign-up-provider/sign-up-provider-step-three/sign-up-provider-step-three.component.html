@@ -1,0 +1,77 @@
+<div class="container container--small container--full-width-mobile">
+  <form class="sign-up-provider block" [formGroup]="stepThreeForm"
+        (ngSubmit)="onSubmit(stepThreeForm.value)" #form="ngForm">
+    <app-register-steps [activeStep]="3"></app-register-steps>
+    <div class="sign-up-provider__body">
+      <header class="block__header">
+        <h1>Als Dienstleister registrieren</h1>
+        <h2 class="h3">Erstellen Sie ein Benutzerkonto und legen Sie los!</h2>
+      </header>
+      <div class="grid">
+        <div class="col-5_xs-12" data-push-right="off-2_xs-0">
+          <md-select id="gender" name="gender" class="select sign-up-provider__select" placeholder="Anrede"
+                     formControlName="gender" required>
+            <md-option *ngFor="let gender of genders" [value]="gender.name">
+              {{ gender.title }}
+            </md-option>
+          </md-select>
+          <md-input-container class="input">
+            <input mdInput placeholder="Vorname" id="firstName" formControlName="firstName"
+                   required [(ngModel)]="provider.firstName">
+            <md-error>{{ formErrors.firstName }}</md-error>
+          </md-input-container>
+          <md-input-container class="input">
+            <input mdInput placeholder="Nachname" value="" id="lastName" formControlName="lastName" required
+                   [(ngModel)]="provider.lastName">
+            <md-error>{{ formErrors.lastName }}</md-error>
+          </md-input-container>
+          <md-input-container class="input">
+            <input mdInput type="text" placeholder="Telefonnummer" id="telNo" formControlName="telNo" required
+                   [(ngModel)]="provider.telNo">
+            <md-error>{{ formErrors.telNo }}</md-error>
+          </md-input-container>
+        </div>
+        <div class="col-5_xs-12">
+          <md-input-container class="input">
+            <input mdInput type="email" placeholder="E-mail" id="email" formControlName="email" required
+                   [(ngModel)]="provider.email">
+            <md-error>{{ formErrors.email }}</md-error>
+          </md-input-container>
+          <md-input-container class="input">
+            <input mdInput type="password" placeholder="Passwort" id="password" #userPassEl formControlName="password"
+                   required [(ngModel)]="provider.password">
+            <button class="input__control" type="button" (click)="changePasswordType()">
+              <md-icon *ngIf="show; else visibilityConfOff">visibility_off</md-icon>
+              <ng-template #visibilityConfOff>
+                <md-icon>remove_red_eye</md-icon>
+              </ng-template>
+            </button>
+            <md-error>{{formErrors.password}}</md-error>
+          </md-input-container>
+          <div class="sign-up-provider__approvement">
+            <p>Indem Sie fortfahren, erklären Sie sich mit unserer
+              <a routerLink="/privacy-policy">Datenschutzerklärung</a>
+              und unseren
+              <a routerLink="/terms-conditions">Nutzungsbedingungen</a>
+              einverstanden.
+            </p>
+            <md-checkbox class="checkbox" id="subscribe" formControlName="subscribe" [(ngModel)]="provider.subscribe">
+              Newsletter empfangen
+            </md-checkbox>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="sign-up-provider__footer">
+      <button type="button" class="sign-up-provider__prev btn" (click)="back()" md-raised-button>
+        <md-icon>chevron_left</md-icon>
+        Zurück
+      </button>
+      <button type="button" class="sign-up-provider__next btn" md-raised-button (click)="next()"
+              [disabled]="!stepThreeForm.valid || isButtonDisabled">
+        Weiter
+        <md-icon>chevron_right</md-icon>
+      </button>
+    </footer>
+  </form>
+</div>

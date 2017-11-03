@@ -1,0 +1,5 @@
+{
+  "timezone": "Europe/Kiev",
+  "every12Hours": "0 0 0/12 * * *",
+  "every30SecondsTest": "0/30 * * * * *"
+}

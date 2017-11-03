@@ -1,0 +1,11 @@
+<div class="visual__container">
+  <div class="visual__info">
+    <h2 class="visual__title">
+      <ng-content select="[visual-title]"></ng-content>
+    </h2>
+    <div class="visual__text">
+      <ng-content select="[visual-text]"></ng-content>
+    </div>
+    <a *ngIf="isLink" class="visual__btn btn" routerLink="/register/provider" md-raised-button><ng-content select="[visual-link]"></ng-content></a>
+  </div>
+</div>

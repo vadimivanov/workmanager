@@ -1,0 +1,9 @@
+@import "../../../styles/base/index";
+
+:host {
+  display: block;
+  &::after {
+    content: '';
+    display: inline-block;
+  }
+}

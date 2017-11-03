@@ -1,0 +1,52 @@
+<header class="block__header">
+  <h1>Benutzerkontodaten</h1>
+  <h3>Some hint here</h3>
+</header>
+<form [formGroup]="raterForm"
+      (ngSubmit)="onSubmit(raterForm.value)" #form="ngForm">
+  <div class="grid">
+    <div class="col-8_xs-12">
+      <md-input-container class="input">
+        <input mdInput placeholder="Benutzer-Vorname" formControlName="firstName"
+               [(ngModel)]="rater.first_name" maxlength="255" required>
+        <md-error>{{ formErrors.firstName }}</md-error>
+      </md-input-container>
+      <md-input-container class="input">
+        <input mdInput placeholder="Benutzer-Nachname" formControlName="lastName"
+               [(ngModel)]="rater.last_name" maxlength="255" required>
+        <md-error>{{ formErrors.lastName }}</md-error>
+      </md-input-container>
+      <md-input-container class="input">
+        <input mdInput placeholder="E-Mail" type="email" id="userEmail" formControlName="userEmail"
+               [(ngModel)]="rater.email" required>
+        <md-error>{{ formErrors.userEmail }}</md-error>
+      </md-input-container>
+      <md-input-container class="input">
+        <input mdInput placeholder="Tätigkeit" type="text" id="userOccupation" formControlName="userOccupation"
+               [(ngModel)]="rater.occupation" maxlength="255">
+        <md-error>{{ formErrors.userOccupation }}</md-error>
+      </md-input-container>
+      <md-input-container class="input">
+        <input mdInput placeholder="Ort" type="text" id="userOrt" formControlName="userOrt"
+               [(ngModel)]="rater.city" maxlength="255">
+        <md-error>{{ formErrors.userOrt }}</md-error>
+      </md-input-container>
+      <md-input-container class="input">
+        <input mdInput placeholder="Über mich" type="text" id="userAbout" formControlName="userAbout"
+               [(ngModel)]="rater.about" maxlength="255">
+        <md-error>{{ formErrors.userAbout }}</md-error>
+      </md-input-container>
+      <div class="text-dark-secondary">
+        <p>Falls Sie Ihr Benutzerkonto löschen wollen, senden Sie uns bitte eine E-Mail von der
+          registrierten E-Mail Adresse an <a href="mailto:support@okornok.ch">support@okornok.ch</a>
+        </p>
+      </div>
+    </div>
+    <div class="col-4_xs-12">
+      <app-image-input class="image-input--top" [imageUrl]="rater.photo_url" (select)="onSelectAvatar($event)"></app-image-input>
+    </div>
+  </div>
+  <div class="flex-justify-end">
+    <button md-raised-button class="btn btn--small-width" type="submit" [disabled]="!raterForm.dirty && !avatar">speichern</button>
+  </div>
+</form>

@@ -1,0 +1,7 @@
+<ng2-slim-loading-bar [color]="'#ff6634'" [height]="'4px'"></ng2-slim-loading-bar>
+<router-outlet (deactivate)="onDeactivate()"></router-outlet>
+<app-toast #toast>
+  {{errorText}}
+  <button class="btn toast__btn" type="button" (click)="toast.hide()" md-button>Close</button>
+</app-toast>
+<app-fade-mask #spinner></app-fade-mask>

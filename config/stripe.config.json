@@ -1,0 +1,12 @@
+{
+  "apiTestKeys":{
+    "secretKey": "sk_test_PTu0ER5OWeVaWo2GnFvDOEfi",
+    "publishableKey": "pk_test_K4QohlrLh6UmjQQ8UWdT2cKF"
+  },
+  "apiLiveKeys": {
+    "secretKey": "",
+    "publishableKey": ""
+  },
+  "config": {},
+  "testCardToken": "tok_visa"
+}

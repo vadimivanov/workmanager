@@ -1,0 +1,2052 @@
+[
+  {
+    "name": "Bauheizung / Bautrocknung / Baulüftung",
+    "description": "Some description",
+    "service_id": 1
+  },
+  {
+    "name": "Abbrucharbeiten",
+    "description": "Some description",
+    "service_id": 2
+  },
+  {
+    "name": "Allgemeine Maurerarbeiten",
+    "description": "Some description",
+    "service_id": 2
+  },
+  {
+    "name": "Ausbrucharbeiten",
+    "description": "Some description",
+    "metatags": ["Wand einreissen"],
+    "service_id": 2
+  },
+  {
+    "name": "Aushubarbeiten",
+    "description": "Some description",
+    "service_id": 2
+  },
+  {
+    "name": "Betonbauten",
+    "description": "Some description",
+    "service_id": 2
+  },
+  {
+    "name": "Betonsanierung",
+    "description": "Some description",
+    "metatags": ["Beton instandsetzen"],
+    "service_id": 2
+  },
+  {
+    "name": "Bohr-und Schneidearbeiten Beton und Mauerwerk",
+    "description": "Some description",
+    "service_id": 2
+  },
+  {
+    "name": "Brandabschottung",
+    "description": "Some description",
+    "service_id": 2
+  },
+  {
+    "name": "Drainagen",
+    "description": "Some description",
+    "service_id": 2
+  },
+  {
+    "name": "Klebearmierungen",
+    "description": "Some description",
+    "service_id": 2
+  },
+  {
+    "name": "Natursteinpflästerungen",
+    "description": "Some description",
+    "service_id": 2
+  },
+  {
+    "name": "Natursteinplatten-Beläge",
+    "description": "Some description",
+    "service_id": 2
+  },
+  {
+    "name": "Pflästerungen und Abschlüsse",
+    "description": "Some description",
+    "service_id": 2
+  },
+  {
+    "name": "Rückbau",
+    "description": "Some description",
+    "service_id": 2
+  },
+  {
+    "name": "Schlauch - Kanalinjektionen",
+    "description": "Some description",
+    "service_id": 2
+  },
+  {
+    "name": "Sichtbeton",
+    "description": "Some description",
+    "service_id": 2
+  },
+  {
+    "name": "Sichtmauerwerk",
+    "description": "Some description",
+    "service_id": 2
+  },
+  {
+    "name": "Silikonfungen",
+    "description": "Some description",
+    "service_id": 2
+  },
+  {
+    "name": "Spitzarbeiten",
+    "description": "Some description",
+    "service_id": 2
+  },
+  {
+    "name": "Stahlbetonbauten",
+    "description": "Some description",
+    "service_id": 2
+  },
+  {
+    "name": "Umgebungsarbeiten",
+    "description": "Some description",
+    "service_id": 2
+  },
+  {
+    "name": "Balkon- und Terrassenbeschichtungen",
+    "description": "Some description",
+    "service_id": 3
+  },
+  {
+    "name": "Dekorative Bodenbeschichtung",
+    "description": "Some description",
+    "service_id": 3
+  },
+  {
+    "name": "Fliesen (Plättli)",
+    "description": "Some description",
+    "metatags": ["Plättli legen"],
+    "service_id": 3
+  },
+  {
+    "name": "Fliessestrich / Unterlagsboden",
+    "description": "Some description",
+    "service_id": 3
+  },
+  {
+    "name": "Industriebodenbeläge",
+    "description": "Some description",
+    "service_id": 3
+  },
+  {
+    "name": "Kautschukbodenbeläge",
+    "description": "Some description",
+    "service_id": 3
+  },
+  {
+    "name": "Korkboden",
+    "description": "Some description",
+    "service_id": 3
+  },
+  {
+    "name": "Kunsstoffbeläge (PVC)",
+    "description": "Some description",
+    "service_id": 3
+  },
+  {
+    "name": "Laminatböden",
+    "description": "Some description",
+    "service_id": 3
+  },
+  {
+    "name": "Linoleum",
+    "description": "Some description",
+    "service_id": 3
+  },
+  {
+    "name": "Parkett",
+    "description": "Some description",
+    "service_id": 3
+  },
+  {
+    "name": "Teppich",
+    "description": "Some description",
+    "service_id": 3
+  },
+  {
+    "name": "Biberschwanzziegel",
+    "description": "Some description",
+    "service_id": 4
+  },
+  {
+    "name": "Dach Seilsicherungssysteme",
+    "description": "Some description",
+    "service_id": 4
+  },
+  {
+    "name": "Dach Solaranlage",
+    "description": "Some description",
+    "service_id": 4
+  },
+  {
+    "name": "Dachbegrünung",
+    "description": "Some description",
+    "service_id": 4
+  },
+  {
+    "name": "Dachentwässerungen und Abschlüsse",
+    "description": "Some description",
+    "service_id": 4
+  },
+  {
+    "name": "Dächer historischer Bauten",
+    "description": "Some description",
+    "service_id": 4
+  },
+  {
+    "name": "Dachfenster",
+    "description": "Some description",
+    "service_id": 4
+  },
+  {
+    "name": "Dachreinigung",
+    "description": "Some description",
+    "service_id": 4
+  },
+  {
+    "name": "Dachrinnen- und Abläufe",
+    "description": "Some description",
+    "service_id": 4
+  },
+  {
+    "name": "Falzdächern aus Kupfer",
+    "description": "Some description",
+    "service_id": 4
+  },
+  {
+    "name": "Flachdächer",
+    "description": "Some description",
+    "service_id": 4
+  },
+  {
+    "name": "Historische Dächer",
+    "description": "Some description",
+    "service_id": 4
+  },
+  {
+    "name": "Kaminbekleidung",
+    "description": "Some description",
+    "service_id": 4
+  },
+  {
+    "name": "Kamineinfassungen",
+    "description": "Some description",
+    "service_id": 4
+  },
+  {
+    "name": "Lukarnen",
+    "description": "Some description",
+    "service_id": 4
+  },
+  {
+    "name": "Metalldächer",
+    "description": "Some description",
+    "service_id": 4
+  },
+  {
+    "name": "Schneestop auf Ziegel",
+    "description": "Some description",
+    "service_id": 4
+  },
+  {
+    "name": "Steildächer",
+    "description": "Some description",
+    "service_id": 4
+  },
+  {
+    "name": "Gipsbauplatten",
+    "description": "Some description",
+    "service_id": 5
+  },
+  {
+    "name": "Holzwerkstoffe / Mineralfasern / Textilien",
+    "description": "Some description",
+    "service_id": 5
+  },
+  {
+    "name": "Metallbekleidungen",
+    "description": "Some description",
+    "service_id": 5
+  },
+  {
+    "name": "Platten-und Kunststoffbeläge",
+    "description": "Some description",
+    "service_id": 5
+  },
+  {
+    "name": "Tapezierarbeiten",
+    "description": "Some description",
+    "service_id": 5
+  },
+  {
+    "name": "Blachen beschriften",
+    "description": "Some description",
+    "service_id": 6
+  },
+  {
+    "name": "Briefbogen drucken",
+    "description": "Some description",
+    "service_id": 6
+  },
+  {
+    "name": "Bücher drucken",
+    "description": "Some description",
+    "service_id": 6
+  },
+  {
+    "name": "Fahrzeuge beschriften",
+    "description": "Some description",
+    "service_id": 6
+  },
+  {
+    "name": "Flyer drucken",
+    "description": "Some description",
+    "service_id": 6
+  },
+  {
+    "name": "Gebäude beschriften",
+    "description": "Some description",
+    "service_id": 6
+  },
+  {
+    "name": "Gestaltungsvorschläge ausarbeiten",
+    "description": "Some description",
+    "service_id": 6
+  },
+  {
+    "name": "Glas bedrucken",
+    "description": "Some description",
+    "service_id": 6
+  },
+  {
+    "name": "Innenisolation bedrucken",
+    "description": "Some description",
+    "service_id": 6
+  },
+  {
+    "name": "Logos gestalten",
+    "description": "Some description",
+    "service_id": 6
+  },
+  {
+    "name": "Prospekte drucken",
+    "description": "Some description",
+    "service_id": 6
+  },
+  {
+    "name": "Rolladen beschriften",
+    "description": "Some description",
+    "service_id": 6
+  },
+  {
+    "name": "Visitenkarten drucken",
+    "description": "Some description",
+    "service_id": 6
+  },
+  {
+    "name": "Werbebanner erstellen",
+    "description": "Some description",
+    "service_id": 6
+  },
+  {
+    "name": "Aussenraum-Beleuchtungen",
+    "description": "Some description",
+    "service_id": 7
+  },
+  {
+    "name": "Beleuchtungsanlagen aller Art",
+    "description": "Some description",
+    "service_id": 7
+  },
+  {
+    "name": "Büro- und Gebäude verkabeln",
+    "description": "Some description",
+    "service_id": 7
+  },
+  {
+    "name": "Elektroinstallationen kontrollieren",
+    "description": "Some description",
+    "service_id": 7
+  },
+  {
+    "name": "Elektro-Servicearbeiten durchführen",
+    "description": "Some description",
+    "service_id": 7
+  },
+  {
+    "name": "Energiesparkonzepte erstellen",
+    "description": "Some description",
+    "service_id": 7
+  },
+  {
+    "name": "FTTH: Fibre to the Home (Glasfaser) installieren",
+    "description": "Some description",
+    "service_id": 7
+  },
+  {
+    "name": "Gartenbeleuchtungen",
+    "description": "Some description",
+    "service_id": 7
+  },
+  {
+    "name": "Haustechniklösungen (Digitalstrom)",
+    "description": "Some description",
+    "service_id": 7
+  },
+  {
+    "name": "Haustechniklösungen (Innoxel)",
+    "description": "Some description",
+    "service_id": 7
+  },
+  {
+    "name": "Haustechniklösungen (KNX)",
+    "description": "Some description",
+    "service_id": 7
+  },
+  {
+    "name": "Innenbeleuchtungen",
+    "description": "Some description",
+    "service_id": 7
+  },
+  {
+    "name": "Internet (ADSL/VDSL)",
+    "description": "Some description",
+    "service_id": 7
+  },
+  {
+    "name": "Kabelfernsehen und Internet",
+    "description": "Some description",
+    "service_id": 7
+  },
+  {
+    "name": "Laden- und Schaufenster-Beleuchtungen",
+    "description": "Some description",
+    "service_id": 7
+  },
+  {
+    "name": "LAN Netzwerkverkabelung",
+    "description": "Some description",
+    "service_id": 7
+  },
+  {
+    "name": "LED Beleuchtungen",
+    "description": "Some description",
+    "service_id": 7
+  },
+  {
+    "name": "Objektbeleuchtungen",
+    "description": "Some description",
+    "service_id": 7
+  },
+  {
+    "name": "Privat- und Firmennetzwerken unterhalten",
+    "description": "Some description",
+    "service_id": 7
+  },
+  {
+    "name": "Reparaturen an Elektroinstallation",
+    "description": "Some description",
+    "service_id": 7
+  },
+  {
+    "name": "Sicherungsverteilungen",
+    "description": "Some description",
+    "service_id": 7
+  },
+  {
+    "name": "Sonnerie-Anlagen",
+    "description": "Some description",
+    "service_id": 7
+  },
+  {
+    "name": "Steuerungs- und Tableaubau",
+    "description": "Some description",
+    "service_id": 7
+  },
+  {
+    "name": "Switch, Router, Firewall, Wireless-LAN, WI-FI installieren",
+    "description": "Some description",
+    "service_id": 7
+  },
+  {
+    "name": "Telefon / Internet aufschalten",
+    "description": "Some description",
+    "service_id": 7
+  },
+  {
+    "name": "Telefonie über Internet (Voice over IP)",
+    "description": "Some description",
+    "service_id": 7
+  },
+  {
+    "name": "TV-Verkabelung",
+    "description": "Some description",
+    "service_id": 7
+  },
+  {
+    "name": "Video-Gegensprechanlagen",
+    "description": "Some description",
+    "service_id": 7
+  },
+  {
+    "name": "Entrümpelung- und Entsorgungsarbeiten",
+    "description": "Some description",
+    "service_id": 8
+  },
+  {
+    "name": "Mulden-Service",
+    "description": "Some description",
+    "service_id": 8
+  },
+  {
+    "name": "Aluminium-Fenster",
+    "description": "Some description",
+    "service_id": 9
+  },
+  {
+    "name": "Aluminiumtüren",
+    "description": "Some description",
+    "service_id": 9
+  },
+  {
+    "name": "Balkontüren",
+    "description": "Some description",
+    "service_id": 9
+  },
+  {
+    "name": "Bleiglasfenster",
+    "description": "Some description",
+    "service_id": 9
+  },
+  {
+    "name": "Einbruchschutz Fenster",
+    "description": "Some description",
+    "service_id": 9
+  },
+  {
+    "name": "Einbruchschutz Türen",
+    "description": "Some description",
+    "service_id": 9
+  },
+  {
+    "name": "Fenster Insektenschutz",
+    "description": "Some description",
+    "service_id": 9
+  },
+  {
+    "name": "Fensterbänke / Fensterzargen",
+    "description": "Some description",
+    "service_id": 9
+  },
+  {
+    "name": "Glasmalerei an Fenster",
+    "description": "Some description",
+    "service_id": 9
+  },
+  {
+    "name": "Glastüren",
+    "description": "Some description",
+    "service_id": 9
+  },
+  {
+    "name": "Haustüren jeder Art",
+    "description": "Some description",
+    "service_id": 9
+  },
+  {
+    "name": "Historische Fenster",
+    "description": "Some description",
+    "service_id": 9
+  },
+  {
+    "name": "Historische Türen",
+    "description": "Some description",
+    "service_id": 9
+  },
+  {
+    "name": "Holz-Aluminium Fenster",
+    "description": "Some description",
+    "service_id": 9
+  },
+  {
+    "name": "Holz-Aluminium Türen",
+    "description": "Some description",
+    "service_id": 9
+  },
+  {
+    "name": "Holzfenster",
+    "description": "Some description",
+    "service_id": 9
+  },
+  {
+    "name": "Holztüren",
+    "description": "Some description",
+    "service_id": 9
+  },
+  {
+    "name": "Katzentüren",
+    "description": "Some description",
+    "service_id": 9
+  },
+  {
+    "name": "Kunststoff-Aluminium Fenster",
+    "description": "Some description",
+    "service_id": 9
+  },
+  {
+    "name": "Kunststoff-Fenster",
+    "description": "Some description",
+    "service_id": 9
+  },
+  {
+    "name": "Lichtschachtabdeckungen",
+    "description": "Some description",
+    "service_id": 9
+  },
+  {
+    "name": "Schallschutz Fenster",
+    "description": "Some description",
+    "service_id": 9
+  },
+  {
+    "name": "Schallschutz Türen",
+    "description": "Some description",
+    "service_id": 9
+  },
+  {
+    "name": "Schiebetüren",
+    "description": "Some description",
+    "service_id": 9
+  },
+  {
+    "name": "Schliessanlagen",
+    "description": "Some description",
+    "service_id": 9
+  },
+  {
+    "name": "Sichtschutzfenster",
+    "description": "Some description",
+    "service_id": 9
+  },
+  {
+    "name": "Zimmertüren jeder Art",
+    "description": "Some description",
+    "service_id": 9
+  },
+  {
+    "name": "Allgemeine Gartenarbeiten",
+    "description": "Some description",
+    "service_id": 10
+  },
+  {
+    "name": "Bäume und Sträucher",
+    "description": "Some description",
+    "service_id": 10
+  },
+  {
+    "name": "Beerensträucher",
+    "description": "Some description",
+    "service_id": 10
+  },
+  {
+    "name": "Biotope",
+    "description": "Some description",
+    "service_id": 10
+  },
+  {
+    "name": "Bollesteinfundamente",
+    "description": "Some description",
+    "service_id": 10
+  },
+  {
+    "name": "Brunnen",
+    "description": "Some description",
+    "service_id": 10
+  },
+  {
+    "name": "Formwilde Natursteinbeläge",
+    "description": "Some description",
+    "service_id": 10
+  },
+  {
+    "name": "Gartenbewässerung",
+    "description": "Some description",
+    "service_id": 10
+  },
+  {
+    "name": "Gartenunterhaltsarbeiten",
+    "description": "Some description",
+    "service_id": 10
+  },
+  {
+    "name": "Grabpflege",
+    "description": "Some description",
+    "service_id": 10
+  },
+  {
+    "name": "Hecken",
+    "description": "Some description",
+    "service_id": 10
+  },
+  {
+    "name": "Holzdeck/Holzterrasse",
+    "description": "Some description",
+    "service_id": 10
+  },
+  {
+    "name": "Holzen und Roden",
+    "description": "Some description",
+    "service_id": 10
+  },
+  {
+    "name": "Kunststeinarbeiten",
+    "description": "Some description",
+    "service_id": 10
+  },
+  {
+    "name": "Natursteinmauern",
+    "description": "Some description",
+    "service_id": 10
+  },
+  {
+    "name": "Natursteinpflästerung",
+    "description": "Some description",
+    "service_id": 10
+  },
+  {
+    "name": "Natursteinplatten-Beläge",
+    "description": "Some description",
+    "service_id": 10
+  },
+  {
+    "name": "Obstbäume",
+    "description": "Some description",
+    "service_id": 10
+  },
+  {
+    "name": "Outdoorküchen",
+    "description": "Some description",
+    "service_id": 10
+  },
+  {
+    "name": "Pflanzenschutz",
+    "description": "Some description",
+    "service_id": 10
+  },
+  {
+    "name": "Pflastersteinbeläge",
+    "description": "Some description",
+    "service_id": 10
+  },
+  {
+    "name": "Pflästerungen und Abschlüsse",
+    "description": "Some description",
+    "service_id": 10
+  },
+  {
+    "name": "Rasen",
+    "description": "Some description",
+    "service_id": 10
+  },
+  {
+    "name": "Regenwasserspeicher",
+    "description": "Some description",
+    "service_id": 10
+  },
+  {
+    "name": "Silofundament",
+    "description": "Some description",
+    "service_id": 10
+  },
+  {
+    "name": "Umgebungsarbeiten",
+    "description": "Some description",
+    "service_id": 10
+  },
+  {
+    "name": "Wasserleitungen",
+    "description": "Some description",
+    "service_id": 10
+  },
+  {
+    "name": "Bautrockner",
+    "description": "Some description",
+    "service_id": 11
+  },
+  {
+    "name": "Bodenfräser",
+    "description": "Some description",
+    "service_id": 11
+  },
+  {
+    "name": "Dumper",
+    "description": "Some description",
+    "service_id": 11
+  },
+  {
+    "name": "Gebläse",
+    "description": "Some description",
+    "service_id": 11
+  },
+  {
+    "name": "Häcksler",
+    "description": "Some description",
+    "service_id": 11
+  },
+  {
+    "name": "Heckenschere",
+    "description": "Some description",
+    "service_id": 11
+  },
+  {
+    "name": "Hochdruckreiniger",
+    "description": "Some description",
+    "service_id": 11
+  },
+  {
+    "name": "Mikrobagger",
+    "description": "Some description",
+    "service_id": 11
+  },
+  {
+    "name": "Minibagger",
+    "description": "Some description",
+    "service_id": 11
+  },
+  {
+    "name": "Notstromanlage",
+    "description": "Some description",
+    "service_id": 11
+  },
+  {
+    "name": "Parkettschleifmaschine",
+    "description": "Some description",
+    "service_id": 11
+  },
+  {
+    "name": "Pneulader",
+    "description": "Some description",
+    "service_id": 11
+  },
+  {
+    "name": "Rasenmäher",
+    "description": "Some description",
+    "service_id": 11
+  },
+  {
+    "name": "Trimmer",
+    "description": "Some description",
+    "service_id": 11
+  },
+  {
+    "name": "Vertikutierer",
+    "description": "Some description",
+    "service_id": 11
+  },
+  {
+    "name": "Zuputzmaschine",
+    "description": "Some description",
+    "service_id": 11
+  },
+  {
+    "name": "Hebebühnen",
+    "description": "Some description",
+    "service_id": 11
+  },
+  {
+    "name": "Absturzsicherungen",
+    "description": "Some description",
+    "service_id": 12
+  },
+  {
+    "name": "Baugerüste",
+    "description": "Some description",
+    "service_id": 12
+  },
+  {
+    "name": "Hebebühnen",
+    "description": "Some description",
+    "service_id": 12
+  },
+  {
+    "name": "Rollgerüste",
+    "description": "Some description",
+    "service_id": 12
+  },
+  {
+    "name": "Allgemeine Gipserarbeiten",
+    "description": "Some description",
+    "service_id": 13
+  },
+  {
+    "name": "Aussenwärmedämmungen",
+    "description": "Some description",
+    "service_id": 13
+  },
+  {
+    "name": "Boden-, Wand- und Deckenbeläge",
+    "description": "Some description",
+    "service_id": 13
+  },
+  {
+    "name": "Feuerschutz",
+    "description": "Some description",
+    "service_id": 13
+  },
+  {
+    "name": "Filzputz",
+    "description": "Some description",
+    "service_id": 13
+  },
+  {
+    "name": "Konventionelle und historische Putze",
+    "description": "Some description",
+    "service_id": 13
+  },
+  {
+    "name": "Modellierputz",
+    "description": "Some description",
+    "service_id": 13
+  },
+  {
+    "name": "Ornamente",
+    "description": "Some description",
+    "service_id": 13
+  },
+  {
+    "name": "Rustikalputz",
+    "description": "Some description",
+    "service_id": 13
+  },
+  {
+    "name": "Sanierung von Rissen in Mauerwerk",
+    "description": "Some description",
+    "service_id": 13
+  },
+  {
+    "name": "Stuckaturen",
+    "description": "Some description",
+    "service_id": 13
+  },
+  {
+    "name": "Abdeckungen aus Glas",
+    "description": "Some description",
+    "service_id": 14
+  },
+  {
+    "name": "Balkonverglasung",
+    "description": "Some description",
+    "service_id": 14
+  },
+  {
+    "name": "Begehbare Gläser",
+    "description": "Some description",
+    "service_id": 14
+  },
+  {
+    "name": "Bleiverglasung",
+    "description": "Some description",
+    "service_id": 14
+  },
+  {
+    "name": "Duschkabinen aus Glas",
+    "description": "Some description",
+    "service_id": 14
+  },
+  {
+    "name": "Fassadenverglasung",
+    "description": "Some description",
+    "service_id": 14
+  },
+  {
+    "name": "Glas ätzen",
+    "description": "Some description",
+    "service_id": 14
+  },
+  {
+    "name": "Glas sandstrahlen",
+    "description": "Some description",
+    "service_id": 14
+  },
+  {
+    "name": "Glas zuschneiden",
+    "description": "Some description",
+    "service_id": 14
+  },
+  {
+    "name": "Glasreparaturen aller Art",
+    "description": "Some description",
+    "service_id": 14
+  },
+  {
+    "name": "Glastafeln / Beschriftungen",
+    "description": "Some description",
+    "service_id": 14
+  },
+  {
+    "name": "Glastischplatten",
+    "description": "Some description",
+    "service_id": 14
+  },
+  {
+    "name": "Glastreppen",
+    "description": "Some description",
+    "service_id": 14
+  },
+  {
+    "name": "Glasüberdachung",
+    "description": "Some description",
+    "service_id": 14
+  },
+  {
+    "name": "Küchenrückwand aus Glas",
+    "description": "Some description",
+    "service_id": 14
+  },
+  {
+    "name": "Spiegel zuschneiden",
+    "description": "Some description",
+    "service_id": 14
+  },
+  {
+    "name": "Velounterstände aus Glas",
+    "description": "Some description",
+    "service_id": 14
+  },
+  {
+    "name": "Wintergärten",
+    "description": "Some description",
+    "service_id": 14
+  },
+  {
+    "name": "Deckenheizung",
+    "description": "Some description",
+    "service_id": 15
+  },
+  {
+    "name": "Elektroheizungen",
+    "description": "Some description",
+    "service_id": 15
+  },
+  {
+    "name": "Gasheizungen",
+    "description": "Some description",
+    "service_id": 15
+  },
+  {
+    "name": "Grundwasser-Wärmepumpen",
+    "description": "Some description",
+    "service_id": 15
+  },
+  {
+    "name": "Holzheizungen",
+    "description": "Some description",
+    "service_id": 15
+  },
+  {
+    "name": "Infrarotheizungen",
+    "description": "Some description",
+    "service_id": 15
+  },
+  {
+    "name": "Luft-Wärmepumpen",
+    "description": "Some description",
+    "service_id": 15
+  },
+  {
+    "name": "Oehlheizungen",
+    "description": "Some description",
+    "service_id": 15
+  },
+  {
+    "name": "Sole-Wärmepumen",
+    "description": "Some description",
+    "service_id": 15
+  },
+  {
+    "name": "Allgemeine Abdichtungsarbeiten",
+    "description": "Some description",
+    "service_id": 16
+  },
+  {
+    "name": "Aussenabdichtung",
+    "description": "Some description",
+    "service_id": 16
+  },
+  {
+    "name": "Aussenwärmedämmungen",
+    "description": "Some description",
+    "service_id": 16
+  },
+  {
+    "name": "Boden-, Wand- und Deckenbeläge",
+    "description": "Some description",
+    "service_id": 16
+  },
+  {
+    "name": "Dach isolieren",
+    "description": "Some description",
+    "service_id": 16
+  },
+  {
+    "name": "Estrich isolieren",
+    "description": "Some description",
+    "service_id": 16
+  },
+  {
+    "name": "Fassadenisolation",
+    "description": "Some description",
+    "service_id": 16
+  },
+  {
+    "name": "Fugenabdichtungen",
+    "description": "Some description",
+    "service_id": 16
+  },
+  {
+    "name": "Injektionen Mauerwerk",
+    "description": "Some description",
+    "service_id": 16
+  },
+  {
+    "name": "Innenabdichtung",
+    "description": "Some description",
+    "service_id": 16
+  },
+  {
+    "name": "Innenwärmedämmungen",
+    "description": "Some description",
+    "service_id": 16
+  },
+  {
+    "name": "Keller isolieren",
+    "description": "Some description",
+    "service_id": 16
+  },
+  {
+    "name": "Klimaplatten",
+    "description": "Some description",
+    "service_id": 16
+  },
+  {
+    "name": "Schalldämmungen",
+    "description": "Some description",
+    "service_id": 16
+  },
+  {
+    "name": "Wärmedämmungen",
+    "description": "Some description",
+    "service_id": 16
+  },
+  {
+    "name": "Cheminéeöfen",
+    "description": "Some description",
+    "service_id": 17
+  },
+  {
+    "name": "Gas-Cheminées",
+    "description": "Some description",
+    "service_id": 17
+  },
+  {
+    "name": "Heizkassetten",
+    "description": "Some description",
+    "service_id": 17
+  },
+  {
+    "name": "Kachelöfen",
+    "description": "Some description",
+    "service_id": 17
+  },
+  {
+    "name": "Kaminreinigung",
+    "description": "Some description",
+    "service_id": 17
+  },
+  {
+    "name": "Schwedenofen",
+    "description": "Some description",
+    "service_id": 17
+  },
+  {
+    "name": "Automatische Raumlüftung",
+    "description": "Some description",
+    "service_id": 18
+  },
+  {
+    "name": "Deckenklimaanlagen",
+    "description": "Some description",
+    "service_id": 18
+  },
+  {
+    "name": "Kanalklimanlagen",
+    "description": "Some description",
+    "service_id": 18
+  },
+  {
+    "name": "Klima Aussengeräte",
+    "description": "Some description",
+    "service_id": 18
+  },
+  {
+    "name": "Klima Fenstergerät",
+    "description": "Some description",
+    "service_id": 18
+  },
+  {
+    "name": "Klima Innengeräte",
+    "description": "Some description",
+    "service_id": 18
+  },
+  {
+    "name": "Multi- Split Klimaanlagen",
+    "description": "Some description",
+    "service_id": 18
+  },
+  {
+    "name": "Server Klimaanlagen",
+    "description": "Some description",
+    "service_id": 18
+  },
+  {
+    "name": "Solarstromanlagen",
+    "description": "Some description",
+    "service_id": 18
+  },
+  {
+    "name": "Solarstromspeicher",
+    "description": "Some description",
+    "service_id": 18
+  },
+  {
+    "name": "Weinkellerklimaanlagen",
+    "description": "Some description",
+    "service_id": 18
+  },
+  {
+    "name": "Allgemeine Malerarbeiten",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Beizen",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Beschichtung gegen Schimmelbefall",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Beschichtungen von Küchenabdeckungen",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Brandwände",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Denkmalschutz",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Farbgestaltung am PC ",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Fassaden streichen",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Fensterläden lackieren",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Fensterläden streichen",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Feuerschutzwände",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Flüssigtapete beziehen",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Fototapeten beziehen",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Fugenlose Bodenbeschichtungen anbringen",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Fugenlose Wandbeschichtung anbringen",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Garagen- und Balkonbodenbeschichtungen anbringen",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Graffitis entfernen",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Holzfassaden streichen",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Holzschutz anbringen",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Imprägnierung zum Schutz vor Graffitis anbringen",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Korossionsschutz anbringen",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Möbel aller Art lackieren",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Naturfarbanstriche (Biologisch und Allergiker freundlich)",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Ökotapete",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Ornamente",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Sandstrahlen",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Schimmel entfernen",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Schutzfolien anbringen",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Schwimmbadbeschichtung anbringen",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Shabby Chic",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Spezial-/Effektlackierung",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Spezielle Farbanstriche ",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Stahlschutz anbringen",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Stofftapeten",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Strukturtapeten",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Stucco Veneziano",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Textiltapeten",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Vergolden",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Vliestapeten",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Zementputz anbringen",
+    "description": "Some description",
+    "service_id": 19
+  },
+  {
+    "name": "Geländer",
+    "description": "Some description",
+    "service_id": 20
+  },
+  {
+    "name": "Stahlkonstruktionen",
+    "description": "Some description",
+    "service_id": 20
+  },
+  {
+    "name": "Stahlstützen / Stahlträger",
+    "description": "Some description",
+    "service_id": 20
+  },
+  {
+    "name": "Treppen",
+    "description": "Some description",
+    "service_id": 20
+  },
+  {
+    "name": "Stahlbaukonstruktionen",
+    "description": "Some description",
+    "service_id": 20
+  },
+  {
+    "name": "Schweissarbeiten",
+    "description": "Some description",
+    "service_id": 20
+  },
+  {
+    "name": "Belagsarbeiten durchführen",
+    "description": "Some description",
+    "service_id": 21
+  },
+  {
+    "name": "Erschliessungen",
+    "description": "Some description",
+    "service_id": 21
+  },
+  {
+    "name": "Formwilde Natursteinbeläge verlegen",
+    "description": "Some description",
+    "service_id": 21
+  },
+  {
+    "name": "Kunststeinarbeiten",
+    "description": "Some description",
+    "service_id": 21
+  },
+  {
+    "name": "Natursteinbeläge fixe Bahnen",
+    "description": "Some description",
+    "service_id": 21
+  },
+  {
+    "name": "Natursteinbepflasterung",
+    "description": "Some description",
+    "service_id": 21
+  },
+  {
+    "name": "Oberflächenbehandlungen / Asphaltdeckschichten",
+    "description": "Some description",
+    "service_id": 21
+  },
+  {
+    "name": "Pflastersteinbeläge",
+    "description": "Some description",
+    "service_id": 21
+  },
+  {
+    "name": "Strassen und Plätze erstellen",
+    "description": "Some description",
+    "service_id": 21
+  },
+  {
+    "name": "Walzasphalt / Gussasphalt auftragen",
+    "description": "Some description",
+    "service_id": 21
+  },
+  {
+    "name": "Abläufe entstopfen",
+    "description": "Some description",
+    "service_id": 22
+  },
+  {
+    "name": "Abwasseranlagen",
+    "description": "Some description",
+    "service_id": 22
+  },
+  {
+    "name": "Allgemeine Arbeiten an Rohrleitungssystemen",
+    "description": "Some description",
+    "service_id": 22
+  },
+  {
+    "name": "Kanalfernsehen",
+    "description": "Some description",
+    "service_id": 22
+  },
+  {
+    "name": "Rohrleitungen entstopfen",
+    "description": "Some description",
+    "service_id": 22
+  },
+  {
+    "name": "Rohrleitungen sanieren",
+    "description": "Some description",
+    "service_id": 22
+  },
+  {
+    "name": "Rohrreinigung",
+    "description": "Some description",
+    "service_id": 22
+  },
+  {
+    "name": "Rohrsanierung",
+    "description": "Some description",
+    "service_id": 22
+  },
+  {
+    "name": "Rohrvortrieb im Ramm-Press-und Bohrverfahren",
+    "description": "Some description",
+    "service_id": 22
+  },
+  {
+    "name": "Abläufe entstopfen",
+    "description": "Some description",
+    "service_id": 23
+  },
+  {
+    "name": "Allgemeine Sanitärarbeiten",
+    "description": "Some description",
+    "metatags": [
+      "Brünneli",
+      "Waschbecken",
+      "Badewanne",
+      "Wasserhahnen",
+      "Duschrinne"
+    ],
+    "service_id": 23
+  },
+  {
+    "name": "Antike Armaturen",
+    "description": "Some description",
+    "service_id": 23
+  },
+  {
+    "name": "Boiler entkalken",
+    "description": "Some description",
+    "service_id": 23
+  },
+  {
+    "name": "Druckluftleitungen",
+    "description": "Some description",
+    "service_id": 23
+  },
+  {
+    "name": "Duschkabinen",
+    "description": "Some description",
+    "service_id": 23
+  },
+  {
+    "name": "Erdgasleitungen",
+    "description": "Some description",
+    "service_id": 23
+  },
+  {
+    "name": "Badezimmer-Möbel ",
+    "description": "Some description",
+    "service_id": 24
+  },
+  {
+    "name": "Einbauschränke ",
+    "description": "Some description",
+    "service_id": 24
+  },
+  {
+    "name": "Garderoben ",
+    "description": "Some description",
+    "service_id": 24
+  },
+  {
+    "name": "Holztreppen",
+    "description": "Some description",
+    "service_id": 24
+  },
+  {
+    "name": "Massiv-Holzküchen",
+    "description": "Some description",
+    "service_id": 24
+  },
+  {
+    "name": "Möbel auf Mass",
+    "description": "Some description",
+    "service_id": 24
+  },
+  {
+    "name": "Möbel auffrischen und restaurieren",
+    "description": "Some description",
+    "service_id": 24
+  },
+  {
+    "name": "Schliessanlagen / Ersatz",
+    "description": "Some description",
+    "service_id": 24
+  },
+  {
+    "name": "Schränke nach Wunsch",
+    "description": "Some description",
+    "service_id": 24
+  },
+  {
+    "name": "Sideboards nach Mass",
+    "description": "Some description",
+    "service_id": 24
+  },
+  {
+    "name": "Standschränke nach Mass",
+    "description": "Some description",
+    "service_id": 24
+  },
+  {
+    "name": "Tische nach Wunsch",
+    "description": "Some description",
+    "service_id": 24
+  },
+  {
+    "name": "Vorhangbretter",
+    "description": "Some description",
+    "service_id": 24
+  },
+  {
+    "name": "Wandverkleidung",
+    "description": "Some description",
+    "service_id": 24
+  },
+  {
+    "name": "Allgemeine Schreinerarbeiten",
+    "description": "Some description",
+    "service_id": 24
+  },
+  {
+    "name": "Aussensauna",
+    "description": "Some description",
+    "service_id": 25
+  },
+  {
+    "name": "Biopool",
+    "description": "Some description",
+    "service_id": 25
+  },
+  {
+    "name": "Biosauna",
+    "description": "Some description",
+    "service_id": 25
+  },
+  {
+    "name": "Dampfbad",
+    "description": "Some description",
+    "service_id": 25
+  },
+  {
+    "name": "Eisraum",
+    "description": "Some description",
+    "service_id": 25
+  },
+  {
+    "name": "Erlebnisduschen",
+    "description": "Some description",
+    "service_id": 25
+  },
+  {
+    "name": "Finnische Sauna",
+    "description": "Some description",
+    "service_id": 25
+  },
+  {
+    "name": "Infrarot Wärmekabine",
+    "description": "Some description",
+    "service_id": 25
+  },
+  {
+    "name": "Naturpool",
+    "description": "Some description",
+    "service_id": 25
+  },
+  {
+    "name": "Poolanlagen",
+    "description": "Some description",
+    "service_id": 25
+  },
+  {
+    "name": "Schwimmteich",
+    "description": "Some description",
+    "service_id": 25
+  },
+  {
+    "name": "Wannen",
+    "description": "Some description",
+    "service_id": 25
+  },
+  {
+    "name": "Brandmeldeanlagen",
+    "description": "Some description",
+    "service_id": 26
+  },
+  {
+    "name": "Einbruchmeldeanlagen",
+    "description": "Some description",
+    "service_id": 26
+  },
+  {
+    "name": "Videoüberwachungsanlagen",
+    "description": "Some description",
+    "service_id": 26
+  },
+  {
+    "name": "Zutrittsüberwachungsanlagen",
+    "description": "Some description",
+    "service_id": 26
+  },
+  {
+    "name": "Allgemeine Spenglerarbeiten",
+    "description": "Some description",
+    "service_id": 27
+  },
+  {
+    "name": "Blechprofile",
+    "description": "Some description",
+    "service_id": 27
+  },
+  {
+    "name": "Deckungen aus Dünnblech",
+    "description": "Some description",
+    "service_id": 27
+  },
+  {
+    "name": "Erdungen",
+    "description": "Some description",
+    "service_id": 27
+  },
+  {
+    "name": "Fangleitungen",
+    "description": "Some description",
+    "service_id": 27
+  },
+  {
+    "name": "Kaminabschlüsse / Kaminhüte",
+    "description": "Some description",
+    "service_id": 27
+  },
+  {
+    "name": "Metallfassungen",
+    "description": "Some description",
+    "service_id": 27
+  },
+  {
+    "name": "Metallfertigteile",
+    "description": "Some description",
+    "service_id": 27
+  },
+  {
+    "name": "Alu- Jalousien",
+    "description": "Some description",
+    "service_id": 28
+  },
+  {
+    "name": "Einbaurolladen",
+    "description": "Some description",
+    "service_id": 28
+  },
+  {
+    "name": "Faltrolladen",
+    "description": "Some description",
+    "service_id": 28
+  },
+  {
+    "name": "Faltschiebeläden",
+    "description": "Some description",
+    "service_id": 28
+  },
+  {
+    "name": "Holzrolladen",
+    "description": "Some description",
+    "service_id": 28
+  },
+  {
+    "name": "Insektenschutz",
+    "description": "Some description",
+    "service_id": 28
+  },
+  {
+    "name": "Klappläden",
+    "description": "Some description",
+    "service_id": 28
+  },
+  {
+    "name": "Lamellenstoren",
+    "description": "Some description",
+    "service_id": 28
+  },
+  {
+    "name": "Schiebeläden",
+    "description": "Some description",
+    "service_id": 28
+  },
+  {
+    "name": "Senkrechtmarkisen",
+    "description": "Some description",
+    "service_id": 28
+  },
+  {
+    "name": "Sicherheitsjalousien",
+    "description": "Some description",
+    "service_id": 28
+  },
+  {
+    "name": "Sonnensegel",
+    "description": "Some description",
+    "service_id": 28
+  },
+  {
+    "name": "Sonnenstoren",
+    "description": "Some description",
+    "service_id": 28
+  },
+  {
+    "name": "Stoffüberdachung",
+    "description": "Some description",
+    "service_id": 28
+  },
+  {
+    "name": "Aluminiumtore",
+    "description": "Some description",
+    "service_id": 29
+  },
+  {
+    "name": "Aluminiumzäune",
+    "description": "Some description",
+    "service_id": 29
+  },
+  {
+    "name": "Carports",
+    "description": "Some description",
+    "service_id": 29
+  },
+  {
+    "name": "Drahtzäune",
+    "description": "Some description",
+    "service_id": 29
+  },
+  {
+    "name": "Garagentor Antriebe",
+    "description": "Some description",
+    "service_id": 29
+  },
+  {
+    "name": "Garagentore",
+    "description": "Some description",
+    "service_id": 29
+  },
+  {
+    "name": "Gitterzäune",
+    "description": "Some description",
+    "service_id": 29
+  },
+  {
+    "name": "Holztore",
+    "description": "Some description",
+    "service_id": 29
+  },
+  {
+    "name": "Kunststoffzäune",
+    "description": "Some description",
+    "service_id": 29
+  },
+  {
+    "name": "Lärmschutzwände",
+    "description": "Some description",
+    "service_id": 29
+  },
+  {
+    "name": "Metallzäune",
+    "description": "Some description",
+    "service_id": 29
+  },
+  {
+    "name": "Schiebetore",
+    "description": "Some description",
+    "service_id": 29
+  },
+  {
+    "name": "Sichtschutzwände",
+    "description": "Some description",
+    "service_id": 29
+  },
+  {
+    "name": "Steinzäune",
+    "description": "Some description",
+    "service_id": 29
+  },
+  {
+    "name": "Torsteuerung",
+    "description": "Some description",
+    "service_id": 29
+  },
+  {
+    "name": "Zäune aus Schmiedeisen",
+    "description": "Some description",
+    "service_id": 29
+  },
+  {
+    "name": "Metalltore",
+    "description": "Some description",
+    "service_id": 29
+  },
+  {
+    "name": "Aktenlagerung",
+    "description": "Some description",
+    "service_id": 30
+  },
+  {
+    "name": "Auslandsumzug mit Zollabwicklung",
+    "description": "Some description",
+    "service_id": 30
+  },
+  {
+    "name": "Endreinigung mit Abnahmegarantie",
+    "description": "Some description",
+    "service_id": 30
+  },
+  {
+    "name": "Hausräumung",
+    "description": "Some description",
+    "service_id": 30
+  },
+  {
+    "name": "Klaviertransporte",
+    "description": "Some description",
+    "service_id": 30
+  },
+  {
+    "name": "Möbel einlagern",
+    "description": "Some description",
+    "service_id": 30
+  },
+  {
+    "name": "Transporte international",
+    "description": "Some description",
+    "service_id": 30
+  },
+  {
+    "name": "Transporte national",
+    "description": "Some description",
+    "service_id": 30
+  },
+  {
+    "name": "Transporte regional",
+    "description": "Some description",
+    "service_id": 30
+  },
+  {
+    "name": "Umzug für Geschäfte",
+    "description": "Some description",
+    "service_id": 30
+  },
+  {
+    "name": "Umzug Privathaushalte",
+    "description": "Some description",
+    "service_id": 30
+  },
+  {
+    "name": "Viermietung von Transportfahrzeugen",
+    "description": "Some description",
+    "service_id": 30
+  },
+  {
+    "name": "Dachkonstruktionen",
+    "description": "Some description",
+    "service_id": 31
+  },
+  {
+    "name": "Elementbau",
+    "description": "Some description",
+    "service_id": 31
+  },
+  {
+    "name": "Fassadenbekleidungen",
+    "description": "Some description",
+    "service_id": 31
+  },
+  {
+    "name": "Holzdecken",
+    "description": "Some description",
+    "service_id": 31
+  },
+  {
+    "name": "Holzkonstruktionen",
+    "description": "Some description",
+    "service_id": 31
+  },
+  {
+    "name": "Massivbau in Holz",
+    "description": "Some description",
+    "service_id": 31
+  },
+  {
+    "name": "Treppen in Holz",
+    "description": "Some description",
+    "service_id": 31
+  },
+  {
+    "name": "Allgemeine Zimmereiarbeiten",
+    "description": "Some description",
+    "service_id": 31
+  }
+]

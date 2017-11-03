@@ -1,0 +1,52 @@
+:host(.carousel) {
+  display: block;
+  position: relative;
+}
+
+.carousel__frame {
+  position: relative;
+  width: 100%;
+  font-size: 0;
+  line-height: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.carousel__list {
+  display: inline-block;
+}
+
+.carousel__item {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 275px;
+  min-height: 118px;
+  img{
+    height: 118px;
+  }
+}
+
+.carousel__img {
+  width: 100%;
+}
+
+.carousel__prev, .carousel__next {
+  position: absolute;
+  top: 50%;
+  margin-top: -25px;
+  display: block;
+  cursor: pointer;
+}
+
+.carousel__next {
+  right: 0;
+}
+
+.carousel__prev {
+  left: 0;
+}
+
+.carousel__ico {
+  width: 25px;
+}

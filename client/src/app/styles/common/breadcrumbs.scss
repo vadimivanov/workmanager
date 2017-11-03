@@ -1,0 +1,32 @@
+@import "../../styles/base/index";
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  padding: rem-calc(10) 0;
+}
+
+.breadcrumbs__item {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-left: rem-calc(10);
+  &::after {
+    @include md-icon;
+    margin-left: rem-calc(8);
+    color: map-get($grays, dark-secondary);
+    content: 'chevron_right';
+  }
+  &:first-child {
+    margin-left: 0;
+  }
+  &:last-child {
+    &:after {
+      display: none;
+    }
+  }
+}
+
+.breadcrumbs__link {
+  color: map-get($grays, dark-secondary);
+}

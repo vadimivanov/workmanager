@@ -1,0 +1,85 @@
+<app-header></app-header>
+<app-visual [isLink]="false">
+  <span visual-title>How it Works</span>
+  <p visual-text>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+  </p>
+</app-visual>
+<div class="headline headline--no-inner-bottom">
+  <h1>How Okornok Works</h1>
+</div>
+<app-info [infoImgUrl]="'assets/images/content/img-info-1.png'">
+  <span info-title>Search for the provider</span>
+  <p info-text>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla </p>
+</app-info>
+<app-info class="info--inverted" [infoImgUrl]="'assets/images/content/img-info-2.png'">
+  <span info-title>Compare professionals</span>
+  <p info-text>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla </p>
+</app-info>
+<app-info [infoImgUrl]="'assets/images/content/img-info-3.png'">
+  <span info-title>Hire the best professional</span>
+  <p info-text>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla </p>
+</app-info>
+<div class="cta" style="background-image: url('../../../assets/images/backgrounds/bg-cta.jpg')">
+  <div class="cta__container">
+    <h3 class="cta__title">Welche Dienstleistung suchen Sie?</h3>
+    <div class="control-group-search">
+      <div class="cta__ctrl control-group">
+        <input class="control-group__input input-alt" [placeholder]="'Gesuchte Dienstleistung eingeben'" type="text"
+               [(ngModel)]="searchValue" [ngModelOptions]="{standalone: true}" #searchField>
+        <button class="control-group__btn btn" (click)="search()" md-raised-button>
+          <md-icon class="control-group__ico">search</md-icon>
+        </button>
+      </div>
+      <div class="search-drop-down" *ngIf="(searchValue.length && searchValue.length > 2) && (filteredServices.length || searchResults.length || metatagsResult.length)">
+        <ul class="search-drop-down__list" *ngIf="filteredServices.length">
+          <li class="search-drop-down__item search-drop-down__title">Kategorien</li>
+          <li class="search-drop-down__item search-drop-down__link" *ngFor="let service of filteredServices"
+              (click)="goToSearchResults(service.parentName ? 'subserviceName' : 'serviceName', service.name)">
+            {{ service.parentName }} > {{ service.name }}
+          </li>
+          <li class="search-drop-down__item search-drop-down__link" *ngIf="filteredServices.length === 3"
+              (click)="allSearch('subserviceName', '')">
+            Alle anzeigen
+          </li>
+        </ul>
+        <ul class="search-drop-down__list" *ngIf="searchResults.length">
+          <li class="search-drop-down__item search-drop-down__title">Dienstleister</li>
+          <li class="search-drop-down__item search-drop-down__link" *ngFor="let result of searchResults; let i = index"
+              (click)="goToProfilePage(result.user_id)">
+            {{ result.company_name }}
+          </li>
+          <li class="search-drop-down__item search-drop-down__link" *ngIf="searchResults.length === 3"
+              (click)="allSearch('searchText', searchValue)">
+            Alle anzeigen
+          </li>
+        </ul>
+        <ul class="search-drop-down__list" *ngIf="metatagsResult.length">
+          <li class="search-drop-down__item search-drop-down__title">Suchen sie etwa</li>
+          <li class="search-drop-down__item search-drop-down__link" *ngFor="let service of metatagsResult"
+              (click)="goToSearchResults(service.parentName ? 'subserviceName' : 'serviceName', service.name)">
+            {{ service.parentName }} > {{ service.name }}
+          </li>
+          <li class="search-drop-down__item search-drop-down__link" *ngIf="metatagsResult.length === 5"
+              (click)="allSearch('subserviceName', '')">
+            Alle anzeigen
+          </li>
+        </ul>
+      </div>
+      <div class="search-drop-down" *ngIf="(searchValue.length > 2 && !isChoosedSearch) && 
+                    !(filteredServices.length || searchResults.length || metatagsResult.length)">
+        <ul>
+          <li class="search-drop-down__item search-drop-down__link">No search results</li>
+        </ul>
+      </div>
+      <div class="search-drop-down"
+           *ngIf="(searchValue.length && searchValue.length < 3)">
+        <ul>
+          <li class="search-drop-down__message">You should type more than 2 symbols</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer class="footer-holder--alt"></app-footer>

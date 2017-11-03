@@ -1,0 +1,63 @@
+<div class="block__group">
+  <div class="inspiration__empty" *ngIf="!photos.length">
+    <span *ngIf="isUserOwner && limit" class="inspiration__empty-text">Es gibt noch keine Fotos.</span>
+    <span *ngIf="isUserOwner && !limit" class="inspiration__empty-text">
+        Ihre aktuelle Mitgliedschaft erlaubt es nicht, Fotos hinzuzufügen. <br>
+        Bitte ändern Sie Ihre <a routerLink="/billing">Mitgliedschaft</a>
+    </span>
+
+    <span *ngIf="!isUserOwner" class="inspiration__empty-text">Dieser Dienstleister hat noch keine Fotos.</span>
+  </div>
+  <div class="ideas" *ngIf="photos.length">
+    <ul class="ideas__list">
+      <li class="ideas__item"
+          *ngFor="let image of photos; let i = index"
+          [ngClass]="{'ideas__item--inactive': image.is_approved && checkIsDisabled(image),
+                      'ideas__item--in-progress': !image.is_approved || !image.is_visible}">
+        <div class="ideas__figure">
+          <div class="ideas-item__in-progress-text" *ngIf="!image.is_approved">In Bearbeitung</div>
+          <div class="ideas-item__in-progress-text" *ngIf="image.is_approved && !image.is_visible">Nicht sichtbar für Bewerter</div>
+          <div class="ideas-item__cover" *ngIf="!image.is_approved || !image.is_visible"></div>
+
+          <md-checkbox class="ideas-item__control checkbox" [checked]="image.is_idea_for_inspiration"
+                       [(ngModel)]="image.is_idea_for_inspiration"
+                       (change)="changeLimitAvailable(image.is_idea_for_inspiration); addToUpdateList(image)"
+                       [disabled]="checkIsDisabled(image)"
+                       *ngIf="isUserOwner && image.is_approved && image.is_visible"></md-checkbox>
+
+          <span class="ideas__img" *ngIf="image.photo_simple_url"
+                [style.background-image]="'url(' + image.photo_simple_url + ')'"></span>
+
+          <div class="ideas__img" *ngIf="image.photo_before_url && image.photo_after_url">
+            <app-image-slider [before]="image.photo_before_url"
+                              [after]="image.photo_after_url"
+                              [isDisplayComponent]="displayComponent"
+            ></app-image-slider>
+          </div>
+        </div>
+        <md-select [id]="'category' + i"
+                   name="category"
+                   class="select select--hide-selected-placeholder"
+                   [required]="image.is_idea_for_inspiration && !image.inspiration_category_id"
+                   [(ngModel)]="image.inspiration_category_id"
+                   (change)="checkIsCanUpdate(); addToUpdateList(image)"
+                   placeholder="Sektion"
+                   *ngIf="isUserOwner && image.is_approved && image.is_visible">
+          <md-option *ngFor="let category of categories" [value]="category.id">
+            {{category.name}}
+          </md-option>
+        </md-select>
+        <md-error class="ideas__error" *ngIf="image.is_idea_for_inspiration && !image.inspiration_category_id">Bitte, wählen Sie die Sektion aus</md-error>
+      </li>
+    </ul>
+
+    <div class="ideas__control" *ngIf="false">
+      <a class="btn btn--link">Mehr anzeigen</a>
+    </div>
+  </div>
+  <div class="ideas__control" *ngIf="isUserOwner && photos.length">
+    <button type="button" class="btn btn-ideas" md-raised-button (click)="updateInspiration($event)" [disabled]="!isCanUpdate">
+      Änderungen speichern
+    </button>
+  </div>
+</div>

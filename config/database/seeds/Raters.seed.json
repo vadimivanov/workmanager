@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "first_name": "Ivan",
+    "last_name": "Petrov",
+    "city": "LA",
+    "about": "I'm a rater",
+    "occupation": "student",
+    "photo_url": "https://okornok-uploads.s3.eu-central-1.amazonaws.com/test-user-1.jpg",
+    "user_id": 1
+  }
+]

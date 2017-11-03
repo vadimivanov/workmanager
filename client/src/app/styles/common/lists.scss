@@ -1,0 +1,132 @@
+@import "../base/index";
+
+dl,
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* list */
+
+.list {
+  display: flex;
+  margin-bottom: rem-calc(19);
+  &:last-child {
+    margin-bottom: 0;
+  }
+  &--horizontal {
+    flex-direction: column;
+  }
+  &--top-indented {
+    padding-top: rem-calc(17);
+  }
+}
+
+.list__item {
+  display: flex;
+  align-items: center;
+  background-color: inherit;
+  cursor: pointer;
+  .list--horizontal & {
+    margin-bottom: rem-calc(19);
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .list--vertical & {
+    padding: rem-calc(13.5) rem-calc(5) rem-calc(13.5) 0;
+  }
+  .list--deep & {
+    position: relative;
+    outline: 0;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    &:hover {
+      flex-direction: column;
+      align-items: flex-start;
+      @include respond-to(sm) {
+        padding-bottom: 0;
+      }
+      .list__sub-list {
+        display: block;
+      }
+    }
+  }
+  .list--bottom-outer-indented & {
+    margin-bottom: rem-calc(23);
+  }
+}
+
+.list__sub-list {
+  display: none;
+  position: relative;
+  left: 0;
+  top: 100%;
+  max-width: rem-calc(320);
+  max-height: rem-calc(270);
+  padding: rem-calc(15) 0 0;
+  overflow: auto;
+  background: inherit;
+  border-radius: 2px;
+  z-index: 10;
+  @include respond-from(sm) {
+    position: absolute;
+    left: calc(100% - 15px);
+    top: 0;
+    box-shadow: 0 1px 5px 1px rgba(0, 0, 0, .24);
+    padding-bottom: rem-calc(15);
+  }
+}
+
+.list__sub-item {
+  @include ellipsis;
+  height: rem-calc(32);
+  line-height: rem-calc(32);
+  padding: 0 rem-calc(20);
+  font-size: rem-calc(14);
+  cursor: pointer;
+  .is-desktop &:hover {
+    background-color: #eee;
+  }
+}
+
+.list__ico {
+  margin-right: rem-calc(20);
+  color: map-get($grays, dark-secondary);
+  vertical-align: middle;
+}
+
+/* ordered list */
+
+.ordered-list {
+  margin-bottom: rem-calc(23);
+  list-style: decimal inside;
+}
+
+.ordered-list__item {
+  margin-bottom: rem-calc(10);
+}
+
+/* definition list */
+
+.definition-list {
+  display: block;
+}
+
+.definition-list__item {
+  display: block;
+  margin-bottom: rem-calc(15);
+}
+
+.definition-list__term {
+  @include ellipsis;
+  display: inline-block;
+  width: rem-calc(87);
+  padding-right: rem-calc(10);
+  vertical-align: top;
+}
+
+.definition-list__definition {
+  display: inline-block;
+}

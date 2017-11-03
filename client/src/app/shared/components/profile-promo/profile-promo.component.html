@@ -1,0 +1,38 @@
+<div class="profile-promo__body">
+  <div class="profile-promo__avatar" [style.background-image]="'url(' + avatarUrl + ')'"></div>
+  <h2 class="profile-promo__title">{{title}}</h2>
+  <small class="profile-promo__status">Zuletzt online: {{status | datePipe: ', '}}</small>
+  <div class="profile-promo__info">
+    <app-rating class="profile-promo__rating"
+                [value]="rating"
+                [isPresentation]="true"
+                [isDigitalValueShow]="[true, true]"
+                [type]="'promo'"
+    ></app-rating>
+    <span class="profile-promo__data">
+      <md-icon class="profile-promo__ico profile-promo__ico--alt">check</md-icon>
+      {{feedCount}} Bewertungen
+    </span>
+    <div class="profile-promo__data">
+      <md-icon class="profile-promo__ico">place</md-icon>
+      <span *ngIf="city">{{city}}, {{street}} {{house}}</span>
+    </div>
+  </div>
+  <div class="profile-promo__hint hint" *ngIf="isSelfRegistered === false">
+    <md-icon class="hint__ico">info_outline</md-icon>
+    Diese Firma hat noch keine
+    <br>
+    Informationen hinterlegt.
+    <br>
+    Ihr Unternehmen?
+    <a (click)="openPopup()">Jetzt Profil beantragen</a>
+  </div>
+
+  <div class="profile-promo__hint hint" *ngIf="isOwnerUser && isMembersTab && !isCanManageMembers">
+    <md-icon class="hint__ico">info_outline</md-icon>
+    Mit Ihrer aktuellen Mitgliedschaft können Sie diesen Bereich nicht anpassen.
+    <br>
+    Bitte ändern Sie Ihre <a routerLink="/billing">Mitgliedschaft</a>
+  </div>
+</div>
+<div class="profile-promo__blur" #blur></div>

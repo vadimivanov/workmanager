@@ -1,0 +1,171 @@
+[
+  {
+    "id": 1,
+    "project_cost": "[100, 1000)",
+    "is_price_confidential": false,
+    "job_title": "Bath repair 1",
+    "job_description": "Repair in the bathroom 1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam deserunt distinctio eum eveniet exercitationem facilis molestias non recusandae sunt voluptates. Cupiditate, dolore eligendi error eum facilis iure natus suscipit! Officia.",
+    "quoted_job_description": "in the bathroom 1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam deserunt distinctio eum eveniet exercitationem facilis molestias non recusandae sunt voluptates. Cupiditate, dolore eligendi error eum facilis iure natus suscipit! Officia.",
+    "quality_of_work": 4,
+    "quality_of_price": 4,
+    "quality_of_friendliness": 4,
+    "quality_of_timeschedule": 5,
+    "is_displaying": false,
+    "is_approved": true,
+    "photo_urls": [
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/test-image-1.jpg",
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/test-image-2.jpg",
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/dizain_vannoi_komnaty_100.jpg",
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/552-845x321.jpg",
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/1422158853_mebel-v-lerua-merlen-3.jpg",
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/11467.jpg",
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/Axor2.jpg"
+    ],
+    "likes": [
+      1
+    ],
+    "replies": "[{\"id\": 1, \"message\":\"good feedback!\"}, {\"id\": 2, \"message\":\"Good job!\"}]",
+    "rater_id": 1,
+    "provider_id": 1,
+    "service_id": 1
+  },
+  {
+    "id": 2,
+    "project_cost": "[200, 1000)",
+    "is_price_confidential": false,
+    "job_title": "Bath repair 2",
+    "job_description": "Repair in the bathroom 2 Animi dolor eius fugiat ipsa libero nesciunt officia provident quasi quibusdam, quis saepe, sed tempora tenetur, unde voluptas! Amet cupiditate dolorum hic ipsa, itaque laudantium magnam officia recusandae rem rerum.",
+    "quoted_job_description": "in the bathroom 2 Animi dolor eius fugiat ipsa libero nesciunt officia provident quasi quibusdam, quis saepe, sed tempora tenetur, unde voluptas! Amet cupiditate dolorum hic ipsa, itaque laudantium magnam officia recusandae rem rerum.",
+    "quality_of_work": 4,
+    "quality_of_price": 4,
+    "quality_of_friendliness": 4,
+    "quality_of_timeschedule": 5,
+    "is_displaying": true,
+    "is_approved": true,
+    "photo_urls": [
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/test-image-1.jpg",
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/test-image-2.jpg",
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/dizain_vannoi_komnaty_100.jpg",
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/552-845x321.jpg",
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/1422158853_mebel-v-lerua-merlen-3.jpg"
+    ],
+    "likes": [
+      1
+    ],
+    "replies": "[{\"id\": 1, \"message\":\"good feedback!\"}, {\"id\": 2, \"message\":\"Good job!\"}]",
+    "rater_id": 1,
+    "provider_id": 1,
+    "service_id": 1
+  },
+  {
+    "id": 3,
+    "project_cost": "[300, 1000)",
+    "is_price_confidential": false,
+    "job_title": "Bath repair 3",
+    "job_description": "Repair in the bathroom 3 Ab architecto aut commodi consequatur corporis deserunt doloremque doloribus eius exercitationem id, maiores officiis perferendis perspiciatis provident quasi quibusdam repudiandae sequi soluta vel voluptatibus. Facilis incidunt molestiae nulla tempore veniam.",
+    "quoted_job_description": "in the bathroom 3 Ab architecto aut commodi consequatur corporis deserunt doloremque doloribus eius exercitationem id, maiores officiis perferendis perspiciatis provident quasi quibusdam repudiandae sequi soluta vel voluptatibus. Facilis incidunt molestiae nulla tempore veniam.",
+    "quality_of_work": 4,
+    "quality_of_price": 4,
+    "quality_of_friendliness": 4,
+    "quality_of_timeschedule": 5,
+    "is_displaying": false,
+    "is_approved": true,
+    "photo_urls": [
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/test-image-1.jpg",
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/test-image-2.jpg",
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/1422158853_mebel-v-lerua-merlen-3.jpg",
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/11467.jpg",
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/Axor2.jpg"
+    ],
+    "likes": [
+      1
+    ],
+    "replies": "[{\"id\": 1, \"message\":\"good feedback!\"}, {\"id\": 2, \"message\":\"Good job!\"}]",
+    "rater_id": 1,
+    "provider_id": 2,
+    "service_id": 1
+  },
+  {
+    "id": 4,
+    "project_cost": "[400, 1000)",
+    "is_price_confidential": false,
+    "job_title": "Bath repair 4",
+    "job_description": "Repair in the bathroom 4 Accusantium libero neque numquam officiis, perferendis quaerat quam repudiandae rerum voluptas voluptatem. Amet consequatur quaerat quia unde. Beatae dolore eos iure minus perspiciatis quos repudiandae veritatis! Adipisci excepturi suscipit totam?",
+    "quoted_job_description": "in the bathroom 4 Accusantium libero neque numquam officiis, perferendis quaerat quam repudiandae rerum voluptas voluptatem. Amet consequatur quaerat quia unde. Beatae dolore eos iure minus perspiciatis quos repudiandae veritatis! Adipisci excepturi suscipit totam?",
+    "quality_of_work": 4,
+    "quality_of_price": 4,
+    "quality_of_friendliness": 4,
+    "quality_of_timeschedule": 5,
+    "is_displaying": true,
+    "is_approved": true,
+    "photo_urls": [
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/test-image-2.jpg",
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/dizain_vannoi_komnaty_100.jpg",
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/552-845x321.jpg",
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/1422158853_mebel-v-lerua-merlen-3.jpg",
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/11467.jpg"
+    ],
+    "likes": [
+      1
+    ],
+    "replies": "[{\"id\": 1, \"message\":\"good feedback!\"}, {\"id\": 2, \"message\":\"Good job!\"}]",
+    "rater_id": 1,
+    "provider_id": 2,
+    "service_id": 1
+  },
+  {
+    "id": 5,
+    "project_cost": "[500, 1000)",
+    "is_price_confidential": false,
+    "job_title": "Bath repair 5",
+    "job_description": "Repair in the bathroom 5 Eaque eos laboriosam, nisi possimus qui ut! Earum, eveniet, facere. A aspernatur, at commodi debitis dolorem ea earum enim impedit ipsa iusto minima nobis quae sit totam velit veniam vero!",
+    "quoted_job_description": "in the bathroom 5 Eaque eos laboriosam, nisi possimus qui ut! Earum, eveniet, facere. A aspernatur, at commodi debitis dolorem ea earum enim impedit ipsa iusto minima nobis quae sit totam velit veniam vero!",
+    "quality_of_work": 4,
+    "quality_of_price": 4,
+    "quality_of_friendliness": 4,
+    "quality_of_timeschedule": 5,
+    "is_displaying": false,
+    "is_approved": true,
+    "photo_urls": [
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/test-image-2.jpg",
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/dizain_vannoi_komnaty_100.jpg",
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/552-845x321.jpg",
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/1422158853_mebel-v-lerua-merlen-3.jpg",
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/Axor2.jpg"
+    ],
+    "likes": [
+      1
+    ],
+    "replies": "[{\"id\": 1, \"message\":\"good feedback!\"}, {\"id\": 2, \"message\":\"Good job!\"}]",
+    "rater_id": 1,
+    "provider_id": 3,
+    "service_id": 1
+  },
+  {
+    "id": 6,
+    "project_cost": "[500, 1000)",
+    "is_price_confidential": false,
+    "job_title": "Bath repair 6",
+    "job_description": "Repair in the bathroom 6 A amet incidunt ipsam quasi recusandae sapiente similique tempora? Animi assumenda distinctio voluptate voluptatum. Delectus dicta illo ipsum minus perferendis provident, sit voluptatum. Consequatur ex hic libero odio quae, quam.",
+    "quoted_job_description": "in the bathroom 6 A amet incidunt ipsam quasi recusandae sapiente similique tempora? Animi assumenda distinctio voluptate voluptatum. Delectus dicta illo ipsum minus perferendis provident, sit voluptatum. Consequatur ex hic libero odio quae, quam.",
+    "quality_of_work": 4,
+    "quality_of_price": 3,
+    "quality_of_friendliness": 4,
+    "quality_of_timeschedule": 5,
+    "is_displaying": false,
+    "photo_urls": [
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/test-image-2.jpg",
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/dizain_vannoi_komnaty_100.jpg",
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/552-845x321.jpg",
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/1422158853_mebel-v-lerua-merlen-3.jpg",
+      "https://okornok-uploads.s3.eu-central-1.amazonaws.com/11467.jpg"
+    ],
+    "likes": [
+      1
+    ],
+    "replies": "[{\"id\": 1, \"message\":\"good feedback!\"}, {\"id\": 2, \"message\":\"Good job!\"}]",
+    "rater_id": 1,
+    "provider_id": 3,
+    "service_id": 1
+  }
+]

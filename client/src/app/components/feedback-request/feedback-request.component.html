@@ -1,0 +1,94 @@
+<app-header></app-header>
+  <div class="container container--small container--full-width-mobile">
+    <div class="spinner-container">
+      <div class="spinner-block" *ngIf="!reqFirm">
+        <md-spinner class="spinner"></md-spinner>
+      </div>
+
+    <form class="block" [formGroup]="feedbackForm"
+          (ngSubmit)="onSubmit(feedbackForm.value)" #form="ngForm">
+      <div class="block__header">
+        <h1>Bewertung anfragen</h1>
+        <h2 class="h3">Anfrage zur Bewertung an Auftraggeber senden</h2>
+      </div>
+      <div class="grid-noGutter">
+        <div class="col-5_xs-12" data-push-right="off-2_xs-0">
+          <md-input-container class="input">
+            <input mdInput placeholder="Firmenname" [value]="reqFirm" disabled>
+            <md-error>{{ formErrors.formFirm }}</md-error>
+          </md-input-container>
+        </div>
+        <div class="col-5_xs-12" *ngIf="!isNewRater">
+          <md-select class="select select--input" placeholder="Kategorie" disabled *ngIf="!isEmailValid"></md-select>
+          <md-select class="select select--input" id="category" placeholder="Kategorie" formControlName="formCategory"
+                     [(ngModel)]="reqCategory" required *ngIf="isEmailValid">
+            <md-option *ngFor="let category of categoriesList" [value]="category.id">
+              {{category.name}}
+            </md-option>
+          </md-select>
+          <span class="input-description" *ngIf="formErrors.formCategory">{{ formErrors.formCategory }}</span>
+        </div>
+        <div class="col-5_xs-12" data-push-right="off-2_xs-0">
+          <md-input-container class="input">
+            <input mdInput placeholder="Email" type="text" id="formEmail" formControlName="formEmail"
+                   [(ngModel)]="reqEmail" (blur)="getUserByEmail()" required>
+            <md-error>{{ formErrors.formEmail }}</md-error>
+          </md-input-container>
+          <md-hint *ngIf="isNewRater">
+            <p class="text-dark-secondary">Dieser Benutzer ist nocht nicht registriert.
+              Wollen Sie eine Bewertung Anfrage per Email senden?
+              Danach kann der Benutzer registrieren and eine Bewertung für Ihre Arbeit abgenben
+            </p>
+          </md-hint>
+        </div>
+        <div class="col-12">
+          <md-input-container class="input">
+            <input mdInput placeholder="Auftragstitel" disabled *ngIf="!isEmailValid && !isNewRater">
+            <input mdInput placeholder="Auftragstitel" type="text" id="formTitle" formControlName="formTitle"
+                   [(ngModel)]="reqTitle" maxlength="255" required *ngIf="isEmailValid || isNewRater">
+            <md-error>{{ formErrors.formTitle }}</md-error>
+          </md-input-container>
+        </div>
+        <div class="col-12">
+          <md-input-container class="input">
+            <textarea class="textarea" mdInput placeholder="Nachricht" disabled *ngIf="!isEmailValid && !isNewRater"></textarea>
+            <textarea class="textarea" mdInput placeholder="Nachricht" id="formText" formControlName="formText"
+                      [(ngModel)]="reqBody" rows="1" maxlength="255" required *ngIf="isEmailValid || isNewRater"></textarea>
+            <md-error>{{ formErrors.formText }}</md-error>
+          </md-input-container>
+        </div>
+      </div>
+      <div *ngIf="!isNewRater">
+        <h3>Fotos zur Bewertung hochladen</h3>
+        <div class="uploader">
+          <label class="uploader__input-label" [ngClass]="{'uploader__input-label--disable': images.length >= limitImages || !isEmailValid}">
+            <span class="uploader__input-text">Bilder hinzufügen (Max: {{limitImages}}, Format: JPG, PNG, GIF)</span>
+            <span class="uploader__input-text">oder</span>
+            <span class="uploader__input-btn">Bilder auswählen</span>
+            <input class="uploader__input" type='file' (change)="readUrl($event)" [disabled]="images.length >= limitImages || !isEmailValid">
+          </label>
+          <ul class="uploader__list">
+            <li class="uploader__item" *ngFor="let image of images; let i = index">
+              <button type="button" class="uploader__delete">
+                <md-icon class="uploader__delete-ico" (click)="deleteImage(i)">close</md-icon>
+              </button>
+              <div class="uploader__figure">
+                <img class="uploader__img" [src]="image" alt="image description">
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="form-hint">
+        <div>* Alle Felder sind erforderlich</div>
+      </div>
+      <div class="text-right">
+        <button class="btn btn--full-width-mobile" md-raised-button type="submit"
+                [disabled]="(!isNewRater && !feedbackForm.valid) ||
+                            (isNewRater && (!reqTitle || !reqBody))">
+          {{isNewRater ? 'E-MAIL SENDEN' : 'Bewertungsanfrage absenden'}}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

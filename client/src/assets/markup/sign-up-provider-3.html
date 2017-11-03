@@ -1,0 +1,79 @@
+<app-header></app-header>
+<div class="container container--small container--full-width-mobile">
+  <div class="sign-up-provider">
+    <header class="sign-up-provider__header">
+      <span class="sign-up-provider__header--mobile"><span class="sign-up-provider__steps-info">Schritt 3 von 3: </span><span class="sign-up-provider__current-step">Benutzerkontodaten erfassen</span></span>
+      <div class="sign-up-provider__header--desktop">
+        <ul class="step-list sign-up-provider__steps">
+          <li class="step-list__item step-list__item--completed">
+            <span class="step-list__number">
+              <md-icon class="step-list__icon">mode_edit</md-icon>
+            </span>
+            <span class="step-list__name">Angaben zur Firma</span>
+          </li>
+          <li class="step-list__item step-list__item--active">
+            <span class="step-list__number">
+              <md-icon class="step-list__icon">mode_edit</md-icon>
+            </span>
+            <span class="step-list__name">Dienstleistungskategorien auswählen</span>
+          </li>
+          <li class="step-list__item step-list__item--active">
+            <span class="step-list__number">3</span>
+            <span class="step-list__name">Als Dienstleister registrieren</span>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <div class="sign-up-provider__body">
+      <h2 class="sign-up-provider__title">Als Dienstleister registrieren</h2>
+      <h3 class="sign-up-provider__subtitle">Erstellen Sie ein Benutzerkonto und legen Sie los!</h3>
+      <div class="grid">
+        <div class="col-5_xs-12" data-push-right="off-2_xs-0">
+          <md-select class="select sign-up-provider__select" placeholder="Anrede" required>
+            <md-option *ngFor="let anrede of ['Herr', 'Frau']" [value]="anrede">
+              {{ anrede }}
+            </md-option>
+          </md-select>
+          <md-input-container class="sign-up-provider__input">
+            <input mdInput placeholder="Vorname" value="" required>
+          </md-input-container>
+          <md-input-container class="sign-up-provider__input">
+            <input mdInput placeholder="Nachname" value="" required>
+          </md-input-container>
+          <md-input-container class="sign-up-provider__input">
+            <input mdInput type="number" placeholder="Telefonnummer" value="" required>
+          </md-input-container>
+        </div>
+        <div class="col-5_xs-12">
+          <md-input-container class="sign-up-provider__input">
+            <input mdInput type="email" placeholder="E-mail" value="" required>
+          </md-input-container>
+          <md-input-container class="sign-up-provider__input">
+            <input mdInput type="password" placeholder="Passwort" value="" required>
+            <md-icon class="sign-up-provider__input-icon">remove_red_eye</md-icon>
+          </md-input-container>
+          <small class="sign-up-provider__tip">Use at least 8 characters. Include both an uppercase letter and a number</small>
+          <div class="sign-up-provider__approvement">
+            <p>Indem Sie fortfahren, erklären Sie sich mit unserer
+              <a href="#">Datenschutzerklärung</a>
+              und unseren
+              <a href="#">Nutzungsbedingungen</a>
+              einverstanden.
+            </p>
+            <md-checkbox class="checkbox">Newsletter empfangen</md-checkbox>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="sign-up-provider__footer">
+      <a class="sign-up-provider__prev" md-raised-button routerLink=".">
+        <md-icon>chevron_left</md-icon>
+        Zurück</a>
+      <a class="sign-up-provider__next" md-raised-button routerLink=".">
+        Registrierung abschliessen
+        <md-icon>chevron_right</md-icon>
+      </a>
+    </footer>
+  </div>
+</div>
+

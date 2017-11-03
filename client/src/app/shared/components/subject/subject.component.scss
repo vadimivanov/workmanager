@@ -1,0 +1,86 @@
+@import "../../../styles/base/index";
+
+:host(.subject) {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  color: map-get($grays, light-primary);
+  font-size: rem-calc(16);
+  font-weight: 500;
+  .is-desktop &:hover {
+    cursor: pointer;
+  }
+}
+
+.subject__img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.subject__img-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.subject__title,
+.subject__footer {
+  opacity: 0;
+  transition: opacity .3s;
+  z-index: 15;
+  .is-desktop :host(.subject):hover & {
+    opacity: 1;
+    transition: opacity .3s;
+  }
+}
+
+.subject__footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: rem-calc(13) rem-calc(15);
+  line-height: rem-calc(48);
+  background-color: rgba(0, 0, 0, .4);
+  color: #fff;
+  font-weight:  500;
+}
+
+.subject__info {
+  padding-right: rem-calc(35);
+  width: 100%;
+}
+
+.subject__title {
+  font-size: rem-calc(15);
+  line-height: rem-calc(20);
+  margin-bottom: rem-calc(3);
+  @include ellipsis;
+}
+
+.subject__text {
+  font-size: rem-calc(12);
+  line-height: rem-calc(16);
+  @include ellipsis;
+}
+
+.subject__text__title {
+  font-size: rem-calc(10);
+  font-weight: 200;
+}
+
+.subject__ico {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: rem-calc(15);
+}

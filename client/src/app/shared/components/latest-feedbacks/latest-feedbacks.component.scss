@@ -1,0 +1,33 @@
+@import "../../../styles/base/index";
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.block {
+  margin-top: 0;
+  padding: 0;
+  &::after {
+    content: '';
+    display: table;
+  }
+  > *:last-child {
+    margin-bottom: rem-calc(20);
+  }
+  @include respond-to(sm) {
+    background-color: transparent;
+    box-shadow: none;
+  }
+}
+
+.latest-feedback {
+  padding-left: rem-calc(11);
+  padding-right: rem-calc(11);
+  @include respond-to(sm) {
+    background-color: map-get($grays, light-primary);
+    &.feedback {
+      box-shadow: 0 2px 6px -1px rgba(0, 0, 0, .24);
+    }
+  }
+}

@@ -1,0 +1,143 @@
+<div class="section">
+  <header class="section__header">
+    <div class="section__header-group">
+      <app-filter
+        title="Status"
+        [list]="[{value: 2,  name: 'Genehmigt'},
+                 {value: 1,  name: 'Neue'},
+                 {value: 3, name: 'Abgelehnt'}]"
+        [isActive]="filterBy === 'status'"
+        (onSelectItem)="filterByStatus($event, 'status')"
+      ></app-filter>
+      <app-filter
+        title="Typ"
+        [list]="filters.typeList"
+        [isActive]="filterBy === 'type'"
+        (onSelectItem)="filterByStatus($event, 'type')"
+      ></app-filter>
+      <app-filter
+        class="filter--big"
+        title="Benutzertyp"
+        [list]="filters.initiation_role_nameList"
+        [isActive]="filterBy === 'initiation_role_name'"
+        [isWider]="true"
+        (onSelectItem)="filterByStatus($event, 'initiation_role_name')"
+      ></app-filter>
+    </div>
+  </header>
+
+  <div class="section__body section__body--full-width-mobile">
+    <div class="block">
+      <header class="block__header">
+        <h2>Benachrichtigungen</h2>
+      </header>
+
+      <div class="block__full-width is-scrollable">
+        <table class="table" *ngIf="pagedItems.length">
+          <tr class="table__row table__header-row">
+            <th class="table__header table__header--sorted table__header-1" [ngClass]="{'table__header--active': isSortBy('type')}" (click)="sortEntities('type')">
+              <div class="table__text">
+                <md-icon class="table__header-ico">{{(isSortBy('type') && isSortReverce) ? 'arrow_upward' : 'arrow_downward'}}</md-icon> Typ
+              </div>
+            </th>
+            <th class="table__header table__header--sorted table__header-2" [ngClass]="{'table__header--active': isSortBy('date')}" (click)="sortEntities('date')">
+              <div class="table__text">
+                <md-icon class="table__header-ico">{{(isSortBy('date') && isSortReverce) ? 'arrow_upward' : 'arrow_downward'}}</md-icon> Datum
+              </div>
+            </th>
+            <th class="table__header table__header--sorted table__header-3" [ngClass]="{'table__header--active': isSortBy('role')}" (click)="sortEntities('role')">
+              <div class="table__text">
+                <md-icon class="table__header-ico">{{(isSortBy('role') && isSortReverce) ? 'arrow_upward' : 'arrow_downward'}}</md-icon> Benutzertyp
+              </div>
+            </th>
+            <th class="table__header table__header--sorted table__header-4" [ngClass]="{'table__header--active': isSortBy('name')}" (click)="sortEntities('name')">
+              <div class="table__text">
+                <md-icon class="table__header-ico">{{(isSortBy('name') && isSortReverce) ? 'arrow_upward' : 'arrow_downward'}}</md-icon> Name
+              </div>
+            </th>
+            <th class="table__header table__header-5">
+              <div class="table__text">Details</div>
+            </th>
+            <th class="table__header table__header--sorted table__header-6" [ngClass]="{'table__header--active': isSortBy('status')}" (click)="sortEntities('status')">
+              <div class="table__text">
+                <md-icon class="table__header-ico">{{(isSortBy('status') && isSortReverce) ? 'arrow_upward' : 'arrow_downward'}}</md-icon> Status
+              </div>
+            </th>
+          </tr>
+
+          <tr class="table__row" [ngClass]="{'table__row--highlighted': !events.is_viewed}"
+              *ngFor="let events of pagedItems"
+              [contextMenu]="basicMenu"
+              [contextMenuSubject]="events">
+            <td class="table__data table__data-1">
+              <div class="table__text">
+                <div class="tag tag--clicked"
+                     (click)="openDialog(events)"
+                     [ngClass]="{'tag--info': events.type === 'request' ? true : false,
+                                 'tag--success': events.type === 'feedbacks' ? true : false,
+                                 'tag--warning': events.type === 'portfolio' ? true : false,
+                                 'tag--danger': events.type === 'problem' ? true : false}"
+                     mdTooltip="{{getEventType(events.type)}}">
+                  {{getEventType(events.type)}}
+                </div>
+              </div>
+            </td>
+            <td class="table__data table__data-2" mdTooltip="{{events.created_at | date}}">
+              <div class="table__text">
+                {{events.created_at | date}}
+              </div>
+            </td>
+            <td class="table__data table__data-3" mdTooltip="{{events.initiation_role_name}}">
+              <div class="table__text">
+                {{events.initiation_role_name}}
+              </div>
+            </td>
+            <td class="table__data table__data-4">
+              <div class="table__text" *ngIf="events.Provider" mdTooltip="{{getProviderName(events.Provider, 'Gelöschte Benutzer')}}">
+                {{getProviderName(events.Provider, 'Gelöschte Benutzer')}}
+              </div>
+              <div class="table__text" *ngIf="events.Rater" mdTooltip="{{getRaterName(events.Rater, 'Gelöschte Benutzer')}}">
+                {{getRaterName(events.Rater, 'Gelöschte Benutzer')}}
+              </div>
+            </td>
+            <td class="table__data table__data-5">
+              <div class="table__img-list">
+                <div class="table__wrap-img" *ngFor="let photo of events.photo_urls; let i = index">
+                  <img class="table__img" width="48" height="38" [alt]="events.job_title + ' - Detail image ' + (i + 1)" [src]="photo"/>
+                </div>
+                <div class="table__wrap-img" *ngIf="events.photo_simple_url">
+                  <img class="table__img" width="48" height="38" [alt]="events.description + ' - Detail simple image'" [src]="events.photo_simple_url"/>
+                </div>
+                <div class="table__wrap-img" *ngIf="events.photo_after_url">
+                  <img class="table__img" width="48" height="38" [alt]="events.description + ' - Detail after image'" [src]="events.photo_after_url"/>
+                </div>
+              </div>
+            </td>
+            <td class="table__data table__data-6" mdTooltip="{{!events.is_viewed ? 'Neue' : getEventStatus(events.is_approved)}}">
+              <div class="table__text">
+                {{!events.is_viewed ? 'Neue' : getEventStatus(events.is_approved)}}
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div>
+        <div class="table-controls">
+          <span>Zeilen pro Seite:</span>
+          <md-select class="table-controls__sorter sorter" [placeholder]="tableRows[0]" [floatPlaceholder]="'never'">
+            <md-option *ngFor="let row of tableRows" [value]="row" (click)="setTableRows(row)">{{row}}</md-option>
+          </md-select>
+          <span class="table-controls__page">{{getPagesRange()}} von {{allItems.length}}</span>
+          <button class="table-controls__btn">
+            <md-icon class="table-controls__btn-ico" (click)="setPage(pager.currentPage - 1)">keyboard_arrow_left</md-icon>
+          </button>
+          <button class="table-controls__btn">
+            <md-icon class="table-controls__btn-ico" (click)="setPage(pager.currentPage + 1)">keyboard_arrow_right</md-icon>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

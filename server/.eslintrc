@@ -1,0 +1,33 @@
+{
+  "extends": [
+    "airbnb", "plugin:lodash-fp/recommended"
+  ],
+  "env": {
+    "node": true,
+    "mocha": true,
+    "es6": true
+  },
+  "ecmaFeatures": {
+    "es6": true,
+    "classes": true
+  },
+  "plugins": [
+    "lodash-fp"
+  ],
+  "rules": {
+    "semi": "off",
+    "spaced-comment": "off",
+    "comma-dangle": [
+      1,
+      "always-multiline"
+    ],
+    "arrow-body-style": "off",
+    "max-len": "off",
+    "arrow-spacing": "off",
+    "no-underscore-dangle" : "off",
+    "no-console" : "off",
+    "no-alert" : "off",
+    "no-debugger" : "off",
+    "no-confusing-arrow": "off"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "credentials": {
+    "type": "cloud",
+    "name": "okornok",
+    "host": "ds127730.mlab.com",
+    "port": 27730,
+    "user": "okornok_server",
+    "password": "password2349562",
+    "mongod version": "3.2.12"
+  },
+  "options": {
+    "server": {
+      "socketOptions": {
+        "keepAlive": 300000,
+        "connectTimeoutMS": 30000
+      }
+    },
+    "replset": {
+      "socketOptions": {
+        "keepAlive": 300000,
+        "connectTimeoutMS": 30000
+      }
+    }
+  }
+}

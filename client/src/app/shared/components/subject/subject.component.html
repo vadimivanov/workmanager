@@ -1,0 +1,15 @@
+<!--<header class="subject__title">{{title}}</header>-->
+<span class="subject__img" *ngIf="img" [style.background-image]="'url(' + img + ')'" (click)="open()"></span>
+<span class="subject__img" *ngIf="!img" (click)="open()">
+  <app-image-slider class="subject__img-slider"
+                    [before]="imgBefore"
+                    [after]="imgAfter"
+  ></app-image-slider>
+</span>
+<footer class="subject__footer" (click)="loadProviderProfile(providerId)">
+  <div class="subject__info">
+    <div class="subject__title">{{title}}</div>
+    <div class="subject__text">{{text}}</div>
+  </div>
+  <md-icon class="subject__ico">arrow_forward</md-icon>
+</footer>

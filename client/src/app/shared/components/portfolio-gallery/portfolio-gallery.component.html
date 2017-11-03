@@ -1,0 +1,78 @@
+<ng-template [ngIf]="!selectedPhotos.length">
+  <div class="portfolio-gallery__empty">
+    <span *ngIf="isOwner && (limitsPhotosSimple || limitsPhotosBeforeAfter)" class="portfolio-gallery__info-text">
+      Es gibt noch keine Fotos.<br>
+      <span *ngIf="currentCategory === 'all'">Füge sie hinzu</span>
+    </span>
+    <span *ngIf="isOwner && !limitsPhotosSimple && !limitsPhotosBeforeAfter" class="portfolio-gallery__info-text">
+        Ihre aktuelle Mitgliedschaft erlaubt es nicht, Fotos hinzuzufügen. <br>
+        Bitte ändern Sie Ihre <a routerLink="/billing">Mitgliedschaft</a>
+    </span>
+
+    <span *ngIf="!isOwner" class="portfolio-gallery__info-text">Dieser Dienstleister hat noch keine Fotos.</span>
+  </div>
+</ng-template>
+
+<ng-template [ngIf]="selectedPhotos.length">
+  <div class="portfolio-gallery__list swiper-container" #sliderMain>
+      <div class="swiper-wrapper">
+          <div class="swiper-slide"
+               *ngFor="let photo of selectedPhotos"
+               [ngClass]="{'portfolio-gallery__item--in-progress': !photo.is_approved || !photo.is_visible}">
+            <div class="portfolio-gallery__in-progress-text portfolio-gallery__in-progress-text--big"
+                 *ngIf="!photo.is_approved">In Bearbeitung</div>
+            <div class="portfolio-gallery__in-progress-text portfolio-gallery__in-progress-text--big"
+                 *ngIf="photo.is_approved && !photo.is_visible">Nicht sichtbar für Bewerter</div>
+            <span class="portfolio-gallery__img" *ngIf="photo.photo_simple_url"
+                    [style.background-image]="'url(' + photo.photo_simple_url + ')'"></span>
+            <span class="portfolio-gallery__description">{{photo.description}}</span>
+            <div class="portfolio-gallery__img" *ngIf="photo.photo_before_url && photo.photo_after_url">
+              <app-image-slider class="portfolio-gallery__image-slider"
+                [before]="photo.photo_before_url"
+                [after]="photo.photo_after_url"
+                [isDisplayComponent]="displayComponent"
+              ></app-image-slider>
+            </div>
+          </div>
+      </div>
+      <span class="swiper-button__prev">
+        <button type="button" class="swiper-button__arrow">keyboard_arrow_left</button>
+      </span>
+      <span class="swiper-button__next">
+        <button type="button" class="swiper-button__arrow">keyboard_arrow_right</button>
+      </span>
+  </div>
+</ng-template>
+
+<div class="portfolio-gallery__controls" [ngClass]="{'with-add': checkCanAddPhotos()}">
+  <div class="portfolio-gallery__nav swiper-container" *ngIf="selectedPhotos.length" #sliderNav>
+    <div class="swiper-wrapper">
+        <div class="portfolio-gallery__item swiper-slide"
+             *ngFor="let photo of selectedPhotos; let i = index"
+             (click)="slideTo(i)"
+             [ngClass]="{'portfolio-gallery__item--in-progress': !photo.is_approved || !photo.is_visible}">
+          <div class="portfolio-gallery__in-progress-text" *ngIf="!photo.is_approved">In Bearbeitung</div>
+          <div class="portfolio-gallery__in-progress-text" *ngIf="photo.is_approved && !photo.is_visible">Nicht sichtbar für Bewerter</div>
+          <span class="portfolio-gallery__img" *ngIf="photo.photo_simple_url"
+              [style.background-image]="'url(' + photo.photo_simple_url + ')'"></span>
+          <div class="portfolio-gallery__img" *ngIf="photo.photo_before_url && photo.photo_after_url">
+            <app-image-slider class="portfolio-gallery__image-slider"
+                              [before]="photo.photo_before_url"
+                              [after]="photo.photo_after_url"
+                              [isDisplayComponent]="displayComponent"
+            ></app-image-slider>
+          </div>
+          <div class="portfolio-gallery__nav-controls" *ngIf="photo.is_approved" appClickStopPropagation>
+            <md-icon *ngIf="isOwner" (click)="editPhoto(photo)">edit</md-icon>
+            <md-icon *ngIf="isOwner" (click)="confirmDialog(photo.id)">delete</md-icon>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="portfolio-gallery__nav-add" *ngIf="isCanAddPhotos">
+    <button class="portfolio-gallery__nav-add-button" type="button" md-raised-button (click)="openDialog($event, null)">
+      <md-icon class="portfolio-gallery__ico">add_circle_outline</md-icon>
+    </button>
+  </div>
+</div>

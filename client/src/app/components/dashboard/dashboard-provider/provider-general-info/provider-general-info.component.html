@@ -1,0 +1,60 @@
+<header class="block__header">
+  <h1>Benutzerkontodaten</h1>
+  <h2 class="h3">Some hint here</h2>
+</header>
+<form [formGroup]="generalInfoForm"
+      (ngSubmit)="onSubmit(generalInfoForm.value)" #form="ngForm">
+  <div class="grid">
+    <div class="col-8_xs-12">
+      <div class="grid-noGutters">
+        <div class="col-6_xs-12">
+          <md-select id="gender" name="gender" class="select bottom-outer-indent--medium" placeholder="Anrede"
+                     formControlName="gender" required [(ngModel)]="provider.gender">
+            <md-option *ngFor="let gender of genders" [value]="gender.name">
+              {{ gender.title }}
+            </md-option>
+          </md-select>
+        </div>
+      </div>
+      <md-input-container class="input">
+        <input mdInput placeholder="Vorname" id="firstName" formControlName="firstName"
+               required [(ngModel)]="provider.firstName">
+        <md-error>{{ formErrors.firstName }}</md-error>
+      </md-input-container>
+      <md-input-container class="input">
+        <input mdInput placeholder="Nachname" value="" id="lastName" formControlName="lastName" required
+               [(ngModel)]="provider.lastName">
+        <md-error>{{ formErrors.lastName }}</md-error>
+      </md-input-container>
+      <md-input-container class="input">
+        <input mdInput type="text" placeholder="Telefonnummer" id="telNo" formControlName="telNo" required
+               [(ngModel)]="provider.telNo">
+        <md-error>{{ formErrors.telNo }}</md-error>
+      </md-input-container>
+      <md-input-container class="input">
+        <input mdInput type="email" placeholder="E-mail" id="email" formControlName="email" required
+               [(ngModel)]="provider.email">
+        <md-error>{{ formErrors.email }}</md-error>
+      </md-input-container>
+      <md-input-container class="input">
+        <input mdInput type="text" placeholder="Direktlink zum Profil" id="profile" [(ngModel)]="userLink" [ngModelOptions]="{standalone: true}">
+        <md-error>{{ formErrors.email }}</md-error>
+      </md-input-container>
+      <div class="text-dark-secondary">
+        <p>Für Ihre Webseite können Sie <a *ngIf="!readonly" download="Okornok_logo.png" href="/assets/images/content/Okornok_logo.png">hier</a> das OKorNOK-Logo runterladen</p>
+        <p>Falls Sie Ihr Benutzerkonto löschen wollen, senden Sie uns bitte eine E-Mail
+          von der registrierten E-Mail Adresse an <a>support@okornok.ch</a></p>
+        <input hidden type="file" #fileInput (change)="onChange($event)" accept="image/png,image/jpeg" />
+      </div>
+    </div>
+    <div class="col-4_xs-12">
+      <app-image-input class="image-input--top" (select)="onSelectAvatar($event)" [imageUrl]="provider.photoUrl"></app-image-input>
+    </div>
+  </div>
+  <div class="flex-justify-end">
+    <button type="button" class="btn" md-raised-button (click)="save()"
+            [disabled]="!generalInfoForm.dirty && !avatar">
+      Speichern
+    </button>
+  </div>
+</form>

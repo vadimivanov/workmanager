@@ -1,0 +1,38 @@
+<div class="modal-size modal-size--big">
+  <div class="modal__header">
+    <div class="modal__title"><strong>Benachrichtigungen</strong></div>
+    <div class="modal__subtitle">Bewertung anfragen</div>
+    <md-icon class="modal__close" (click)="dialogRef.close(true)">clear</md-icon>
+  </div>
+  <div class="modal__caption">
+    <span class="tag tag--info">Bewertung anfragen</span>
+    <span class="time">{{content.created_at | date: 'dd.MM.yyyy'}}</span>
+  </div>
+
+  <app-publication class="publication--inner-indented publication--full-separated block__full-width"
+                     [isReadOnly]="true"
+                     [id]="content.id"
+                     [isDisplayStatus]="isSupporter"
+                     [isApproved]="false"
+                     [isDisplaying]="true"
+                     [avatarUrl]="providerPhoto"
+                     [avatarCaption]="providerName"
+                     [ratersFeedbacks]=""
+                     [serviceName]="serviceName"
+                     [title]="content.job_title"
+                     [ownerRating]=""
+                     [date]="content.created_at | date:'dd-MMM-yyyy'"
+                     [body]="content.message"
+                     [items]="content.photo_urls"
+                     [socialData]="socialData"
+                     [likes]="0"
+                     [comments]="[]"
+                     [creatorId]="providerUserId"
+                     (editEvent)="editFeed($event)"
+    ></app-publication>
+  <!--<div class="modal__control modal__control&#45;&#45;right">-->
+    <!--<a class="btn btn&#45;&#45;link" (click)="confirm($event)">Akzeptieren</a>-->
+    <!--<a class="btn btn&#45;&#45;link" (click)="cancel($event)">Ablehnen</a>-->
+  <!--</div>-->
+</div>
+

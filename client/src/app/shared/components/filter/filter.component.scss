@@ -1,0 +1,133 @@
+@import "../../../styles/base/index";
+
+:host(.filter-block) {
+  float: left;
+}
+/deep/ {
+  .filter {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: rem-calc(65);
+    font-size: rem-calc(14);
+    color: map-get($grays, dark-primary);
+    min-width: rem-calc(100);
+    max-width: rem-calc(150);
+    width: rem-calc(120);
+    margin: rem-calc(-10) rem-calc(10) rem-calc(-10) 0;
+    @include respond-from(sm) {
+      margin-right: rem-calc(20);
+    }
+
+    &--wider {
+      max-width: rem-calc(160);
+      width: rem-calc(160);
+    }
+
+    &--widest {
+      max-width: rem-calc(190);
+      width: rem-calc(190);
+    }
+
+    &.filter--open {
+      .filter__btn-toggle {
+        position: relative;
+        z-index: 15;
+        .mat-select-arrow {
+          margin-left: rem-calc(4);
+          margin-right: rem-calc(8);
+
+          transform: rotate(180deg);
+        }
+      }
+      .filter-menu,
+      .filter-overlay-backdrop {
+        display: block;
+      }
+    }
+  }
+
+  .filter__btn-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    .filter__title {
+      @include ellipsis;
+      font-weight: 500;
+    }
+    .mat-select-arrow {
+      margin-left: rem-calc(8);
+      color: map-get($grays, dark-primary);
+    }
+  }
+  .filter-menu {
+    display: none;
+    position: absolute;
+    top: 0;
+    max-width: rem-calc(300);
+    min-width: 100%;
+    background: #fff;
+    z-index: 15;
+    box-shadow: rem-calc(3) rem-calc(3) rem-calc(6) rgba(0, 0, 0, .24);
+    border-radius: rem-calc(2);
+    overflow: hidden;
+  }
+
+  .filter-menu__header {
+    display: flex;
+    align-items: center;
+    height: rem-calc(65);
+    cursor: pointer;
+    .filter__btn-toggle {
+      width: 100%;
+      padding-right: rem-calc(24);
+      padding-left: rem-calc(24);
+    }
+  }
+
+  .filter-menu__body {
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    max-height: rem-calc(234);
+    overflow-y: auto;
+    padding: rem-calc(10) 0;
+
+  }
+
+  .filter-menu__item {
+    padding: rem-calc(7) rem-calc(24);
+    line-height: rem-calc(18);
+    &:hover {
+      cursor: pointer;
+      background: rgba(0, 0, 0, .04);
+    }
+    &--active {
+      background: rgba(0, 0, 0, .04);
+      color: map_get($colors, primary);
+    }
+  }
+
+  .filter-overlay-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 14;
+    pointer-events: auto;
+    -webkit-tap-highlight-color: transparent;
+    transition: opacity .4s cubic-bezier(.25,.8,.25,1);
+  }
+
+  .mat-select-arrow {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid;
+    margin: 0 4px;
+  }
+}

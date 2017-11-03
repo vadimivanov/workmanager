@@ -1,0 +1,19 @@
+<header class="block__header">
+  <h1>Benachrichtigungseinstellungen</h1>
+  <h2 class="h3">Sie können Ihre Benachrichtigungseinstellungen ändern</h2>
+</header>
+<form [formGroup]="generalInfoForm"
+      (ngSubmit)="onSubmit(generalInfoForm.value)" #form="ngForm">
+  <div class="input-group">
+    <md-input-container class="input input-group__main">
+      <input mdInput placeholder="E-Mail" type="email" id="userEmail" formControlName="userEmail"
+             [(ngModel)]="notificationData.email_for_notifications" required>
+      <md-error>{{ formErrors.userEmail }}</md-error>
+    </md-input-container>
+  </div>
+  <md-checkbox class="checkbox checkbox--full-width checkbox--bottom-indented" [checked]="notificationData.is_feedbacks_notify" [(ngModel)]="notificationData.is_feedbacks_notify" formControlName="isFeedback">Bewertungen</md-checkbox>
+  <!--<md-checkbox class="checkbox checkbox--full-width checkbox--bottom-indented" [checked]="notificationData.is_news_notify" [(ngModel)]="notificationData.is_news_notify" formControlName="isNews">Okornok Newsletter erhalten</md-checkbox>-->
+  <div class="flex-justify-end">
+    <button class="btn" md-raised-button type="submit" [disabled]="!generalInfoForm.valid || isButtonDisabled">Speichern</button>
+  </div>
+</form>

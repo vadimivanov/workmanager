@@ -1,0 +1,141 @@
+@import "../../../styles/base/index";
+
+:host {
+  display: block;
+  padding-bottom: 33px;
+  background-color: map-get($grays, light-primary);
+  text-align: center;
+  @include respond-from(sm) {
+    min-height: 365px;
+    padding-bottom: 0;
+  }
+  .visual + & {
+    padding-top: 45px;
+    @include respond-from(sm) {
+      padding-top: 77px;
+    }
+  }
+}
+
+:host(.info--inverted) {
+  background-color: map-get($grays, base);
+}
+
+.info__container {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  min-height: inherit;
+  margin: 0 auto;
+  padding: 0 15px;
+  @include respond-from(sm) {
+    height: 100px;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 1100px;
+  }
+  :host(.info--inverted) &,
+  :host(.info--alt) & {
+    @include respond-from(sm) {
+      flex-direction: row-reverse;
+    }
+  }
+}
+
+.info__sub {
+  &:first-child {
+    opacity: .87;
+    @include respond-from(sm) {
+      width: 46%;
+    }
+  }
+  @include respond-from(sm) {
+    width: 42%;
+    text-align: left;
+  }
+  :host(.info--inverted) & {
+    &:first-child {
+      @include respond-from(sm) {
+        width: 43%;
+      }
+    }
+  }
+  :host(.info--alt) & {
+    &:first-child {
+      width: 100%;
+      @include respond-from(sm) {
+        width: 43%;
+      }
+    }
+    &:last-child {
+      width: 100%;
+      @include respond-from(sm) {
+        width: 40%;
+      }
+    }
+  }
+}
+
+.info__title {
+  margin-bottom: 21px;
+  font-size: 24px;
+  font-weight: 400;
+  color: map-get($colors, primary);
+  @include respond-from(sm) {
+    margin-bottom: 28px;
+  }
+}
+
+.info__text {
+  font-size: 16px;
+  color: map-get($grays, dark-primary);
+  > *:last-child {
+    margin-bottom: 0;
+  }
+  @include respond-from(sm) {
+    line-height: 1.9;
+    margin-bottom: 0;
+  }
+}
+
+.info__img {
+  display: block;
+  margin: rem-calc(44) auto rem-calc(41);
+  @include respond-from(sm) {
+    width: 275px;
+    margin: 0 auto;
+  }
+  &--1 {
+    @include respond-from(sm) {
+      width: 390px;
+    }
+  }
+  &--2 {
+    @include respond-from(sm) {
+      width: 275px;
+    }
+  }
+  &--3 {
+    @include respond-from(sm) {
+      width: 345px;
+    }
+  }
+  :host(.info--alt) & {
+    width: 195px;
+    margin: 0 auto 45px;
+    @include respond-from(sm) {
+      width: 338px;
+      margin-bottom: 0;
+    }
+  }
+  &[appIsOnScreen] {
+    position: relative;
+    transform: translate(100%, 0);
+    opacity: 0;
+    transition: opacity .3s, transform .3s;
+    &.is-on-screen {
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+  }
+}

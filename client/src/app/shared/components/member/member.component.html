@@ -1,0 +1,11 @@
+<figure class="member__figure">
+  <span class="member__img" [style.background-image]="'url(' + img + ')'" role="img" [attr.aria-labelledby]="img"></span>
+  <div class="member__controls" *ngIf="isEditable">
+    <md-icon class="member__control" (click)="toEdit.emit()">edit</md-icon>
+    <md-icon class="member__control" (click)="toDelete.emit()">delete</md-icon>
+  </div>
+  <figcaption class="member__caption" id="{{img}}">
+    <h3 class="member__title">{{title}}</h3>
+    <p>{{description}}</p>
+  </figcaption>
+</figure>

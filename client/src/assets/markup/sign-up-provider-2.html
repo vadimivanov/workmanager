@@ -1,0 +1,62 @@
+<app-header></app-header>
+<div class="container container--small container--full-width-mobile">
+  <form class="sign-up-provider sign-up-provider--full-width" action="#">
+    <header class="sign-up-provider__header">
+      <span class="sign-up-provider__header--mobile"><span class="sign-up-provider__steps-info">Schritt 2 von 3: </span><span class="sign-up-provider__current-step">Dienstleistungskategorien auswählen</span></span>
+      <div class="sign-up-provider__header--desktop">
+        <ul class="step-list sign-up-provider__steps">
+          <li class="step-list__item step-list__item--completed">
+            <span class="step-list__number">
+              <md-icon class="step-list__icon">mode_edit</md-icon>
+            </span>
+            <span class="step-list__name">Angaben zur Firma</span>
+          </li>
+          <li class="step-list__item step-list__item--active">
+            <span class="step-list__number">2</span>
+            <span class="step-list__name">Dienstleistungskategorien auswählen</span>
+          </li>
+          <li class="step-list__item">
+            <span class="step-list__number">3</span>
+            <span class="step-list__name">Als Dienstleister registrieren</span>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <div class="sign-up-provider__body">
+      <h2 class="sign-up-provider__title">Dienstleistungskategorien auswählen</h2>
+      <h3 class="sign-up-provider__subtitle">Wählen Sie welche Dienstleistungen Ihr Unternehmen anbietet</h3>
+      <ul class="accordion" data-accordion #accordion>
+        <li class="accordion__item" data-accordion-item>
+          <button type="button" class="accordion__title"><md-checkbox class="checkbox">Bauaustrocknung</md-checkbox></button>
+          <div class="accordion__content" data-tab-content>
+            <p>Panel 1. Lorem ipsum dolor</p>
+            <a href="#">Nowhere to Go</a>
+          </div>
+        </li>
+        <li class="accordion__item accordion__item--active" data-accordion-item>
+          <button type="button" class="accordion__title"><md-checkbox class="checkbox">Baumeisterarbeiten, Erdarbeiten, Aushub</md-checkbox></button>
+          <div class="accordion__content" data-tab-content>
+            <div class="grid-noGutter">
+              <div class="col-6 col-6_sm-12">
+                <md-checkbox class="checkbox checkbox--full-width">Abbrucharbeiten</md-checkbox>
+                <md-checkbox class="checkbox checkbox--full-width">Allgemeine Maurerarbeiten</md-checkbox>
+              </div>
+              <div class="col-6 col-6_sm-12">
+                <md-checkbox class="checkbox checkbox--full-width">Natursteinplatten-Beläge</md-checkbox>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <footer class="sign-up-provider__footer">
+      <a class="sign-up-provider__prev" md-raised-button routerLink=".">
+        <md-icon>chevron_left</md-icon>
+        Zurück</a>
+      <a class="sign-up-provider__next" md-raised-button routerLink=".">
+        Weiter
+        <md-icon>chevron_right</md-icon>
+      </a>
+    </footer>
+  </form>
+</div>

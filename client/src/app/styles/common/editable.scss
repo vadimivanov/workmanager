@@ -1,0 +1,24 @@
+@import "../base/index";
+
+.editable {
+  display: flex;
+  padding-right: rem-calc(25);
+}
+
+.editable__subject,
+.editable__toggle {
+  display: inline-block;
+  vertical-align: -3px;
+}
+
+.editable__toggle {
+  flex: 0 0 auto;
+}
+
+.editable__subject {
+  @include ellipsis;
+}
+
+.editable__toggle + .editable__subject {
+  margin-left: rem-calc(-15);
+}

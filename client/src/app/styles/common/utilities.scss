@@ -1,0 +1,30 @@
+.flex-align-start {
+  display: flex;
+  align-items: flex-start;
+}
+
+.flex-justify-end {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.is-hidden-to-sm {
+  @include respond-to(sm) {
+    display: none;
+  }
+}
+
+.is-hidden-from-sm {
+  @include respond-from(sm) {
+    display: none !important;
+  }
+}
+
+.is-scrollable {
+  overflow: auto;
+}

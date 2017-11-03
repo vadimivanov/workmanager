@@ -1,0 +1,36 @@
+@import "functional-mixins-and-vars";
+@import "colors";
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500');
+
+/* material icons */
+@mixin md-icon() {
+  font-family: 'Material Icons', serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+$font-families: (
+  base: ('Roboto', sans-serif)
+);
+
+$headings: (
+  h1: 400 #{rem-calc(24)}/1.1 map-get($font-families, base),
+  h2: 500 #{rem-calc(20)}/1.1 map-get($font-families, base),
+  h3: 400 #{rem-calc(16)}/1.1 map-get($font-families, base)
+);
+
+$texts: (
+  body: 400 #{rem-calc(14)}/1.5 map-get($font-families, base),
+  body-medium: 500 #{rem-calc(14)}/1.5 map-get($font-families, base),
+  caption: 400 #{rem-calc(12)}/1.5 map-get($font-families, base)
+);

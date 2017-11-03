@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "firstWorker",
+    "description": "Some description of person",
+    "occupation": "worker",
+    "phone_number": "some number",
+    "is_direct_contact": false,
+    "photo_url": "https://okornok-uploads.s3.eu-central-1.amazonaws.com/test-user-1.jpg",
+    "provider_id": 1
+  },
+  {
+    "id": 2,
+    "name": "Worker2",
+    "description": "Some description of person",
+    "occupation": "worker2",
+    "phone_number": "some number",
+    "is_direct_contact": false,
+    "photo_url": "https://okornok-uploads.s3.eu-central-1.amazonaws.com/test-user-1.jpg",
+    "provider_id": 2
+  }
+]

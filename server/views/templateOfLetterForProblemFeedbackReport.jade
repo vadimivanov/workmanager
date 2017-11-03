@@ -1,0 +1,10 @@
+doctype html
+html
+  head
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    p Dear, #{login}!
+    p Your problem report was #{is_approved ? 'approved' : 'rejected'}:
+    p "#{description}"
+    p #{is_approved ? '' : 'The reason:'}
+    p #{is_approved ? '' : reason_reject}

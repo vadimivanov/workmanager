@@ -1,0 +1,555 @@
+<div class="container is-hidden-from-sm">
+  <button class="btn btn--full-width btn--top-outer-indented" type="button" (click)="stateToggle()" md-raised-button>
+    INFORMATION
+  </button>
+</div>
+<div class="container container--full-width-mobile state-toggle" [ngClass]="{'state-toggle--active': stateToggleValue}">
+  <div class="grid">
+    <div class="col-9_md-12_sm-6 state-toggle__item">
+      <app-editable-info #editable [toEdit]="providerData.about" (saveEvent)="onSaveEvent($event, 'about')">
+        <div class="block" [ngClass]="{'block--editable': isProvider, 'block--empty': !editable.toEdit && !editable.editMode}">
+          <header class="block__header" [ngClass]="{'editable': isProvider}">
+            <h2 class="h1">Über uns</h2>
+            <span class="block__header-notification"
+                  *ngIf="!editable.toEdit && !editable.editMode">(Derzeit sind keine Information erfasst)</span>
+            <md-icon class="block__edit" *ngIf="isProvider" (click)="editable.edit()">edit</md-icon>
+          </header>
+          <ng-template [ngIf]="!editable.editMode">
+            <p>{{editable.toEdit}}</p>
+          </ng-template>
+          <ng-template [ngIf]="editable.editMode">
+            <md-input-container class="input">
+              <textarea mdInput [(ngModel)]="editable.toEdit" rows="1" name="text">{{editable.toEdit}}</textarea>
+            </md-input-container>
+            <div class="text-right">
+              <!--<button (click)="editable.cancel()">cancel</button>-->
+              <button class="btn" md-raised-button (click)="editable.save()">Änderungen speichern</button>
+            </div>
+          </ng-template>
+        </div>
+      </app-editable-info>
+      <div class="block" [ngClass]="{'block--editable': isProvider, 'block--empty': !displayingQuotesList.length}"
+           *ngIf="isOwner || displayingQuotesList.length">
+        <header class="block__header" [ngClass]="{'editable': isProvider}">
+          <h2 class="h1">Meinungen unserer Kunden</h2>
+          <span class="block__header-notification" *ngIf="!displayingQuotesList.length">
+            <span *ngIf="userPlan != 'Basic'">(Derzeit sind keine Information erfasst)</span>
+              <span *ngIf="userPlan === 'Basic'">Ihre aktuelle Mitgliedschaft erlaubt es nicht, Information hinzuzufügen. Bitte ändern Sie Ihre <a routerLink="/billing">Mitgliedschaft</a></span>
+          </span>
+          <md-icon class="block__edit" *ngIf="isProvider && userPlan != 'Basic'" (click)="openDialog()">edit</md-icon>
+        </header>
+        <app-shifter class="shifter--alt" *ngIf="displayingQuotesList.length"
+                     [items]="displayingQuotesList"
+                     [displayComponent]="displayComponent">
+        </app-shifter>
+      </div>
+      <app-editable-info #editable_news [headerEdit]="" [toEdit]="providerData.general_news"
+                         (saveEvent)="onSaveEvent($event, 'general_news')"
+                         *ngIf="isOwner || providerData.general_news">
+        <div class="block" [ngClass]="{'block--editable': isProvider, 'block--empty': !editable_news.toEdit && !editable_news.editMode}">
+          <header class="block__header" [ngClass]="{'editable': isProvider}">
+            <h2 class="h1">Allgemeine Neuigkeiten</h2>
+            <span class="block__header-notification" *ngIf="!editable_news.toEdit && !editable_news.editMode">
+              <span *ngIf="userPlan === 'Gold'">(Derzeit sind keine Information erfasst)</span>
+              <span *ngIf="userPlan === 'Basic' || userPlan === 'Silver'">Ihre aktuelle Mitgliedschaft erlaubt es nicht, Information hinzuzufügen. Bitte ändern Sie Ihre <a routerLink="/billing">Mitgliedschaft</a></span>
+            </span>
+            <md-icon class="block__edit" *ngIf="isOwner && userPlan === 'Gold'" (click)="editable_news.edit()">edit</md-icon>
+          </header>
+          <ng-template [ngIf]="!editable_news.editMode">
+            <p>{{editable_news.toEdit}}</p>
+          </ng-template>
+          <ng-template [ngIf]="editable_news.editMode">
+            <md-input-container class="input">
+              <textarea mdInput [(ngModel)]="editable_news.toEdit" rows="1" name="text">{{editable_news.toEdit}}</textarea>
+            </md-input-container>
+            <div class="text-right">
+              <!--<button (click)="editable_news.cancel()">cancel</button>-->
+              <button class="btn" md-raised-button (click)="editable_news.save()">Änderungen speichern</button>
+            </div>
+          </ng-template>
+        </div>
+      </app-editable-info>
+      <div class="block">
+        <header class="block__header">
+          <h2 class="h1">Bewertungen</h2>
+        </header>
+
+        <div class="nothing-block" *ngIf="!pagedItems">Sie haben noch keine Bewertungen</div>
+
+        <div *ngIf="pagedItems">
+          <div class="flex-between">
+            <md-select class="sorter" placeholder="Kategorien" floatPlaceholder="never"
+                       (change)="selectingFeedbacks($event)">
+              <md-option value="0">Kategorien: Alle</md-option>
+              <md-option *ngFor="let state of services" value="{{state.id}}">Kategorien: {{ state.name }}</md-option>
+            </md-select>
+            <button class="btn" md-raised-button type="button" *ngIf="isRater" (click)="writeFeedback()">
+              bewertung abgeben
+            </button>
+          </div>
+          <app-publication class="publication--inner-indented block__full-width"
+                           *ngFor="let feedback of pagedItems"
+                           [ngClass]="{'publication--inactive': !feedback.is_approved || !feedback.is_displaying}"
+                           [id]="feedback.id"
+                           [isDisplayStatus]="true"
+                           [isDisplaying]="feedback.is_displaying"
+                           [isApproved]="feedback.is_approved"
+                           [avatarUrl]="feedback.rater_photo_url"
+                           [avatarCaption]="getRaterName(feedback.rater_first_name, feedback.rater_last_name)"
+                           [ratersFeedbacks]="feedback.raters_feedbacks"
+                           [serviceName]="feedback.service_name"
+                           [title]="feedback.job_title"
+                           [ownerRating]="feedback.rating"
+                           [date]="feedback.created_at | date:'dd-MMM-yyyy'"
+                           [body]="feedback.job_description"
+                           [items]="feedback.photo_urls === null ? [] : feedback.photo_urls"
+                           [socialData]="socialData"
+                           [likes]="feedback.likes === null ? [] : feedback.likes.length"
+                           [comments]="feedback.replies === null ? [] : feedback.replies"
+                           [conditionComment]="isProvider"
+                           [creatorId]="feedback.rater_id"
+                           [creatorRole]="feedback.role"
+                           [isCanComplain]="true"
+                           (editEvent)="editComment($event)"
+                           (reportEvent)="reportFeedback($event)"
+          >{{feedback.rating}}</app-publication>
+          <!--<app-pagination [pager]="pager" *ngIf="pager.pages && pager.pages.length"></app-pagination>-->
+          <div class="nothing-block" *ngIf="!pagedItems.length">Sie haben noch keine Bewertungen in dieser Kategorie.</div>
+          <div class="pagination">
+            <li class="pagination__item" [ngClass]="{'pagination__item--disabled': pager.currentPage === 1}">
+              <a class="pagination__link" (click)="setPage(pager.currentPage - 1)">
+                <md-icon>keyboard_arrow_left</md-icon>
+                <span class="sr-only">Previous</span>
+              </a>
+            </li>
+            <li class="pagination__item" *ngFor="let page of pager.pages"
+                [ngClass]="{'pagination__item--active': pager.currentPage === page}">
+              <a class="pagination__link" (click)="setPage(page)">{{page}}</a>
+            </li>
+            <li class="pagination__item"
+                [ngClass]="{'pagination__item--disabled': pager.currentPage === pager.totalPages}">
+              <a class="pagination__link" (click)="setPage(pager.currentPage + 1)">
+                <md-icon>keyboard_arrow_right</md-icon>
+                <span class="sr-only">Next</span>
+              </a>
+            </li>
+          </div>
+        </div>
+
+        <div></div>
+      </div>
+    </div>
+
+
+    <div class="col-3_md-12_sm-6 state-toggle__item">
+      <div class="block block--centered">
+        <app-rating class="rating--vertical" [isPresentation]="true"
+                    [isDigitalValueShow]="[true, false]" [id]="'provider-rating'"
+                    [value]="providerData.rating" [feedCount]="feedCount" [type]=""></app-rating>
+      </div>
+
+      <div class="block" [ngClass]="{'block--editable': isProvider}">
+        <app-editable-info #editable_contacts [toEdit]="contactInformation" *ngIf="contactInformation"
+                           (saveEvent)="onSaveEvent($event, 'contact_information')">
+          <div class="block__inner-full block__inner-full--with-bottom-indent"
+               [ngClass]="{'block--empty': !editable_contacts.editMode &&
+                                            editable_contacts.isEmptyFields(editable_contacts.toEdit.contactEmail,
+                                                                            editable_contacts.toEdit.personalPhone,
+                                                                            editable_contacts.toEdit.workPhone)}">
+
+            <header class="block__header" [ngClass]="{'editable': isProvider}">
+              <h3 class="h1">Kontaktinformationen</h3>
+              <span class="block__header-notification"
+                    *ngIf="!editable_contacts.editMode &&
+                          editable_contacts.isEmptyFields(editable_contacts.toEdit.contactEmail, editable_contacts.toEdit.personalPhone, editable_contacts.toEdit.workPhone)
+                          ">(Derzeit sind keine Information erfasst)</span>
+              <md-icon class="block__edit" *ngIf="isOwner" (click)="editable_contacts.edit()">edit</md-icon>
+            </header>
+            <ng-template [ngIf]="!editable_contacts.editMode &&
+                               !editable_contacts.isEmptyFields(editable_contacts.toEdit.contactEmail, editable_contacts.toEdit.personalPhone, editable_contacts.toEdit.workPhone)">
+              <ul class="list list--horizontal text-truncate">
+                <li class="list__item" *ngFor="let location of providerData.Locations">
+                  <md-icon class="list__ico">place</md-icon>
+                  <div>
+                    <div>{{location.city}} {{location.zip_code}},</div>
+                    <div>{{location.street}} {{location.house_number}}</div>
+                  </div>
+                </li>
+                <li class="list__item" *ngIf="!editable_contacts.isEmptyFields(editable_contacts.toEdit.contactEmail)">
+                  <md-icon class="list__ico">email</md-icon>
+                  {{editable_contacts.toEdit.contactEmail}}
+                </li>
+                <li class="list__item" *ngIf="!editable_contacts.isEmptyFields(editable_contacts.toEdit.personalPhone)">
+                  <md-icon class="list__ico">smartphone</md-icon>
+                  {{editable_contacts.toEdit.personalPhone}}
+                </li>
+                <li class="list__item" *ngIf="!editable_contacts.isEmptyFields(editable_contacts.toEdit.workPhone)">
+                  <md-icon class="list__ico">phone</md-icon>
+                  {{editable_contacts.toEdit.workPhone}}
+                </li>
+              </ul>
+            </ng-template>
+            <ng-template [ngIf]="editable_contacts.editMode">
+              <md-input-container class="input">
+                <input mdInput placeholder="E-Mail" [(ngModel)]="editable_contacts.toEdit.contactEmail">
+              </md-input-container>
+              <md-input-container class="input">
+                <input mdInput placeholder="Telefonnummer" [(ngModel)]="editable_contacts.toEdit.personalPhone">
+              </md-input-container>
+              <md-input-container class="input">
+                <input mdInput placeholder="Handynummer" [(ngModel)]="editable_contacts.toEdit.workPhone">
+              </md-input-container>
+              <div class="text-right">
+                <!--<button (click)="editable_contacts.cancel()">cancel</button>-->
+                <button class="btn" md-raised-button (click)="editable_contacts.save()">Änderungen speichern</button>
+              </div>
+            </ng-template>
+          </div>
+
+        </app-editable-info>
+
+        <app-editable-info #editable_staff [headerEdit]="" [toEdit]="contactPersone" *ngIf="isOwner || contactPersone.is_visible"
+                           (saveEvent)="editMembers($event, 'contact_person_info')">
+          <div class="block__inner-full block__inner-full--with-bottom-indent"
+               [ngClass]="{'block--empty': !editable_staff.editMode &&
+                                            editable_staff.isEmptyFields(editable_staff.toEdit.first_name,
+                                                                         editable_staff.toEdit.last_name,
+                                                                         editable_staff.toEdit.personalPhone,
+                                                                         editable_staff.toEdit.workPhone,
+                                                                         editable_staff.toEdit.contactEmail)}">
+            <header class="block__header block__header--without-top-indent editable">
+              <md-checkbox class="checkbox editable__toggle" *ngIf="editable_staff.editMode"
+                           [(ngModel)]="contactPersone.is_visible"
+                           [checked]="contactPersone.is_visible ? contactPersone.is_visible : false">
+              </md-checkbox>
+              <h3 class="h1 editable__subject">Ihr Ansprechpartner</h3>
+              <span class="block__header-notification"
+                    *ngIf="!editable_staff.editMode &&
+                         editable_staff.isEmptyFields(editable_staff.toEdit.first_name,
+                                                      editable_staff.toEdit.last_name,
+                                                      editable_staff.toEdit.personalPhone,
+                                                      editable_staff.toEdit.workPhone,
+                                                      editable_staff.toEdit.contactEmail)
+                          ">(Derzeit sind keine Information erfasst)</span>
+              <md-icon class="block__edit" *ngIf="isProvider" (click)="editable_staff.edit()">edit</md-icon>
+            </header>
+            <ng-template [ngIf]="!editable_staff.editMode &&
+                               !editable_staff.isEmptyFields(editable_staff.toEdit.first_name,
+                                                             editable_staff.toEdit.last_name,
+                                                             editable_staff.toEdit.personalPhone,
+                                                             editable_staff.toEdit.workPhone,
+                                                             editable_staff.toEdit.contactEmail)">
+              <!-- todo: #dataFlow add user's info occupation -->
+              <app-user-info class="user-info--small"
+                             [photo_url]="contactPersone.photo_url"
+                             [first_name]="contactPersone.first_name"
+                             [last_name]="contactPersone.last_name"
+                             [occupation]="'Manager'"
+                             [contacts]="[contactPersone.personalPhone, contactPersone.workPhone, contactPersone.contactEmail]"
+              ></app-user-info>
+            </ng-template>
+            <ng-template [ngIf]="editable_staff.editMode">
+              <md-input-container class="input">
+                <input mdInput type="text" [(ngModel)]="editable_staff.toEdit.first_name" placeholder="Vorname">
+              </md-input-container>
+              <md-input-container class="input">
+                <input mdInput type="text" [(ngModel)]="editable_staff.toEdit.last_name" placeholder="Nachname">
+              </md-input-container>
+              <md-input-container class="input">
+                <input mdInput type="text" [(ngModel)]="editable_staff.toEdit.personalPhone" placeholder="Telefonnummer">
+              </md-input-container>
+              <md-input-container class="input">
+                <input mdInput type="text" [(ngModel)]="editable_staff.toEdit.workPhone" placeholder="Arbeitshandy">
+              </md-input-container>
+              <md-input-container class="input">
+                <input mdInput type="text" [(ngModel)]="editable_staff.toEdit.contactEmail" placeholder="E-Mail">
+              </md-input-container>
+              <app-image-input class="image-input--vertical" (select)="onSelectAvatar($event)"
+                               [imageUrl]="contactPersone.photo_url || ''"></app-image-input>
+              <div class="text-right">
+                <!--<button (click)="editable_staff.cancel()">cancel</button>-->
+                <button class="btn" md-raised-button (click)="editable_staff.save()">Änderungen speichern</button>
+              </div>
+            </ng-template>
+          </div>
+
+        </app-editable-info>
+
+        <app-editable-info #editable_telephone [toEdit]="emergencyNumber"
+                           *ngIf="isOwner || emergencyNumber.is_visible"
+                           (saveEvent)="saveEmergencyNumber($event, 'contact_information')">
+          <div class="block__inner-full"
+               [ngClass]="{'block--empty block--empty-last': !editable_telephone.toEdit.number && !editable_telephone.editMode}">
+
+            <header class="block__header block__header--without-top-indent editable">
+              <md-checkbox class="checkbox editable__toggle" *ngIf="editable_telephone.editMode"
+                           [(ngModel)]="emergencyNumber.is_visible"
+                           [checked]="emergencyNumber.is_visible ? emergencyNumber.is_visible : false">
+              </md-checkbox>
+              <h3 class="h1 editable__subject">Notfallnummer</h3>
+              <span class="block__header-notification"
+                    *ngIf="!editable_telephone.toEdit.number && !editable_telephone.editMode">(Derzeit sind keine Information erfasst)</span>
+              <md-icon class="block__edit" *ngIf="isProvider" (click)="editable_telephone.edit()">edit</md-icon>
+            </header>
+            <ng-template [ngIf]="editable_telephone.toEdit.number && !editable_telephone.editMode">
+              <ul class="list list--horizontal">
+                <li class="list__item">
+                  <md-icon class="list__ico">smartphone</md-icon>
+                  {{editable_telephone.toEdit.number}}
+                </li>
+              </ul>
+            </ng-template>
+            <ng-template [ngIf]="editable_telephone.editMode">
+              <md-input-container class="input">
+                <input mdInput type="text" [(ngModel)]="editable_telephone.toEdit.number" placeholder="Handynummer">
+              </md-input-container>
+              <div class="text-right">
+                <!--<button (click)="editable_telephone.cancel()">cancel</button>-->
+                <button class="btn" md-raised-button (click)="editable_telephone.save()">Änderungen speichern</button>
+              </div>
+            </ng-template>
+          </div>
+
+        </app-editable-info>
+      </div>
+
+      <app-editable-info #editable_documents [toEdit]="documentsList" (saveEvent)="upload($event)">
+        <div class="block" [ngClass]="{'block--editable': isProvider, 'block--empty': !editable_documents.toEdit.length && !editable_documents.editMode}" *ngIf="isProvider || documentsList.length">
+          <header class="block__header" [ngClass]="{'editable': isProvider}">
+            <h3 class="h1">Weiterführende Informationen</h3>
+            <span class="block__header-notification"
+                  *ngIf="!editable_documents.toEdit.length && !editable_documents.editMode">
+              <span *ngIf="userPlan != 'Basic'">(Derzeit sind keine Information erfasst)</span>
+              <span *ngIf="userPlan === 'Basic'">Ihre aktuelle Mitgliedschaft erlaubt es nicht, Information hinzuzufügen. Bitte ändern Sie Ihre <a routerLink="/billing">Mitgliedschaft</a></span>
+            </span>
+            <md-icon class="block__edit" *ngIf="isProvider && userPlan != 'Basic'" (click)="editable_documents.edit()">edit</md-icon>
+          </header>
+          <ng-template [ngIf]="!editable_documents.editMode">
+            <a class="file" href="{{document.file_url}}" *ngFor="let document of editable_documents.toEdit">
+              <img class="file__ico" src="assets/images/svg/doc.svg" alt="doc file" width="60" height="75">
+              <span class="file__name">{{document.name}}</span>
+            </a>
+          </ng-template>
+          <ng-template [ngIf]="editable_documents.editMode">
+            <div class="file" *ngFor="let document of editable_documents.toEdit">
+              <img class="file__ico" src="assets/images/svg/doc.svg" alt="doc file" width="60" height="75">
+              <span class="file__name">
+                {{document.name}}
+              </span>
+              <button class="btn file__delete" type="button" md-button (click)="deleteDocument(document.id)">
+                <md-icon>delete</md-icon>
+                DELETE
+              </button>
+            </div>
+            <div class="uploader">
+              <label class="uploader__input-label">
+                <span class="uploader__input-text">Datei hinzufügen (DOC, PDF, XLS, TXT, JPG, PNG, GIF)</span>
+                <span class="uploader__input-text">oder</span>
+                <a>Datei hochladen</a>
+                <input class="uploader__input" type='file' (change)="readUrl($event)">
+              </label>
+            </div>
+            <div class="text-right">
+              <!--<button (click)="editable_documents.cancel()">cancel</button>-->
+              <button class="btn" md-raised-button (click)="editable_documents.save()">Änderungen speichern</button>
+            </div>
+          </ng-template>
+        </div>
+      </app-editable-info>
+      <app-editable-info #editable_members [toEdit]="providerData.number_of_employees"
+                         *ngIf="isOwner || providerData.number_of_employees"
+                         (saveEvent)="onSaveEvent($event, 'number_of_employees')">
+        <div class="block" [ngClass]="{'block--editable': isProvider, 'block--empty': !editable_members.toEdit && !editable_members.editMode}">
+          <header class="block__header" [ngClass]="{'editable': isProvider}">
+            <h3 class="h1">Anzahl Mitarbeiter</h3>
+            <span class="block__header-notification"
+                  *ngIf="!editable_members.toEdit && !editable_members.editMode">(Derzeit sind keine Information erfasst)</span>
+            <md-icon class="block__edit" *ngIf="isProvider" (click)="editable_members.edit()">edit</md-icon>
+          </header>
+          <ng-template [ngIf]="!editable_members.editMode">
+            <p>{{editable_members.toEdit}}</p>
+          </ng-template>
+          <ng-template [ngIf]="editable_members.editMode">
+            <md-input-container class="input">
+              <input mdInput [(ngModel)]="editable_members.toEdit" type="number" name="text"
+                     value="{{editable_members.toEdit}}" placeholder="Mitglieder">
+            </md-input-container>
+            <md-hint><p class="text-no-transform text-dark-secondary">*die Nummer muss positiv sein</p></md-hint>
+            <div class="text-right">
+              <!--<button (click)="editable_members.cancel()">cancel</button>-->
+              <button class="btn" md-raised-button (click)="editable_members.saveMembers(editable_members.toEdit)">Änderungen speichern</button>
+            </div>
+          </ng-template>
+        </div>
+      </app-editable-info>
+      <app-editable-info #editable_foundation [toEdit]="providerData.foundation_year"
+                         *ngIf="isOwner || providerData.foundation_year"
+                         (saveEvent)="onSaveEvent($event, 'foundation_year')">
+        <div class="block" [ngClass]="{'block--editable': isProvider, 'block--empty': !editable_foundation.toEdit && !editable_foundation.editMode}">
+          <header class="block__header" [ngClass]="{'editable': isProvider}">
+            <h3 class="h1">Gründungsjahr</h3>
+            <span class="block__header-notification"
+                  *ngIf="!editable_foundation.toEdit && !editable_foundation.editMode">(Derzeit sind keine Information erfasst)</span>
+            <md-icon class="block__edit" *ngIf="isProvider" (click)="editable_foundation.edit()">edit</md-icon>
+          </header>
+          <ng-template [ngIf]="!editable_foundation.editMode">
+            <p>{{editable_foundation.toEdit | date: "yyyy"}}</p>
+          </ng-template>
+          <ng-template [ngIf]="editable_foundation.editMode">
+            <md-input-container class="input">
+              <input mdInput [(ngModel)]="editable_foundation.toEdit" type="date" name="text"
+                     value="{{editable_foundation.toEdit}}" placeholder="Gründungsjahr">
+            </md-input-container>
+            <div class="text-right">
+              <!--<button (click)="editable_foundation.cancel()">cancel</button>-->
+              <button class="btn" md-raised-button (click)="editable_foundation.save()">Änderungen speichern</button>
+            </div>
+          </ng-template>
+        </div>
+      </app-editable-info>
+      <div class="flex-between">
+        <button class="btn btn-social btn-facebook" type="button" md-raised-button>share on facebook</button>
+        <button class="btn btn-social btn-twitter" type="button" md-raised-button>share on twitter</button>
+      </div>
+      <div class="block block--no-inner-bottom" *ngIf="isOwner || providerData.Locations">
+        <header class="block__header" [ngClass]="{'editable': isProvider}">
+          <h3 class="h1">Standort</h3>
+
+        </header>
+        <ng-template [ngIf]="!editMode">
+          <ul class="list list--horizontal">
+            <li class="list__item" *ngFor="let location of providerData.Locations; let i = index">
+              <md-icon class="list__ico">place</md-icon>
+              {{location.city}} {{location.zip_code}}
+              <md-icon class="" *ngIf="isProvider" (click)="removeLocations(location)">
+                delete
+              </md-icon>
+              <md-icon class="" *ngIf="isProvider" (click)="editLocation(location)">edit</md-icon>
+            </li>
+          </ul>
+        </ng-template>
+        <ng-template [ngIf]="editMode">
+          <md-icon class="" *ngIf="isProvider" (click)="cancel()">clear</md-icon>
+          <md-input-container class="input">
+            <input mdInput type="text" placeholder="Ort" [ngModel]="locationEdit.city" [mdAutocomplete]="autoCity2" [formControl]="cityCtrl" (blur)="onKeyup($event, locationEdit)">
+          </md-input-container>
+          <md-input-container class="input">
+            <input mdInput type="text" placeholder="Straße" [(ngModel)]="locationEdit.street">
+          </md-input-container>
+          <md-input-container class="input">
+            <input mdInput type="text" placeholder="Hausnummer" [(ngModel)]="locationEdit.house_number">
+          </md-input-container>
+          <md-autocomplete #autoCity2="mdAutocomplete">
+            <md-option *ngFor="let city of filteredCities | async" [value]="city" (click)="getLocation(city, 'edit')">
+              {{ city }}
+            </md-option>
+          </md-autocomplete>
+        </ng-template>
+        <ng-template [ngIf]="isNewLocation">
+          <md-icon class="" (click)="cancelAddLocation()">clear</md-icon>
+          <md-input-container class="input" floatPlaceholder="never">
+            <input mdInput placeholder="Ort" [mdAutocomplete]="autoCity" [formControl]="newCityCtrl">
+          </md-input-container>
+          <md-input-container class="input">
+            <input mdInput type="text" placeholder="Straße" [(ngModel)]="searchLocation.street">
+          </md-input-container>
+          <md-input-container class="input">
+            <input mdInput type="text" placeholder="Hausnummer" [(ngModel)]="searchLocation.house_number">
+          </md-input-container>
+          <md-autocomplete #autoCity="mdAutocomplete">
+            <md-option *ngFor="let city of filteredCities2 | async" [value]="city" (click)="getLocation(city, 'new')">
+              {{ city }}
+            </md-option>
+          </md-autocomplete>
+        </ng-template>
+        <div class="bottom-outer-indent--medium" *ngIf="isOwner">
+          <a (click)="addLocation()">+ Ort hinzufügen</a>
+        </div>
+        <div class="block__full-width">
+          <agm-map class="map" [latitude]="markers[0] ? markers[0].lat : 0"
+                   [longitude]="markers[0] ? markers[0].lng : 0" [zoom]="zoom">
+            <agm-marker *ngFor="let m of markers; let i = index"
+                        (markerClick)="clickedMarker(m.label, i)"
+                        [latitude]="m.lat"
+                        [longitude]="m.lng"
+                        [label]="m.label"
+                        [markerDraggable]="m.draggable"
+                        (dragEnd)="markerDragEnd(m, $event)"></agm-marker>
+          </agm-map>
+        </div>
+        <ng-template [ngIf]="editMode || isNewLocation">
+          <div class="text-right vertical-inner-indented">
+            <!--<button (click)="cancel()">cancel</button>-->
+            <button class="btn" md-raised-button type="submit" (click)="filteringLocations(searchLocation)">
+              Änderungen speichern
+            </button>
+          </div>
+        </ng-template>
+      </div>
+      <app-editable-info #editable_hours [toEdit]="providerData.hours_of_operation"
+                         *ngIf="isShowHoursOfOperation(providerData.hours_of_operation)"
+                         (saveEvent)="onSubmit($event)">
+        <div class="block" [ngClass]="{'block--editable': isProvider, 'block--empty': !editable_hours.toEdit && !editable_hours.editMode}">
+          <header class="block__header" [ngClass]="{'editable': isProvider}">
+            <h3 class="h1">Öffnungszeiten</h3>
+            <span class="block__header-notification"
+                  *ngIf="!editable_hours.toEdit && !editable_hours.editMode">(Derzeit sind keine Information erfasst)</span>
+            <md-icon class="block__edit" *ngIf="isProvider" (click)="editable_hours.edit()">edit</md-icon>
+          </header>
+          <ng-template [ngIf]="!editable_hours.editMode">
+            <ul class="definition-list">
+              <ng-container *ngFor="let item of editable_hours.toEdit">
+                <li class="definition-list__item" *ngIf="item.is_show">
+                  <span class="definition-list__term">{{item.title}}</span>
+                  <span class="definition-list__definition">{{item.timeFrom}} - {{item.timeTo}}</span>
+                </li>
+              </ng-container>
+            </ul>
+          </ng-template>
+          <ng-template [ngIf]="editable_hours.editMode">
+            <form class="sign-up-provider feedback-form" [formGroup]="form2">
+              <!--<md-checkbox class="checkbox" id="link" [(ngModel)]="preLinkFlag" (change)="updateFlagOptions($event)"-->
+              <!--formControlName="link">Link days-->
+              <!--</md-checkbox>-->
+              <ul class="schedule bottom-outer-indent--small">
+                <li class="schedule__item" *ngFor="let day of daysList; let i = index">
+                  <md-checkbox class="schedule__sub checkbox"
+                               (change)="updateCheckedOptions($event, i, form2)"
+                               [(ngModel)]="day.is_show" formControlName="checked">{{day.title}}
+                  </md-checkbox>
+                  <div class="schedule__sub">
+                    <div class="slider-range slider-range--alt">
+                      <nouislider class="slider-range__control" [connect]="true" [min]="1" [max]="24" [step]="1"
+                                  [formControl]="form2.controls.range"
+                                  (ngModelChange)="onChanges($event, day.name, i, form2)"
+                                  [disabled]="!day.is_show" formControlName="range" *ngIf="!linkFlag"></nouislider>
+                      <!--<nouislider class="slider-range__control" [connect]="true" [min]="1" [max]="24" [step]="1"-->
+                      <!--[formControl]="form2.controls.range"-->
+                      <!--(ngModelChange)="onChanges($event, day.name, i, form2)"-->
+                      <!--[disabled]="!day.is_show" formControlName="range" *ngIf="linkFlag"-->
+                      <!--[(ngModel)]="linkRange"></nouislider>-->
+                    </div>
+                    <div class="schedule__time">
+                      <div class="schedule__label">From</div>
+                      <div class="schedule__value">{{day.timeFrom}}</div>
+                    </div>
+                    <div class="schedule__time">
+                      <div class="schedule__label">To</div>
+                      <div class="schedule__value">{{day.timeTo}}</div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <div class="text-right">
+                <!--<button (click)="editable_hours.cancel()">cancel</button>-->
+                <button class="btn" md-raised-button type="submit" (click)="editable_hours.save()">Änderungen
+                  speichern
+                </button>
+              </div>
+            </form>
+          </ng-template>
+        </div>
+      </app-editable-info>
+    </div>
+  </div>
+</div>

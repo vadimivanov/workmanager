@@ -1,0 +1,45 @@
+<div class="modal-size modal-size--big">
+  <div class="modal__header">
+    <div class="modal__title"><strong>Benachrichtigungen</strong></div>
+    <div class="modal__subtitle">Problemmeldung</div>
+    <md-icon class="modal__close" (click)="dialogRef.close(true)">clear</md-icon>
+  </div>
+  <div class="modal__caption">
+    <span class="tag tag--danger">Problemmeldung</span>
+    <span class="time">{{content.created_at | date: 'dd.MM.yyyy'}}</span>
+  </div>
+
+  <div class="problem">
+    <div class="modal__subtitle modal__subtitle--small">Von</div>
+      <p>{{initiatiorName}}</p>
+    <div class="modal__subtitle modal__subtitle--small">Nachricht</div>
+      <p>{{content.description}}</p>
+  </div>
+
+  <app-publication class="publication--inner-indented publication--full-separated block__full-width"
+                   [isReadOnly]="true"
+                   [id]="content.Feedback.id"
+                   [isDisplayStatus]="isSupporter"
+                   [isApproved]="false"
+                   [isDisplaying]="true"
+                   [avatarUrl]="raterPhoto"
+                   [avatarCaption]="raterName"
+                   [ratersFeedbacks]=""
+                   [serviceName]="serviceName"
+                   [title]="content.Feedback.job_title"
+                   [subtitle]="providerName"
+                   [ownerRating]="rating"
+                   [date]="content.created_at | date:'dd-MMM-yyyy'"
+                   [body]="content.Feedback.job_description"
+                   [items]="content.Feedback.photo_urls"
+                   [socialData]="socialData"
+                   [likes]="0"
+                   [comments]="[]"
+  ></app-publication>
+
+  <div class="modal__control modal__control--right" *ngIf="!content.is_viewed">
+    <a class="btn btn--link" (click)="confirm($event)">Akzeptieren</a>
+    <a class="btn btn--link" (click)="cancel($event)">Ablehnen</a>
+  </div>
+</div>
+

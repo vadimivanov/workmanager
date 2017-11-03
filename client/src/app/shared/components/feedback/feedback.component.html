@@ -1,0 +1,14 @@
+<header class="feedback__header">
+  <div class="feedback__info">
+    <app-rating class="feedback__rating"
+                [value]="object.rating"
+                [isDigitalValueShow]="[false, false]"
+                [isPresentation]="true">
+    </app-rating>
+    <span class="feedback__name" *ngIf="object">for <a (click)="onProviderClick(object.provider_id)">{{object.providerName ? object.providerName : 'no name'}}</a></span>
+  </div>
+  <div class="feedback__date">{{date}}</div>
+</header>
+<div class="feedback__body">
+  <ng-content></ng-content>
+</div>

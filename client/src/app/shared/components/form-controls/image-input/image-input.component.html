@@ -1,0 +1,13 @@
+<ng-template [ngIf]="!membersPhoto || (membersPhoto && !!src)">
+  <div class="image-input__img" [style.background-image]="src ? 'url(' + src + ')' : imageUrl"></div>
+  <button *ngIf="!readonly" type="button" class="image-input__upload" md-button (click)="triggerInput()">{{labl}}</button>
+  <input hidden type="file" #fileInput (change)="onChange($event)" accept="image/png,image/jpeg" />
+</ng-template>
+<div class="uploader" *ngIf="!src && membersPhoto">
+  <label class="uploader__input-label">
+    <span class="uploader__input-text">Bilder hinzufügen <span class="text-nowrap">(JPG, PNG, GIF)</span></span>
+    <span class="uploader__input-text">oder</span>
+    <span class="uploader__input-btn">Bilder auswählen</span>
+    <input class="uploader__input" type='file' (change)="onChange($event)">
+  </label>
+</div>

@@ -1,0 +1,25 @@
+<app-header></app-header>
+
+<div class="wrapper">
+  <div class="categories">
+    <p>Categories</p>
+    <ul>
+      <li (click)="loadCategory()">All</li>
+      <li *ngFor="let category of categories" (click)="loadCategoryPhotos(category.id)">
+        {{category.name}}
+      </li>
+    </ul>
+  </div>
+  <div class="photos">
+    <p>Photos</p>
+    <ul>
+      <li *ngFor="let photo of photos" (click)="loadProviderProfile(photo.provider_id)">
+        <img src="{{photo.photo_simple_url}}" alt="">
+        <span>{{photo.Provider.company_name}}</span>
+      </li>
+    </ul>
+    <button type="button" (click)="loadMorePhotos()">Mehr Anzeigen</button>
+  </div>
+</div>
+
+<app-footer></app-footer>

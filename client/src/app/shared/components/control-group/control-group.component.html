@@ -1,0 +1,5 @@
+<input class="control-group__input input-alt" [placeholder]="inputPlaceholder" [type]="inputType" #inputEl value="">
+<button class="control-group__btn btn" (click)="onSubmit.emit(inputEl)" md-raised-button>
+  <ng-content class="hello"></ng-content>
+  <md-icon class="control-group__ico" *ngIf="ico">{{ico}}</md-icon>
+</button>

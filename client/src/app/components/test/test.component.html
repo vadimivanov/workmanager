@@ -1,0 +1,62 @@
+<div class="container container--small container--full-width-mobile">
+  <form class="sign-up-provider" [formGroup]="stepThreeForm"
+        (ngSubmit)="onSubmit(stepThreeForm.value)" #form="ngForm">
+    <app-register-steps [activeStep]="3"></app-register-steps>
+    <div class="sign-up-provider__body">
+      <h2 class="sign-up-provider__title">Als Dienstleister registrieren</h2>
+      <h3 class="sign-up-provider__subtitle">Erstellen Sie ein Benutzerkonto und legen Sie los!</h3>
+      <div class="grid">
+        <div class="col-5_xs-12" data-push-right="off-2_xs-0">
+          <md-select id="gender" name="gender" class="select sign-up-provider__select" placeholder="Anrede" formControlName="gender" required>
+            <md-option *ngFor="let gender of genders" [value]="gender.id">
+              {{ gender.title }}
+            </md-option>
+          </md-select>
+          <md-input-container class="sign-up-provider__input">
+            <input mdInput placeholder="Vorname" id="firstName" formControlName="firstName"
+                   required [(ngModel)]="provider.firstName">
+          </md-input-container>
+          <small class="sign-up-provider__tip" *ngIf="formErrors.firstName">{{ formErrors.firstName }}</small>
+          <md-input-container class="sign-up-provider__input">
+            <input mdInput placeholder="Nachname" value="" id="lastName" formControlName="lastName" required [(ngModel)]="provider.lastName">
+          </md-input-container>
+          <small class="sign-up-provider__tip" *ngIf="formErrors.lastName">{{ formErrors.lastName }}</small>
+          <md-input-container class="sign-up-provider__input">
+            <input mdInput type="number" placeholder="Telefonnummer" id="telNo" formControlName="telNo" required [(ngModel)]="provider.telNo">
+          </md-input-container>
+          <small class="sign-up-provider__tip" *ngIf="formErrors.telNo">{{ formErrors.telNo }}</small>
+        </div>
+        <div class="col-5_xs-12">
+          <md-input-container class="sign-up-provider__input">
+            <input mdInput type="email" placeholder="E-mail" id="email" formControlName="email" required
+                   [(ngModel)]="provider.email">
+          </md-input-container>
+          <small class="sign-up-provider__tip" *ngIf="formErrors.email">{{ formErrors.email }}</small>
+          <md-input-container class="sign-up-provider__input">
+            <input mdInput type="password" placeholder="Passwort" id="password" #userPassEl formControlName="password" required [(ngModel)]="provider.password">
+            <button class="password-visibility" [ngClass]="{'password-visibility--on': show}" type="button" data-icon-left="icon-visibility" (click)="changePasswordType()"></button>
+          </md-input-container>
+          <small class="sign-up-provider__tip" *ngIf="formErrors.password">{{ formErrors.password }}</small>
+          <div class="sign-up-provider__approvement">
+            <p>Indem Sie fortfahren, erklären Sie sich mit unserer
+              <a href="#">Datenschutzerklärung</a>
+              und unseren
+              <a href="#">Nutzungsbedingungen</a>
+              einverstanden.
+            </p>
+            <md-checkbox class="checkbox">Newsletter empfangen</md-checkbox>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="sign-up-provider__footer">
+      <button type="button" class="sign-up-provider__prev" (click)="back()" md-raised-button>
+        <!-- <md-icon>chevron_left</md-icon> -->
+        Zurück</button>
+      <button type="button" class="sign-up-provider__next" md-raised-button (click)="next()" [disabled]="!stepThreeForm.valid">
+        Weiter
+        <!-- <md-icon>chevron_right</md-icon> -->
+      </button>
+    </footer>
+  </form>
+</div>

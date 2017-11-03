@@ -1,0 +1,49 @@
+<app-header></app-header>
+<div class="container container--tiny">
+  <form class="block" [formGroup]="signupForm"
+        (ngSubmit)="onSubmit(signupForm.value)" #form="ngForm">
+    <header class="block__header">
+      <h1>OKorNOKler werden!</h1>
+      <h2 class="h3">Benutzerkonto erstellen um eine Bewertung abzugeben</h2>
+    </header>
+    <md-input-container class="input">
+      <input mdInput placeholder="Benutzer-Vorname" id="userFirstName" formControlName="userFirstName" [(ngModel)]="user.firstName">
+      <md-error>{{ formErrors.userFirstName }}</md-error>
+    </md-input-container>
+    <md-input-container class="input">
+      <input mdInput placeholder="Benutzer-Nachname" id="userLastName" formControlName="userLastName" [(ngModel)]="user.lastName">
+      <md-error>{{ formErrors.userLastName }}</md-error>
+    </md-input-container>
+    <md-input-container class="input">
+      <input mdInput placeholder="E-Mail" type="email" id="userEmail" formControlName="userEmail"
+             [(ngModel)]="user.email">
+      <md-error>{{ formErrors.userEmail }}</md-error>
+    </md-input-container>
+    <md-input-container class="input">
+      <input mdInput placeholder="Passwort" type="password" id="userPassword" #userPassEl
+             formControlName="userPassword" [(ngModel)]="user.password">
+      <button class="input__control" type="button" (click)="changePasswordType()">
+        <md-icon *ngIf="show; else visibilityConfOff">visibility_off</md-icon>
+        <ng-template #visibilityConfOff>
+          <md-icon>remove_red_eye</md-icon>
+        </ng-template>
+      </button>
+      <md-hint><p class="text-no-transform">{{ validationMessages.userPassword.minlength }}</p></md-hint>
+      <md-error><p>{{ formErrors.userPassword }}</p></md-error>
+    </md-input-container>
+    <div class="text-dark-secondary">
+      <p>
+        <small>Indem Sie fortfahren, erklären Sie sich mit unserer <a routerLink="/privacy-policy">Datenschutzerklärung</a>
+          und unseren <a routerLink="/terms-conditions">Nutzungsbedingungen</a> einverstanden.</small>
+      </p>
+      <p>
+        <button md-raised-button class="btn btn--full-width" type="submit" [disabled]="!signupForm.valid || isButtonDisabled">Registrierung
+          abschliessen
+        </button>
+      </p>
+      <div class="text-center">
+        <span>Sie besitzen bereits ein Benutzerkonto? &nbsp;<a class="important" routerLink="/login">Einloggen</a></span>
+      </div>
+    </div>
+  </form>
+</div>

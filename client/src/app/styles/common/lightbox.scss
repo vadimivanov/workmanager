@@ -1,0 +1,58 @@
+@import "../base/index";
+
+.lightbox {
+  top: 50vh !important;
+  left: 50vw !important;
+  transform: translate(-50%, -50%) !important;
+  position: fixed;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  .lb-image {
+    border: 0;
+  }
+  .lb-dataContainer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding-top: 0;
+    background-color: transparent;
+  }
+  .lb-data {
+    color: map-get($colors, primary);
+  }
+  .lb-details {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    align-items: center;
+    width: 100%;
+    height: rem-calc(70);
+    padding: 0 rem-calc(38);
+    font-size: rem-calc(14);
+    font-weight: 500;
+    background-color: map-get($grays, light-primary);
+    text-transform: uppercase;
+    display: none;
+  }
+  .lb-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: rem-calc(90);
+    height: rem-calc(90);
+    background-position: center;
+    z-index: 10;
+  }
+  .lb-nav a.lb-next {
+    background-image: url(/assets/images/backgrounds/bg-lightbox-btn-next.png);
+    background-position: right rem-calc(30) top 49%;
+  }
+  .lb-nav a.lb-prev {
+    background-image: url(/assets/images/backgrounds/bg-lightbox-btn-prev.png);
+    background-position: left rem-calc(30) top 49%;
+  }
+}

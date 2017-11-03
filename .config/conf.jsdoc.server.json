@@ -1,0 +1,22 @@
+{
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": [
+      "jsdoc"
+    ]
+  },
+  "source": {
+    "include": [
+      "./server"
+    ],
+    "exclude": [
+      "./server/docs/",
+      "./server/public/"
+    ]
+  },
+  "opts": {
+    "encoding": "utf8",
+    "destination": "server/public/docs",
+    "recurse": true
+  }
+}

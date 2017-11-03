@@ -1,0 +1,145 @@
+<div class="section">
+  <header class="section__header section__header--between">
+    <div class="section__header-group">
+      <app-filter
+        title="Kategorien"
+        [list]="providerSubServicesMap"
+        [isActive]="filterBy === 'service'"
+        [isWider]="true"
+        (onSelectItem)="filterByService($event)"
+      ></app-filter>
+      <app-filter
+        title="Konto Status"
+        [list]="filterCatagories"
+        [isActive]="filterBy === 'status'"
+        [isWider]="true"
+        (onSelectItem)="filterByStatus($event)"
+      ></app-filter>
+    </div>
+
+    <div class="section__search control-group control-group--small">
+      <input class="control-group__input input-alt" placeholder="Suche" type="text"
+             value="" autocomplete="off" #searchField>
+      <button class="control-group__btn btn" type="submit" md-raised-button (click)="doSearch()">
+        <md-icon class="control-group__ico">search</md-icon>
+      </button>
+    </div>
+  </header>
+  <div class="section__body section__body--full-width-mobile">
+    <div class="block">
+      <header class="block__header">
+        <h2>Dienstleister</h2>
+      </header>
+      <div class="block__full-width is-scrollable">
+        <table class="table" *ngIf="providers.length">
+          <tr class="table__row table__header-row">
+            <th class="table__header  table__header--sorted table__header-1" [ngClass]="{'table__header--active': isSortBy('name')}" (click)="sortEntities('name')">
+              <div class="table__text">
+                <md-icon class="table__header-ico">{{(isSortBy('name') && isSortReverce) ? 'arrow_upward' : 'arrow_downward'}}</md-icon> Name
+              </div>
+            </th>
+            <th class="table__header  table__header--sorted table__header-2" [ngClass]="{'table__header--active': isSortBy('date')}" (click)="sortEntities('date')">
+              <div class="table__text">
+                <md-icon class="table__header-ico">{{(isSortBy('date') && isSortReverce) ? 'arrow_upward' : 'arrow_downward'}}</md-icon> Reg. Datum
+              </div>
+            </th>
+            <th class="table__header  table__header--sorted table__header-3" [ngClass]="{'table__header--active': isSortBy('status')}" (click)="sortEntities('status')">
+              <div class="table__text">
+                <md-icon class="table__header-ico">{{(isSortBy('status') && isSortReverce) ? 'arrow_upward' : 'arrow_downward'}}</md-icon> Status
+              </div>
+            </th>
+            <th class="table__header  table__header--sorted table__header-4" [ngClass]="{'table__header--active': isSortBy('email')}" (click)="sortEntities('email')">
+              <div class="table__text">
+                <md-icon class="table__header-ico">{{(isSortBy('email') && isSortReverce) ? 'arrow_upward' : 'arrow_downward'}}</md-icon> Email
+              </div>
+            </th>
+            <th class="table__header  table__header--sorted table__header-5" [ngClass]="{'table__header--active': isSortBy('tel')}" (click)="sortEntities('tel')">
+              <div class="table__text">
+                <md-icon class="table__header-ico">{{(isSortBy('tel') && isSortReverce) ? 'arrow_upward' : 'arrow_downward'}}</md-icon> Telefonnummer
+              </div>
+            </th>
+            <th class="table__header  table__header--sorted table__header-6" [ngClass]="{'table__header--active': isSortBy('address')}" (click)="sortEntities('address')">
+              <div class="table__text">
+                <md-icon class="table__header-ico">{{(isSortBy('address') && isSortReverce) ? 'arrow_upward' : 'arrow_downward'}}</md-icon> Ort
+              </div>
+            </th>
+            <!--<th class="table__header  table__header&#45;&#45;sorted table__header-7" [ngClass]="{'table__header&#45;&#45;active': isSortBy('category')}" (click)="sortEntities('category')">-->
+              <!--<div class="table__text">-->
+                <!--<md-icon class="table__header-ico">{{(isSortBy('category') && isSortReverce) ? 'arrow_upward' : 'arrow_downward'}}</md-icon> Kategorie-->
+              <!--</div>-->
+            <!--</th>-->
+            <th class="table__header  table__header--sorted table__header-8" [ngClass]="{'table__header--active': isSortBy('plan')}" (click)="sortEntities('plan')">
+              <div class="table__text">
+                <md-icon class="table__header-ico">{{(isSortBy('plan') && isSortReverce) ? 'arrow_upward' : 'arrow_downward'}}</md-icon> Mitgliedschaft
+              </div>
+            </th>
+          </tr>
+          <tr class="table__row"
+              *ngFor="let provider of pagedItems; let i = index"
+              [ngClass]="{'table__row--highlighted': isActiveRow(i), 'table__row--highlightedProv': !provider.is_self_registered}"
+              (contextmenu)="onContextMenu($event, provider, i)">
+            <td class="table__data table__data-1">
+
+              <div class="table__text" mdTooltip="{{provider.company_name}}">
+                {{provider.company_name}}
+              </div>
+            </td>
+            <td class="table__data table__data-2">
+              <div class="table__text" mdTooltip="{{provider.created_at | date}}">
+                {{provider.created_at | date}}
+              </div>
+            </td>
+            <td class="table__data table__data-3">
+              <div class="table__text" mdTooltip="{{provider.is_enabled ? (provider.is_self_registered ? 'Aktiv' : 'Prov') : 'Gesperrt'}}">
+                {{provider.is_enabled ? (provider.is_self_registered ? 'Aktiv' : 'Prov') : 'Gesperrt'}}
+              </div>
+            </td>
+            <td class="table__data table__data-4">
+              <div class="table__text" mdTooltip="{{provider.email}}">
+                {{provider.email}}
+              </div>
+            </td>
+            <td class="table__data table__data-5">
+              <div class="table__text" mdTooltip="{{provider.telephone_number}}">
+                {{provider.telephone_number}}
+              </div>
+            </td>
+            <td class="table__data table__data-6">
+              <div class="table__text" mdTooltip="{{provider.locations.length ? provider.locations[0].city : ''}}">
+                {{provider.locations.length ? provider.locations[0].city : ''}}
+              </div>
+            </td>
+            <!--<td class="table__data table__data-7">-->
+              <!--<div class="table__text">-->
+                <!--<span *ngFor="let service of provider.subServices" mdTooltip="{{provider.subServices.length ? service.name : ''}}">{{provider.subServices.length ? service.name : "" }}, </span>-->
+              <!--</div>-->
+            <!--</td>-->
+            <td class="table__data table__data-8">
+              <div class="table__text" mdTooltip="{{provider.stripe_subscription ? provider.stripe_subscription.plan.name : ''}}">
+                {{provider.stripe_subscription ? provider.stripe_subscription.plan.name : "" }}
+              </div>
+            </td>
+          </tr>
+        </table>
+        <div class="context-menu__wrapper">
+          <context-menu class="context-menu" (close)="processContextMenuCloseEvent()" #basicMenu></context-menu>
+        </div>
+      </div>
+      <div>
+        <div class="table-controls">
+          <span>Zeilen pro Seite:</span>
+          <md-select class="table-controls__sorter sorter" [placeholder]="tableRows[0]" [floatPlaceholder]="'never'">
+            <md-option *ngFor="let row of tableRows" [value]="row" (click)="setTableRows(row)">{{row}}</md-option>
+          </md-select>
+          <span class="table-controls__page">{{getPagesRange()}} von {{allItems.length}}</span>
+          <button class="table-controls__btn">
+            <md-icon class="table-controls__btn-ico" (click)="setPage(pager.currentPage - 1)">keyboard_arrow_left</md-icon>
+          </button>
+          <button class="table-controls__btn">
+            <md-icon class="table-controls__btn-ico" (click)="setPage(pager.currentPage + 1)">keyboard_arrow_right</md-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

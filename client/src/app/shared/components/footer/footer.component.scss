@@ -1,0 +1,138 @@
+@import "../../../styles/base/index";
+
+/* todo: fix footer structure */
+:host(.footer-holder) {
+  display: block;
+  width: 100%;
+  margin-top: rem-calc(40);
+  padding: rem-calc(43) rem-calc(10) rem-calc(20);
+  border-top: rem-calc(1) solid #c2c2c2;
+  background-color: map-get($grays, base);
+  overflow: hidden;
+  &.footer-holder--no-top {
+    margin-top: 0;
+  }
+}
+
+:host(.footer-holder--alt) {
+  margin-top: 0;
+}
+
+.footer {
+  position: relative;
+
+  font-size: rem-calc(14);
+  line-height: rem-calc(18);
+  font-weight: 500;
+  text-align: center;
+  overflow: hidden;
+
+  @include respond-from(md) {
+    text-align: left;
+  }
+
+  &__container {
+    max-width: rem-calc(1264);
+    margin: 0 auto;
+  }
+
+  h3, .h2 {
+    margin: 0 0 rem-calc(20);
+
+    @include respond-from(md) {
+      margin: 0 0 rem-calc(41);
+    }
+  }
+}
+
+.footer__col {
+  @include respond-from(sm) {
+    width: 49%;
+    padding: 0 rem-calc(20);
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  @include respond-from(md) {
+    float: left;
+    width: 27.7%;
+    padding: 0 rem-calc(10);
+
+    &:last-child {width: 16%;}
+  }
+}
+
+.footer__list {
+  li {
+    margin: 0 0 rem-calc(20);
+
+    @include respond-to(md) {
+      margin: 0 0 rem-calc(10);
+    }
+  }
+
+  a {
+    color: map-get($grays, dark-primary);
+
+    &:hover {
+      text-decoration: none;
+      color: map-get($colors, primary);
+    }
+  }
+
+  .important {
+    color: map-get($colors, primary);
+
+    &:hover {text-decoration: underline;}
+  }
+
+
+  @include respond-to(md) {
+    margin: 0 0 rem-calc(40);
+  }
+
+}
+
+.footer__list--social {
+  margin: 0 0 0 rem-calc(1);
+
+  li {
+    margin: 0 0 rem-calc(12);
+
+    @include respond-to(md) {
+      display: inline-block;
+      vertical-align: top;
+      margin: 0 rem-calc(10);
+    }
+  }
+
+  a {
+    line-height: rem-calc(30);
+    display: inline-block;
+    vertical-align: top;
+
+    @include respond-to(md) {
+      span {display: none;}
+    }
+
+    &:before {
+      color: #6f6f6f;
+      font-size: rem-calc(30);
+      margin: 0 rem-calc(25) 0 0;
+      transition: color .35s;
+
+      @include respond-to(md) {
+        margin: 0;
+        font-size: rem-calc(40);
+      }
+
+    }
+    &:hover:before {
+      color: map-get($colors, primary);
+    }
+  }
+
+  @include respond-from(md) {
+    margin-top: rem-calc(-11);
+  }
+}

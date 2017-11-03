@@ -1,0 +1,39 @@
+@import "../../../styles/base/index";
+
+:host(.cutaway) {
+  position: relative;
+  display: block;
+  max-width: rem-calc(290);
+  min-height: rem-calc(150);
+  margin: 0 auto;
+  padding-top: rem-calc(12);
+  padding-bottom: rem-calc(12);
+  padding-left: rem-calc(132);
+  > *:last-child {
+    margin-bottom: 0;
+  }
+  @include respond-from(lg) {
+    max-width: none;
+  }
+}
+
+.cutaway__img {
+  position: absolute;
+  top: 50%;
+  left: rem-calc(66);
+  transform: translate(-50%, -50%);
+  width: rem-calc(105);
+  height: rem-calc(105);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.cutaway__title {
+  font-size: rem-calc(16);
+  margin-bottom: rem-calc(11);
+}
+
+.cutaway__list-item {
+  margin-bottom: rem-calc(5);
+}
+

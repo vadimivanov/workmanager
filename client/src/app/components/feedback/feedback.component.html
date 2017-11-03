@@ -1,0 +1,157 @@
+<app-header></app-header>
+<div class="container container--small container--full-width-mobile">
+  <form class="block" [formGroup]="form2" (ngSubmit)="onSubmit(form2.value)">
+  <div class="block__header">
+    <h1>Bewertung abgeben</h1>
+    <h2 class="h3">Bewerten Sie die Arbeit eines Dienstleisters</h2>
+  </div>
+  <div class="block__group">
+    <div class="grid-noGutters">
+      <div class="col-5_xs-12" data-push-right="off-2_xs-0">
+        <div class="spinner-input" [ngClass]="{'spinner-input--disabled': !companySearchList.length}">
+          <md-spinner class="spinner" *ngIf="!companySearchList.length"></md-spinner>
+          <div *ngIf="isHideFields || !companySearchList.length">
+            <md-input-container class="input">
+              <input mdInput placeholder="Firmenname" [value]="companyName" disabled>
+            </md-input-container>
+          </div>
+
+          <div *ngIf="!isHideFields && companySearchList.length">
+            <md-input-container class="input">
+              <input mdInput placeholder="Firmenname" type="text" id="companyName" formControlName="company_name"
+                     required
+                     [(ngModel)]="companyName"
+                     [mdAutocomplete]="firmNameAutocomplete"
+                     [formControl]="stateCtrl">
+            </md-input-container>
+            <md-autocomplete #firmNameAutocomplete="mdAutocomplete">
+              <md-option *ngFor="let firmName of filteredFirmNames | async" [value]="firmName">
+                {{ firmName }}
+              </md-option>
+            </md-autocomplete>
+            <md-error>{{formErrors.company_name}}</md-error>
+          </div>
+        </div>
+      </div>
+      <div class="col-5_xs-12">
+        <md-input-container class="input" *ngIf="isHideFields">
+          <input mdInput placeholder="Kategorie" [value]="feedback.service_name" disabled>
+        </md-input-container>
+        <md-select class="select select--input" id="category" name="category" placeholder="Category" *ngIf="!isHideFields"
+                   [ngClass]="{'select--error': (isSubmitOnce && !feedback.service_name)}"
+                   [(ngModel)]="feedback.service_name"
+                   formControlName="service_name" required>
+          <md-option *ngFor="let category of categoriesList" [value]="category.name">
+            {{category.name}}
+          </md-option>
+        </md-select>
+        <md-error>{{ formErrors.service_name }}</md-error>
+      </div>
+    </div>
+  </div>
+  <!--<div class="block__group">-->
+  <!--<h3>Bewertung abgeben</h3>-->
+  <!--<span class="text">-->
+  <!--Kosten: CHF <span class="text-secondary weight&#45;&#45;semi-bold">{{costRange[0]}}</span>-->
+  <!--– CHF <span class="text-secondary weight&#45;&#45;semi-bold">{{costRange[1]}}</span>-->
+  <!--</span>-->
+  <!--<div class="slider-range">-->
+  <!--<nouislider class="slider-range__control" [connect]="true" [min]="0" [max]="200" [step]="1"-->
+  <!--[formControl]="form2.controls.range" (ngModelChange)="onChanges($event)" [disabled]="disabled"-->
+  <!--formControlName="range">-->
+  <!--</nouislider>-->
+  <!--<span class="slider-range__value">$200 k</span>-->
+  <!--</div>-->
+  <!--<md-checkbox class="checkbox" id="subscribe" [(ngModel)]="disabled" formControlName="disabled">Vertraulich-->
+  <!--</md-checkbox>-->
+  <!--</div>-->
+  <div class="block__group">
+    <md-input-container class="input">
+      <input mdInput placeholder="Auftragtitel" type="text" id="title" formControlName="job_title"
+             maxlength="255"
+             required
+             [(ngModel)]="feedback.job_title">
+      <md-error>{{ formErrors.job_title }}</md-error>
+    </md-input-container>
+    <md-input-container class="input">
+    <textarea mdInput placeholder="Auftragsdetails und Bewertung" type="text" id="description"
+              [(ngModel)]="feedback.job_description" formControlName="job_description"
+              rows="1" required></textarea>
+      <md-error>{{ formErrors.job_description }}</md-error>
+    </md-input-container>
+  </div>
+  <div class="block__group" *ngIf="companyName.length && !isSelectedCompanyName() && !requestFeedback">
+    <md-input-container class="input">
+      <input mdInput placeholder="Name der Firma eingeben" type="text" id="firmaName" [(ngModel)]="companyName"
+             formControlName="company_name"
+             maxlength="255"
+             required>
+      <md-error>{{ formErrors.company_name }}</md-error>
+    </md-input-container>
+    <md-input-container class="input">
+      <input mdInput placeholder="E-Mail der Firma eingeben" type="email" id="provider_email"
+             [(ngModel)]="feedback.provider_email" formControlName="provider_email" required>
+      <md-error>{{ formErrors.provider_email }}</md-error>
+    </md-input-container>
+  </div>
+  <div class="block__group">
+    <ul class="rating-list">
+      <li class="rating-list__item" *ngFor="let rate of ratingsList; let i = index">
+        <h3 class="rating-list__title" [ngClass]="{'rating-list__title--error': (isSubmitOnce && !feedback[rate.key])}">{{rate.name}} *</h3>
+        <div class="rating-list__rating rating">
+          <div class="rating__line">
+            <div class="rating__rule"></div>
+            <div class="rating__rule rating__rule--filled" [style.width.%]="(rate.value / rate.stars.length)*100"></div>
+            <label class="rating__item" *ngFor="let star of rate.stars" [ngClass]="{'rating__item--disabled': isPresentation}">
+              <span class="rating__item-name">{{star}}</span>
+              <input *ngIf="!isPresentation" class="rating__toggle" type="radio" name="rating{{i}}"
+                     (change)="updateCheckedOptions(rate, i, star, rate.stars, rate.value)" required>
+            </label>
+          </div>
+          <md-error>{{ formErrors[rate.key] }}</md-error>
+          <span class="rating__digital" *ngIf="isDigitalValueShow[0]">{{rate.value}}
+          <ng-template [ngIf]="isDigitalValueShow[1]">Bewertung</ng-template>
+        </span>
+          <span class="rating__mark-amount" *ngIf="markAmount">{{markAmount}} Bewertungen</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="block__group">
+    <h3>Bilder zur Bewertung hochladen</h3>
+    <div class="uploader">
+      <label class="uploader__input-label" [ngClass]="{'uploader__input-label--disable': images.length >= limitImages }">
+        <span class="uploader__input-text">Bilder hinzufügen (Max: {{limitImages}}, Format: JPG, PNG, GIF)</span>
+        <span class="uploader__input-text">oder</span>
+        <span class="uploader__input-btn uploader__input-btn--disable">Bilder auswählen</span>
+        <input class="uploader__input" type='file' (change)="readUrl($event)" [disabled]="images.length >= limitImages">
+      </label>
+      <ul class="uploader__list">
+        <li class="uploader__item" *ngFor="let image of providersImagesUpload; let i = index">
+          <button type="button" class="uploader__delete">
+            <md-icon class="uploader__delete-ico" (click)="deleteImage(i, 'providersImages')">close</md-icon>
+          </button>
+          <div class="uploader__figure">
+            <img class="uploader__img" [src]="image" alt="image description">
+          </div>
+        </li>
+        <li class="uploader__item" *ngFor="let image of images; let i = index">
+          <button type="button" class="uploader__delete">
+            <md-icon class="uploader__delete-ico" (click)="deleteImage(i, 'images')">close</md-icon>
+          </button>
+          <div class="uploader__figure">
+            <img class="uploader__img" [src]="image" alt="image description">
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="form-hint">
+      <div>* Alle Felder sind erforderlich</div>
+    </div>
+  </div>
+  <div class="text-right">
+    <button type="submit" class="btn btn--full-width-mobile" md-raised-button>Bewertung absenden</button>
+  </div>
+</form>
+</div>
+<app-footer></app-footer>

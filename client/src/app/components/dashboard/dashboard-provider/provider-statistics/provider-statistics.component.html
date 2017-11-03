@@ -1,0 +1,90 @@
+<header class="block__header">
+  <h1>Statistik</h1>
+  <h2 class="h3">Schaubild</h2>
+</header>
+<div class="spinner-container" *ngIf="!showCharts">
+  <div class="spinner-block">
+    <md-spinner class="spinner"></md-spinner>
+  </div>
+</div>
+  <div *ngIf="showCharts">
+    <div class="chart__controls">
+      <button class="chart__control btn" [class.chart__control--inactive]="onSelectedTab!=='byDay'"
+              md-raised-button type="button" (click)="createLineChartData('byDay'); createBarChartData('byDay'); onSelectedTab='byDay'">TAG</button>
+      <button class="chart__control btn" [class.chart__control--inactive]="onSelectedTab!=='byMonth'"
+              md-raised-button type="button" (click)="createLineChartData('byMonth'); createBarChartData('byMonth'); onSelectedTab='byMonth'">MONAT</button>
+      <button class="chart__control btn" [class.chart__control--inactive]="onSelectedTab!=='byYear'"
+              md-raised-button type="button" (click)="createLineChartData('byYear'); createBarChartData('byYear'); onSelectedTab='byYear'">JAHR</button>
+    </div>
+    <div *ngIf="onSelectedTab==='byDay'">
+      <div class="chart">
+        <canvas baseChart
+                [datasets]="lineChartDataByDay"
+                [labels]="lineChartLabelsForDays"
+                [options]="lineChartOptions"
+                [legend]="lineChartLegend"
+                [colors]="lineChartColors"
+                [chartType]="lineChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+      </div>
+      <div class="chart">
+        <canvas baseChart #chartDay
+                [datasets]="barChartDataDay"
+                [labels]="barChartLabelsDay"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+      </div>
+    </div>
+
+    <div *ngIf="onSelectedTab==='byMonth'">
+      <div class="chart">
+        <canvas baseChart
+                [datasets]="lineChartDataByMonth"
+                [labels]="lineChartLabelsForMonth"
+                [options]="lineChartOptions"
+                [legend]="lineChartLegend"
+                [colors]="lineChartColors"
+                [chartType]="lineChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+      </div>
+      <div class="chart">
+        <canvas baseChart
+                [datasets]="barChartDataMonth"
+                [labels]="barChartLabelsMonth"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+      </div>
+    </div>
+
+    <div *ngIf="onSelectedTab==='byYear'">
+      <div class="chart">
+        <canvas baseChart
+                [datasets]="lineChartDataByYear"
+                [labels]="lineChartLabelsForYear"
+                [options]="lineChartOptions"
+                [legend]="lineChartLegend"
+                [colors]="lineChartColors"
+                [chartType]="lineChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+      </div>
+      <div class="chart">
+        <canvas baseChart
+                [datasets]="barChartDataYear"
+                [labels]="barChartLabelsYear"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+      </div>
+    </div>
+  </div>

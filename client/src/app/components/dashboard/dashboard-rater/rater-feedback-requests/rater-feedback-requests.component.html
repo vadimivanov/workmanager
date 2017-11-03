@@ -1,0 +1,78 @@
+<header class="block__header">
+  <h2 class="h1">Bewertungen</h2>
+</header>
+<div class="flex-between" *ngIf="feedbacksList">
+  <div>
+    <md-select class="sorter" placeholder="Kategorien" floatPlaceholder="never" (change)="selectingFeedbacks($event, 'service')">
+      <md-option value="0">Kategorien: Alle</md-option>
+      <md-option *ngFor="let state of services" value="{{state.id}}">Kategorien: {{ state.name }}</md-option>
+    </md-select>
+    <md-select class="sorter" placeholder="Feedback status" floatPlaceholder="never" (change)="selectingFeedbacks($event, 'status')">
+      <md-option *ngFor="let status of feedbacksStatuses" value="{{status.name}}">Status: {{ status.title }}</md-option>
+    </md-select>
+  </div>
+</div>
+<div *ngIf="feedbacksList">
+  <div class="publication" *ngFor="let feedback of pagedItems">
+    <figure class="publication__figure">
+      <div class="publication__figimg" [style.background-image]="feedback.Provider.photo_url ? 'url(' + feedback.Provider.photo_url + ')' : 'url(assets/images/content/img-avatar.png)'" (click)="goToCreator()" [attr.role]="image" [attr.aria-labelledby]="feedback.Provider.photo_url"></div>
+      <figcaption class="publication__figcaption" id="{{feedback.Provider.photo_url}}">
+      <span *ngIf="feedback.Provider.company_name">{{feedback.Provider.company_name}}</span>
+      <span class="sr-only" *ngIf="!feedback.Provider.company_name">{{feedback.Provider.photo_url ? feedback.Provider.photo_url : 'default image'}}</span>
+      <div class="publication__meta-data" *ngIf="ratersFeedbacks">
+      <md-icon>star_rate</md-icon>
+      Bewertungen
+      </div>
+      </figcaption>
+    </figure>
+    <div class="publication__body">
+      <header class="publication__header">
+        <h3 class="publication__title"></h3>
+        <div class="publication__header-data">
+          <span class="publication__label" *ngIf="feedback.service_name">{{feedback.service_name}}</span>
+        </div>
+      </header>
+
+      <div class="publication__subheader" *ngIf="feedback.job_title">
+        <h3 class="publication__subtitle">{{feedback.job_title}}</h3>
+        <div class="publication__date">{{feedback.created_at | date:'dd-MMM-yyyy'}}</div>
+      </div>
+
+      <div class="publication__data">
+        <div class="publication__date" *ngIf="!feedback.job_title">{{feedback.created_at | date:'dd-MMM-yyyy'}}</div>
+      </div>
+      <div class="publication__quote">
+        <p *ngIf="!isEditFeed">
+          <app-text-truncate [text]="feedback.message"></app-text-truncate>
+        </p>
+      </div>
+      <app-carousel class="publication__carousel" [items]="feedback.photo_urls.length ? feedback.photo_urls : []"></app-carousel>
+    </div>
+    <div class="publication__cta-block">
+      <a class="publication__cta btn text-color-primary" (click)="aproveRequest(feedback)" md-button>Akzeptieren</a>
+      <a class="publication__cta btn text-color-primary" (click)="removeRequest(feedback.id)" md-button>Ablehnen</a>
+    </div>
+  </div>
+  <ul class="pagination" *ngIf="pagedItems.length">
+    <li class="pagination__item" [ngClass]="{'pagination__item--disabled': pager.currentPage === 1}">
+      <a class="pagination__link" (click)="setPage(pager.currentPage - 1)">
+        <md-icon>keyboard_arrow_left</md-icon>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    <li class="pagination__item" *ngFor="let page of pager.pages"
+        [ngClass]="{'pagination__item--active': pager.currentPage === page}">
+      <a class="pagination__link" (click)="setPage(page)">{{page}}</a>
+    </li>
+    <li class="pagination__item"
+        [ngClass]="{'pagination__item--disabled': pager.currentPage === pager.totalPages}">
+      <a class="pagination__link" (click)="setPage(pager.currentPage + 1)">
+        <md-icon>keyboard_arrow_right</md-icon>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<div class="nothing-block" *ngIf="!feedbacksList">
+  <h3 class="text-center title">Es gibt keine Bewertungen jetzt</h3>
+</div>

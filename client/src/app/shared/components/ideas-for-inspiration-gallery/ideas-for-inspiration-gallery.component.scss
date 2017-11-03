@@ -1,0 +1,30 @@
+@import "../../../styles/base/index";
+
+:host {
+  display: block;
+  background-color: #f2f2f2;
+  &.bg-white {
+    background-color: map-get($grays, light-primary);
+  }
+}
+
+.gallery__img {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+.gallery__img-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /deep/ .image-slider__holder { width: 50% !important; }
+  /deep/ .image-slider__item { width: 100% !important; }
+}

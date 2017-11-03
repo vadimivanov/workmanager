@@ -1,0 +1,40 @@
+@import "../../styles/base/index";
+
+.sorter {
+  font: map-get($texts, body-medium);
+  &.mat-select-disabled .mat-select-value {
+    color: map-get($grays, dark-disabled);
+  }
+  .mat-select-arrow,
+  .mat-select-trigger {
+    color: map-get($grays, dark-primary);
+  }
+  .mat-select-trigger {
+    min-width: rem-calc(100);
+    @include respond-from(md) {
+      min-width: rem-calc(215);
+    }
+  }
+  .mat-select-underline {
+    display: none;
+  }
+  & + & {
+    margin-left: rem-calc(40);
+  }
+
+  &.sorter--small,
+  &.sorter--small.section__sorter {
+    min-width: rem-calc(100);
+    width: auto;
+
+    .mat-select-trigger {
+      min-width: rem-calc(100);
+      font-size: rem-calc(14);
+    }
+
+    .mat-select-arrow {
+      margin-left: rem-calc(10);
+      color: map-get($grays, dark-secondary);
+    }
+  }
+}

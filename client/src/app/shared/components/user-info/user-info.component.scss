@@ -1,0 +1,66 @@
+@import "../../../styles/base/index";
+
+:host(.user-info) {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.user-info__avatar {
+  width: rem-calc(50);
+  height: rem-calc(50);
+  border: 1px solid #ebebeb;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.user-info__figure {
+  display: flex;
+  margin: 0 0 rem-calc(30);
+  padding: 0;
+  text-align: center;
+  :host(.user-info--small) & {
+    margin-bottom: 0;
+  }
+  .user-info__avatar {
+    width: rem-calc(100);
+    height: rem-calc(100);
+    flex: 0 0 rem-calc(100);
+    margin-right: rem-calc(30);
+    :host(.user-info--small) & {
+      width: rem-calc(74);
+      height: rem-calc(74);
+      flex: 0 0 rem-calc(74);
+      margin-right: rem-calc(22);
+    }
+  }
+  @include respond-from(md) {
+    margin-bottom: rem-calc(43);
+  }
+}
+
+.user-info__figcaption {
+  padding-top: 12px;
+  @include respond-from(md) {
+    padding-top: 7px;
+  }
+  :host(.user-info--small) & {
+    margin-top: rem-calc(-5);
+    padding-top: 0;
+  }
+}
+
+.user-info__caption {
+  @include ellipsis;
+  display: block;
+  width: 100%;
+  font-size: rem-calc(14);
+  line-height: rem-calc(20);
+  font-weight: 400;
+  text-align: left;
+  @include respond-from(md) {
+    line-height: rem-calc(23);
+  }
+}

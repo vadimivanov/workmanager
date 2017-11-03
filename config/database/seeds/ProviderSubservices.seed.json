@@ -1,0 +1,17 @@
+[
+  {
+    "provider_id": 1,
+    "subservice_id": 2
+  },{
+    "provider_id": 1,
+    "subservice_id": 7
+  },
+  {
+    "provider_id": 1,
+    "subservice_id": 56
+  },
+  {
+    "provider_id": 1,
+    "subservice_id": 90
+  }
+]

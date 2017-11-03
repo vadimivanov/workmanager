@@ -1,0 +1,202 @@
+@import "../../../styles/base/index";
+
+:host(.quote) {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: rem-calc(890);
+  margin: 0 auto;
+  font-size: rem-calc(14);
+  line-height: rem-calc(19.6);
+  @include respond-from(sm) {
+    flex-wrap: nowrap;
+    flex-direction: row;
+    padding-top: rem-calc(65);
+    font-size: rem-calc(16);
+  }
+  &.quote--alt {
+    padding-left: 0;
+    padding-right: 0;
+    @include respond-from(sm) {
+      padding-top: 0;
+    }
+  }
+}
+
+.quote__data {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  @include respond-from(sm) {
+    margin-right: rem-calc(80);
+  }
+  :host(.quote--alt) & {
+    width: 100%;
+    @include respond-from(sm) {
+      max-width: rem-calc(180);
+      width: rem-calc(180);
+      margin-right: rem-calc(35);
+    }
+  }
+}
+
+.quote__avatar {
+  $size: 90;
+
+  flex: 0 0 rem-calc($size);
+  height: rem-calc($size);
+  width: rem-calc($size);
+  margin-right: rem-calc(20);
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  border: 1px solid #d6d6d6;
+  overflow: hidden;
+  @include respond-from(sm) {
+    height: rem-calc($size*2);
+    width: rem-calc($size*2);
+    flex: 0 0 rem-calc($size*2);
+  }
+  :host(.quote--alt) & {
+    margin-left: auto;
+    margin-right: auto;
+    @include respond-from(sm) {
+      flex-basis: rem-calc(145);
+      height: rem-calc(145);
+      width: rem-calc(145);
+      margin: 0;
+    }
+  }
+}
+
+.quote__author {
+  display: block;
+  font-size: rem-calc(16);
+  font-weight: 400;
+  :host(.quote--alt) & {
+    font-size: rem-calc(14);
+  }
+}
+
+.quote__author-info {
+  position: relative;
+  color: map-get($grays, dark-primary);
+  line-height: rem-calc(25.6);
+  padding-left: rem-calc(5);
+  &::before {
+    position: absolute;
+    left: -4px;
+    top: 1px;
+    content: '- ';
+  }
+  .quote__body & {
+    display: none;
+    @include respond-from(sm) {
+      display: block;
+    }
+    :host(.quote--alt) & {
+      display: block;
+    }
+  }
+  .quote__data & {
+    display: block;
+    @include respond-from(sm) {
+      display: none;
+    }
+    :host(.quote--alt) & {
+      display: none;
+    }
+  }
+  :host(.quote--alt) & {
+    padding-left: 0;
+    &::before {
+      display: none;
+    }
+  }
+}
+
+.quote__company {
+  display: block;
+  color: map-get($grays, dark-secondary);
+  font-size: rem-calc(16);
+  font-weight: 400;
+}
+
+.quote__body {
+  position: relative;
+  padding: rem-calc(33) rem-calc(23) 0 rem-calc(17);
+  color: map-get($grays, dark-secondary);
+  @include respond-from(sm) {
+    padding-top: rem-calc(20);
+    padding-right: 0;
+  }
+  :host(.quote--alt) & {
+    padding-left: 0;
+    padding-right: 0;
+    color: map_get($grays, dark-primary);
+    @include respond-from(sm) {
+      padding-top: 0;
+    }
+  }
+  /deep/ .shifter & {
+    color: map-get($grays, dark-primary);
+  }
+}
+
+.quote__decoration {
+  position: absolute;
+  top: rem-calc(5);
+  left: rem-calc(7);
+  fill: #e5e5e5;
+  width: auto;
+  height: rem-calc(80);
+  z-index: 1;
+  @include respond-from(sm) {
+    top: rem-calc(-54);
+    left: rem-calc(-16);
+    height: rem-calc(160);
+  }
+  :host(.quote--alt) & {
+    display: none;
+  }
+}
+
+.quote__text {
+  position: relative;
+  z-index: 2;
+  @include respond-from(sm) {
+    line-height: rem-calc(30);
+  }
+  :host(.quote--alt) & {
+    &::before,
+    &::after {
+      @include md-icon;
+      position: absolute;
+      content: 'format_quote';
+      color: map_get($grays, dark-disabled);
+      font-size: rem-calc(35);
+      @include respond-from(sm) {
+        font-size: rem-calc(48);
+      }
+    }
+    &::before {
+      top: rem-calc(-31);
+      left: rem-calc(-7);
+      @include respond-from(sm) {
+        top: rem-calc(-10);
+        left: rem-calc(-10);
+      }
+    }
+    &::after {
+      bottom: rem-calc(-33);
+      right: rem-calc(-7);
+      @include respond-from(sm) {
+        bottom: rem-calc(-40);
+      }
+    }
+    @include respond-from(sm) {
+      padding-top: rem-calc(30);
+      font-size: rem-calc(14);
+      line-height: rem-calc(25);
+    }
+  }
+}

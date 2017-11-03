@@ -1,0 +1,84 @@
+<app-header></app-header>
+<div class="container">
+  <div class="block">
+    <header class="block__header">
+      <h1>OKorNOK-Mitgliedschaften</h1>
+      <h2 class="h3">Übersicht der Dienstleistungspakete</h2>
+    </header>
+    <div class="billing">
+      <div class="billing__block billing__block--small">
+        <h3 class="billing__title">Für Bewerter</h3>
+        <app-card class="card--orange"
+                  [name]="'OKorNOK Bewerter'"
+                  [title]="'Gratis'"
+                  [items]="[
+            '<strong>Aufträge</strong> bewerten',
+            'Zugriff auf <strong>Profile</strong>',
+            'Zugriff auf <strong>Ideenwelt</strong>',
+            'Unterhaltung eigenes Profil'
+          ]">
+        </app-card>
+      </div>
+      <div class="billing__separator"></div>
+      <div class="billing__block billing__block--big billing__card-group">
+        <h3 class="billing__title">Für Dienstleister</h3>
+        <app-card class="card--green"
+                  [name]="'OKorNOK Basic'"
+                  [planId]=plansId[0]
+                  [isCanManage]="isCanManagePlans"
+                  [currentUserPlanId]=currentPlanId
+                  [title]="'CHF 0'"
+                  [titleSuffix]="' / mo'"
+                  [buttonText]="'Zu Basic wechseln'"
+                  (onButtonClick)="navigateUser(plansId[0])"
+                  [items]="[
+            '<strong>Einfache</strong> Homepage',
+            '<strong>Stellungnahme</strong> zu Bewertung',
+            'Bis zu <strong>2</strong> Fotos in Bewertungsanfrage'
+          ]">
+        </app-card>
+        <app-card class="card--gray"
+                  [name]="'OKorNOK Silver'"
+                  [planId]=plansId[1]
+                  [isCanManage]="isCanManagePlans"
+                  [currentUserPlanId]=currentPlanId
+                  [title]="'CHF 29'"
+                  [titleSuffix]="' / mo'"
+                  [buttonText]="'Zu Silver wechseln'"
+                  (onButtonClick)="navigateUser(plansId[1])"
+                  [items]="[
+            '<strong>Erweiterte</strong> Homepage',
+            '<strong>Bessere Positionierung</strong> in Suchergebnis',
+            'Bis zu <strong>5</strong> Fotos in Bewertungsanfrage',
+            '<strong>Einfache</strong> Portfeuille Funktion',
+            'Max <strong>5</strong> Bilder in Ideenwelt'
+          ]">
+        </app-card>
+        <app-card class="card--gold"
+                  [name]="'OKorNOK Gold'"
+                  [planId]=plansId[2]
+                  [isCanManage]="isCanManagePlans"
+                  [currentUserPlanId]=currentPlanId
+                  [title]="'CHF 39'"
+                  [titleSuffix]="' / mo'"
+                  [buttonText]="'Zu Gold wechseln'"
+                  (onButtonClick)="navigateUser(plansId[2])"
+                  [items]="[
+            '<strong>Erweiterte</strong> Homepage',
+            '<strong>Beste Positionierung</strong> in Suchergebnis',
+            'Bis zu <strong>20</strong> Fotos in Bewertungsanfrage',
+            'Vorher- Nachherbilder in Portfeuille',
+            'Max <strong>20</strong> Bilder in Ideenwelt'
+          ]">
+        </app-card>
+        <p>Wenn Sie keine Kreditkarte zu Ihrem Konto hinzugefügt haben, werden Sie zur
+            Aktualisierung Ihrer Zahlungsinformationen umgeleitet. Sobald Sie fertig sind,
+            werden Sie auf diese Seite zurückgeleitet, um die Aktivierung eines neuen Abrechnungsplans abzuschließen.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+
+<!-- <a class="card__button" md-raised-button [disabled]="isDisabled(3)" (click)="navigateUser(plansId[2])">Zu gold wechseln</a> -->
+<!-- <span class="card__meta" *ngIf="userBillingPlan === 3 && userRole !== 'Rater'">Ihre derzeitige Mitgliedschaft</span> -->

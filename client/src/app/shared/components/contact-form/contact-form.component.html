@@ -1,0 +1,38 @@
+<form class="form-block__form" [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm.value)" #form="ngForm">
+  <header class="block__header">
+    <h1 class="form-block__title">Kontakt</h1>
+    <h3>Tell us about your wishes or ask a question</h3>
+  </header>
+  <div class="form-block__meta">
+    <span class="form-block__data">+1 412 345 67 89</span>
+    <span class="form-block__data">info@okornok.com</span>
+  </div>
+  <div class="form-block__body">
+    <div class="grid">
+      <div class="col-6_sm-12">
+        <md-input-container class="form-block__input input">
+          <input mdInput placeholder="Name" type="text" value="" id="contactName" formControlName="contactName"
+                 [(ngModel)]="contact.name" required>
+          <md-error>{{ formErrors.contactName }}</md-error>
+        </md-input-container>
+      </div>
+      <div class="col-6_sm-12">
+        <md-input-container class="form-block__input input">
+          <input mdInput placeholder="E-mail" type="email" value="" id="contactEmail" formControlName="contactEmail"
+                 [(ngModel)]="contact.email" required>
+          <md-error>{{ formErrors.contactEmail }}</md-error>
+        </md-input-container>
+      </div>
+      <div class="col-12">
+        <md-input-container class="form-block__input input">
+          <textarea mdInput #nachricht maxlength="500" rows="1" type="text" placeholder="Nachricht" value="" id="contactText"
+                    formControlName="contactText" [(ngModel)]="contact.text"></textarea>
+          <md-hint align="end">{{nachricht.value.length}} / 500</md-hint>
+          <md-error>{{ formErrors.contactText }}</md-error>
+        </md-input-container>
+      </div>
+    </div>
+  </div>
+  <re-captcha class="captcha" (resolved)="resolved($event)" siteKey="{{reCaptchaKey}}"></re-captcha>
+  <button class="form-block__submit" [disabled]="!isValidForm()" md-raised-button>SENDEN</button>
+</form>

@@ -1,0 +1,48 @@
+@import "../../../styles/base/index";
+
+:host(.control-group),
+.control-group {
+  display: block;
+  position: relative;
+  height: rem-calc(44);
+  padding-right: rem-calc(60);
+  background-color: map-get($grays, light-primary);
+  border-radius: 3px;
+  overflow: hidden;
+  @include respond-from(sm) {
+    height: rem-calc(48);
+  }
+}
+
+.control-group__input {
+  flex: 1 1 auto;
+  height: 100%;
+  border-radius: 0;
+}
+
+.control-group__input::-webkit-input-placeholder {
+  color: map-get($grays, dark-disabled);
+}
+.control-group__input::-moz-placeholder {
+  color: map-get($grays, dark-disabled);
+}
+.control-group__input:-ms-input-placeholder {
+  color: map-get($grays, dark-disabled);
+}
+.control-group__input:-moz-placeholder {
+  color: map-get($grays, dark-disabled);
+}
+
+.control-group__btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  min-width: 0;
+  width: rem-calc(60);
+  border-radius: 0;
+}
+
+.control-group__ico {
+  font-size: rem-calc(22);
+}

@@ -1,0 +1,43 @@
+@import "../base/index";
+
+.tabs {
+  &.mat-tab-group {
+    .mat-tab-header {
+      padding-top: rem-calc(31);
+      background-color: map-get($grays, light-primary);
+    }
+    .mat-tab-label {
+      color: map-get($grays, dark-primary);
+      font-size: rem-calc(14);
+      font-weight: 500;
+      text-transform: uppercase;
+      opacity: 1;
+      &.mat-tab-label-active {
+        color: map-get($colors, primary);
+      }
+    }
+    .mat-ink-bar {
+      background-color: map-get($colors, primary);
+    }
+    .mat-tab-labels {
+      justify-content: center;
+    }
+  }
+  .mat-tab-label {
+    @include ellipsis;
+  }
+
+  /* mods */
+  &--alt {
+    .mat-tab-header {
+      margin-bottom: rem-calc(20);
+    }
+  }
+  //.mat-tab-header-pagination,
+  //.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+  //  display: none;
+  //}
+  //.mat-tab-label-container {
+  //  overflow: auto;
+  //}
+}

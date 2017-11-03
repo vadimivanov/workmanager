@@ -1,0 +1,69 @@
+.select {
+  width: 100%;
+
+  &--hide-selected-placeholder {
+    .mat-select-placeholder.mat-floating-placeholder {
+      opacity: 0 !important;
+    }
+  }
+
+  &--input {
+    font-size: rem-calc(16);
+    padding: .4375em 0;
+    border-top: .84375em solid transparent;
+    position: relative;
+    margin-bottom: 1.5rem;
+    .mat-select-value-text {
+      line-height: rem-calc(24);
+    }
+    .mat-select-trigger {
+      height: rem-calc(24);
+      position: static;
+    }
+    .mat-select-underline {
+      top: 100%;
+      bottom: auto;
+      background-color: rgba(#000, .12);
+    }
+    &.select--error,
+    &.ng-invalid.ng-touched {
+      .mat-select-trigger,
+      .mat-select-arrow {
+        color: #f44336;
+      }
+      .mat-select-underline {
+        height: rem-calc(2);
+        background: #f44336;
+      }
+    }
+  }
+}
+
+/* states */
+/* base */
+.mat-select-underline {
+  background-color: map-get($grays, dark-disabled);
+}
+/* selected */
+.mat-option.mat-selected.mat-primary, .mat-primary .mat-option.mat-selected {
+  color: map-get($colors, primary);
+}
+
+/* focus */
+.mat-select:focus:not(.mat-select-disabled).mat-primary .mat-select-arrow,
+.mat-select:focus:not(.mat-select-disabled).mat-primary .mat-select-trigger {
+  color: map-get($colors, primary);
+}
+
+.mat-select:focus:not(.mat-select-disabled).mat-primary .mat-select-underline {
+  background-color: map-get($colors, primary);
+}
+
+/* invalid */
+.mat-select:focus:not(.mat-select-disabled).mat-warn .mat-select-arrow, .mat-select:focus:not(.mat-select-disabled).mat-warn .mat-select-trigger, .mat-select:not(:focus).ng-invalid.ng-touched:not(.mat-select-disabled) .mat-select-arrow, .mat-select:not(:focus).ng-invalid.ng-touched:not(.mat-select-disabled) .mat-select-trigger {
+  color: map-get($colors, danger);
+}
+
+.mat-select:focus:not(.mat-select-disabled).mat-warn .mat-select-underline, .mat-select:not(:focus).ng-invalid.ng-touched:not(.mat-select-disabled) .mat-select-underline {
+  background-color: map-get($colors, danger);
+}

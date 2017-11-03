@@ -1,0 +1,68 @@
+@import "../../../styles/base/index";
+
+:host(.member) {
+  display: block;
+  margin: 0;
+  padding: 0;
+  p {
+    @include respond-from(md) {
+      line-height: rem-calc(22);
+    }
+  }
+  @include respond-from(md) {
+    padding-bottom: rem-calc(27);
+  }
+}
+
+.member__figure {
+  margin: 0;
+  padding: 0;
+}
+
+.member__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: rem-calc(22);
+  padding-bottom: 63.5%;
+  background-size: cover;
+  background-position: center;
+  &:before {
+    content: attr(aria-label);
+  }
+  @include respond-from(md) {
+    margin-bottom: rem-calc(19);
+  }
+}
+
+.member__controls {
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: map-get($grays, light-primary);
+  @include respond-from(md) {
+    opacity: 0;
+    transition: opacity .3s;
+    .is-desktop :host(.member):hover & {
+      opacity: 1;
+      transition: opacity .3s;
+    }
+  }
+}
+
+.member__control {
+  width: auto;
+  height: auto;
+  padding: rem-calc(9) rem-calc(11);
+  cursor: pointer;
+}
+
+.member__title {
+  margin-bottom: rem-calc(19);
+  font-size: rem-calc(16);
+  font-weight: 400;
+  @include respond-from(md) {
+    margin-bottom:rem-calc(13);
+    font-size: rem-calc(24);
+  }
+}

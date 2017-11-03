@@ -1,0 +1,150 @@
+<app-header></app-header>
+<div class="container">
+  <button class="btn btn--full-width btn--bottom-outer-indented btn--top-outer-indented is-hidden-from-sm"
+          type="button" (click)="stateToggle()"
+          md-raised-button>
+    {{stateToggleValue ? 'anwenden' : 'filters'}}
+    <img class="ico" src="assets/images/svg/filter.svg" *ngIf="!stateToggleValue">
+  </button>
+</div>
+<div class="container container--full-width-mobile state-toggle" [ngClass]="{'state-toggle--active': stateToggleValue}">
+  <div class="grid-noGutter">
+    <div class="col-3_sm-6 state-toggle__item--side-indented">
+      <!--<button class="btn btn&#45;&#45;full-width btn&#45;&#45;bottom-outer-indented btn&#45;&#45;top-outer-indented is-hidden-from-sm"-->
+      <!--type="button" (click)="stateToggle()"-->
+      <!--md-raised-button>-->
+      <!--BACK-->
+      <!--</button>-->
+      <div class="block">
+        <header class="block__header">
+          <h2>Kategorien</h2>
+        </header>
+        <ul class="accordion accordion--wider block__full-width" data-accordion #accordion>
+          <li class="accordion__item" *ngFor="let service of providerSubServicesArr; let i = index"
+              [class.accordion__item--active]="isItemOpen[i]" data-accordion-item>
+            <button type="button" class="accordion__title" (click)="chooseCategory(service.name, 'serviceName')">
+              {{service.name}}
+              <md-icon class="accordion__title-ico" (click)="accordionToggle($event, i)">keyboard_arrow_down</md-icon>
+            </button>
+            <div class="accordion__content accordion__content--indent-equal" data-tab-content>
+              <ul class="list--horizontal list--bottom-outer-indented">
+                <li class="list__item" *ngFor="let subservice of service.subservices"
+                    (click)="chooseCategory(subservice, 'subserviceName')">
+                  <button>{{subservice}}</button>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="block">
+        <header class="block__header">
+          <h2>Standort</h2>
+        </header>
+        <form class="promo__form">
+          <md-input-container class="input" floatPlaceholder="never">
+            <input mdInput placeholder="Gesamte Schweiz" [mdAutocomplete]="autoCity" [formControl]="cityCtrl" [(ngModel)]="searchCityParam" (blur)="onKeyup($event)" #searchField>
+          </md-input-container>
+          <md-autocomplete #autoCity="mdAutocomplete">
+            <md-option *ngFor="let city of filteredCities | async" [value]="city" (click)="getLocation(city)">
+              {{ city }}
+            </md-option>
+          </md-autocomplete>
+        </form>
+      </div>
+      <div class="block" *ngIf="searchCityParam.length">
+        <header class="block__header">
+          <h2>Umkreis</h2>
+        </header>
+        <div class="slider-group">
+          <strong class="slider-group__label">Umkreis: {{!sliderValue ? '10' : (sliderValue > 100) ? '100+ ' : sliderValue}}km</strong>
+          <form [formGroup]="formSlider">
+            <div class="slider-group slider-group--alt">
+              <div class="slider-range slider-range--full-width">
+                <nouislider class="slider-range__control" style="background-size: 20% 2px;"
+                            [connect]="[true, false]" [min]="10" [max]="110" [step]="10"
+                            [formControl]="formSlider.controls.range" (change)="selectedDistance($event)"
+                            [(ngModel)]="sliderValue"
+                            formControlName="range">
+                </nouislider>
+              </div>
+              <ul class="slider-group__steps">
+                <li class="slider-group__step"><span>10</span></li>
+                <li class="slider-group__step"><span>30</span></li>
+                <li class="slider-group__step"><span>50</span></li>
+                <li class="slider-group__step"><span>70</span></li>
+                <li class="slider-group__step"><span>90</span></li>
+                <li class="slider-group__step"><span>100+</span></li>
+              </ul>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="block">
+        <header class="block__header">
+          <h2>Bewertung</h2>
+        </header>
+        <form [formGroup]="form2" (ngSubmit)="onSubmit(form2.value)">
+          <div class="slider-group slider-group--alt">
+            <div class="slider-range slider-range--full-width">
+              <nouislider class="slider-range__control" style="background-size: 20% 2px;"
+                          [connect]="true" [min]="0" [max]="5" [step]="1"
+                          [formControl]="form2.controls.range" (ngModelChange)="onChanges($event, 'rating')"
+                          formControlName="range">
+              </nouislider>
+            </div>
+            <ul class="slider-group__steps">
+              <li class="slider-group__step"><span>None</span></li>
+              <li class="slider-group__step"><span>1</span></li>
+              <li class="slider-group__step"><span>2</span></li>
+              <li class="slider-group__step"><span>3</span></li>
+              <li class="slider-group__step"><span>4</span></li>
+              <li class="slider-group__step"><span>5</span></li>
+            </ul>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-9_sm-6">
+      <div class="section">
+        <header class="section__header section__header--between">
+          <app-filter
+            title="Sortieren nach"
+            [list]="states"
+            [isWidest]="true"
+            [isAllItem]="false"
+            [defaultItem]="states[0]"
+            (onSelectItem)="selectingProviders($event)"
+          ></app-filter>
+          <!--<md-select class="section__sorter sorter" [placeholder]="'Sortierung'" [floatPlaceholder]="'never'"-->
+                     <!--(change)="selectingProviders($event)">-->
+            <!--<md-option *ngFor="let state of states" value="{{state.type}}">{{ state.name }}</md-option>-->
+          <!--</md-select>-->
+          <app-control-group class="section__search" [ico]="'search'" [inputPlaceholder]="'Filter'"
+                             [searchValue]="searchValue" (keyup)="onKeyup($event)" (onSubmit)="search($event)"></app-control-group>
+        </header>
+        <div class="section__body">
+          <ul class="section__breadcrumbs breadcrumbs">
+            <li class="breadcrumbs__item">
+              <a routerLink="/home" class="breadcrumbs__link">Startseite</a>
+            </li>
+            <li class="breadcrumbs__item">Suchergebnisse</li>
+          </ul>
+          <div class="block" *ngFor="let provider of searchResults">
+            <app-search-item class="block__full-width"
+              [title]="provider.company_name"
+              [plan]="provider.stripe_subscription ? provider.stripe_subscription.plan.name : 'Basic'"
+              [img]="provider.photo_url"
+              [isHideImg]="provider.stripe_subscription.plan.id === '1-basic'"
+              [rating]="provider.rating"
+              [description]="provider.about"
+              [id]="provider.user_id"
+            ></app-search-item>
+            <!--<a routerLink="/provider-profile/{{provider.id}}">Profile</a>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,72 @@
+@import "../../../styles/base/index";
+
+:host(.promo) {
+  position: relative;
+  display: block;
+  color: map-get($grays, light-primary);
+  background: url("/assets/scss/images/img01.jpg") no-repeat 50% 50%;
+  background-size: cover;
+  overflow: hidden;
+  &::before {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .4);
+    content: '';
+  }
+  @include respond-from(sm) {
+    color: map-get($grays, dark-primary);
+    &::before {
+      display: none;
+    }
+  }
+
+  /deep/ {
+    .input-alt,
+    .control-group {
+      box-shadow: 0 2px 7px 1px rgba(0, 0, 0, .25);
+    }
+  }
+}
+
+.promo__container {
+  position: relative;
+  margin: rem-calc(33) auto rem-calc(198);
+  padding: 0 rem-calc(15);
+  @include respond-from(sm) {
+    max-width: rem-calc(652);
+    margin: rem-calc(123) auto rem-calc(198);
+  }
+}
+
+.promo__form {
+  @include respond-from(sm) {
+    padding: rem-calc(50) rem-calc(70) rem-calc(15);
+    background-color: rgba(map-get($grays, light-primary), .95);
+  }
+}
+
+.promo__title {
+  margin-bottom: rem-calc(14);
+  font: map-get($headings, h1);
+  @include respond-from(sm) {
+    margin-bottom: rem-calc(26);
+  }
+}
+
+.promo__subtitle {
+  margin-bottom: rem-calc(16);
+  font: 500 rem-calc(18) map-get($font-families, base);
+  @include respond-from(sm) {
+    font: map-get($headings, h2);
+  }
+}
+
+.promo__group {
+  margin-bottom: rem-calc(35);
+  @include respond-from(sm) {
+    margin-bottom: rem-calc(25);
+  }
+}

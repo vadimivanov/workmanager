@@ -1,0 +1,8 @@
+@import "../base/index";
+
+.grid--double-bottom {
+  [class^="col"],
+  [class*="col-"] {
+    padding-bottom: rem-calc(20);
+  }
+}

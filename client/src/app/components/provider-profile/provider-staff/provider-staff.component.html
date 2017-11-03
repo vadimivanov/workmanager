@@ -1,0 +1,98 @@
+<div class="container container--full-width-mobile">
+  <div class="block">
+    <header class="block__header">
+      <h1>Unsere Mitarbeiter</h1>
+      <h2 class="h3">Unsere Mitarbeiter</h2>
+    </header>
+
+    <div class="staff__empty" *ngIf="!isUserOwner && !membersList.length">
+      <span class="staff__empty-text">Es gibt noch keine Mitglieder.</span>
+    </div>
+
+    <div class="staff__empty" *ngIf="isUserOwner && !isCanManage">
+      <span class="staff__empty-text">
+        Mit Ihrer aktuellen Mitgliedschaft können Sie diesen Bereich nicht anpassen.
+        <br />
+        Bitte ändern Sie Ihre  <a routerLink="/billing">Mitgliedschaft</a>
+      </span>
+    </div>
+
+    <div class="grid">
+      <div class="col-3_md-4_sm-6_xs-12" *ngIf="isUserOwner && isCanManage">
+        <form [formGroup]="formUploadMembers" (ngSubmit)="createMembers()">
+          <app-image-input class="image-input--alt"
+                           (select)="onSelectAvatar($event, newMember)"
+                           [imageUrl]="newMember.photo_url"
+                           [membersPhoto]="true"></app-image-input>
+          <input type="hidden"
+                   formControlName="newMemberPhoto"
+                   [(ngModel)]="newMember.photo_url" required />
+          <md-input-container class="input">
+            <input mdInput placeholder="Name des Mitarbeiters" type='text'
+                   formControlName="newMemberName" required
+                   maxlength="255"
+                   [(ngModel)]="newMember.name">
+          </md-input-container>
+          <md-input-container class="input">
+            <textarea mdInput placeholder="Beschreibung des Mitarbeiters" rows="1"
+                      [maxlength]="descriptionLimit"
+                      formControlName="newMemberDescription" required
+                      [(ngModel)]="newMember.description"></textarea>
+            <md-hint align="end">{{newMember.description.length}}/{{descriptionLimit}}</md-hint>
+          </md-input-container>
+
+          <button class="btn btn--full-width" md-raised-button
+                  [disabled]="!formUploadMembers.valid || isDisabledAddBtn"
+          >Mitarbeiter hinzufügen</button>
+        </form>
+      </div>
+      <div class="col-9_md-8_sm-6_xs-12" *ngIf="isUserOwner && isCanManage && !membersList.length">
+        <div class="staff__empty">
+          <span class="staff__empty-text">Es gibt noch keine Mitglieder</span>
+        </div>
+      </div>
+
+      <div class="col-3_md-4_sm-6_xs-12" *ngFor="let member of membersListPager; let i = index">
+        <div class="staff__members-list">
+          <div class="staff__cover" *ngIf="isUserOwner && !isCanManage"></div>
+          <app-editable-info #editable_staff [headerEdit]="" [toEdit]="member" (saveEvent)="editMembers($event)">
+            <app-member *ngIf="!editable_staff.editMode"
+              [img]="member.photo_url"
+              [title]="member.name"
+              [description]="member.description"
+              [isEditable]="isUserOwner && isCanManage"
+              (toEdit)="editable_staff.edit()"
+              (toDelete)="openDialog($event, member.id)"
+            ></app-member>
+            <ng-template [ngIf]="editable_staff.editMode">
+              <form [formGroup]="formUpdateMembers[i]" (ngSubmit)="editable_staff.save()">
+                <app-image-input class="image-input--alt" (select)="onSelectAvatar($event, member)" [membersPhoto]="true" [src]="member.photo_url"></app-image-input>
+                <input type="hidden"
+                       formControlName="memberPhoto"
+                       [(ngModel)]="member.photo_url" required />
+                <md-input-container class="input">
+                  <input mdInput type='text' placeholder="Name des Mitarbeiters"
+                         formControlName="memberName" required
+                         maxlength="255"
+                         [(ngModel)]="editable_staff.toEdit.name">
+                </md-input-container>
+                <md-input-container class="input">
+                  <textarea mdInput  placeholder="Beschreibung des Mitarbeiters"
+                            [maxlength]="descriptionLimit" rows="1"
+                            formControlName="memberDescription" required
+                            [(ngModel)]="editable_staff.toEdit.description"></textarea>
+                  <md-hint align="end">{{editable_staff.toEdit.description.length}}/{{descriptionLimit}}</md-hint>
+                </md-input-container>
+                <button class="btn btn--full-width" md-raised-button [disabled]="!formUpdateMembers[i].valid">Änderungen speichern</button>
+              </form>
+            </ng-template>
+          </app-editable-info>
+        </div>
+      </div>
+    </div>
+    <div></div>
+    <footer class="block__footer text-center" *ngIf="isLoadedPages()">
+      <button class="btn text-color-primary" type="button" md-button (click)="loadNextPage()">Mehr Anzeigen</button>
+    </footer>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+[
+  {
+    "service": "Bauaustrocknung",
+    "location_coordinates": "{\"lat\": 47.420111,\"lng\": 9.385171}",
+    "provider_id": 1
+  },
+  {
+    "service": "Bodenbeläge",
+    "location_coordinates": "{\"lat\": 47.420111,\"lng\": 9.385171}",
+    "provider_id": 1
+  },
+  {
+    "service": "Bodenbeläge",
+    "location_coordinates": "{\"lat\": 47.420111,\"lng\": 9.385171}",
+    "provider_id": 2
+  }
+]

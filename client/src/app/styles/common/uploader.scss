@@ -1,0 +1,105 @@
+@import "../../styles/base/index";
+@import "../../shared/components/member/member.component";
+
+.uploader {
+  width: inherit;
+  max-width: 100%;
+}
+.uploader__wrapper {overflow: hidden;}
+
+.uploader__list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  @include respond-from(xs) {
+    justify-content: flex-start;
+    margin-right: rem-calc(-50);
+  }
+}
+
+.uploader__item {
+  position: relative;
+  width: calc(50% - #{rem-calc(7)});
+  max-width: rem-calc(150);
+  max-height: rem-calc(150);
+  margin-bottom: rem-calc(14);
+  @include respond-from(xs) {
+    margin-right: rem-calc(50);
+  }
+}
+
+.uploader__delete {
+  position: absolute;
+  top: rem-calc(-10);
+  right: rem-calc(-10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: rem-calc(10);
+  z-index: 5;
+  outline: 0;
+  &-ico {
+    font-size: rem-calc(22);
+    color: rgba(map-get($grays, light-primary), .8);
+    background-color: map-get($grays, dark-disabled);
+    &.mat-icon {
+      width: auto;
+      height: auto;
+    }
+  }
+}
+
+.uploader__figure {
+  position: relative;
+  padding-bottom: 100%;
+  overflow: hidden;
+}
+
+.uploader__img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.uploader__input-label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: rem-calc(28);
+  cursor: pointer;
+  @include respond-from(xs) {
+    width: rem-calc(415);
+    margin-bottom: rem-calc(41);
+    padding: rem-calc(16) rem-calc(10);
+    border: 1px dashed map-get($grays, dark-disabled);
+    text-align: center;
+  }
+
+  &--disable {
+    cursor: default;
+
+  }
+}
+
+.uploader__input {
+  display: none;
+}
+
+.uploader__input-text {
+  display: none;
+  margin-bottom: rem-calc(5);
+  font-size: rem-calc(14);
+  color: map-get($grays, dark-secondary);
+  @include respond-from(xs) {
+    display: block;
+  }
+}
+
+.uploader__input-btn {
+  font-size: rem-calc(14);
+  color: map-get($colors, primary);
+  text-transform: uppercase;
+  .uploader__input-label--disable & {
+    color: rgba(#000, .26);
+  }
+}
